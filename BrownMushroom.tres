@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=3 format=3 uid="uid://yvo44lb737yy"]
+
+[ext_resource type="Script" uid="uid://cxlqp44bh76ub" path="res://Items/Ingredients/item_data_consumable.gd" id="1_8yplm"]
+[ext_resource type="Texture2D" uid="uid://bgqi3ghuci24w" path="res://Items/Ingredients/Sprites/mushroom1.png" id="2_iemqd"]
+
+[resource]
+script = ExtResource("1_8yplm")
+heal_value = 5
+name = "Brown Mushroom"
+description = "This mushroom has a simple meaty flavor."
+stackable = true
+texture = ExtResource("2_iemqd")
+metadata/_custom_type_script = "uid://cxlqp44bh76ub"

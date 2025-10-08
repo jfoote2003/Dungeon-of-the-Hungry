@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" load_steps=5 format=3 uid="uid://wsjx7rsppxsq"]
+
+[ext_resource type="Script" uid="uid://cbquv6b5kjgem" path="res://Items/Scripts/ArmorAndWeaponScripts/item_data_weapon.gd" id="1_4owdl"]
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_801cb"]
+[ext_resource type="Texture2D" uid="uid://5uobpmteoyk5" path="res://Items/Weapons/Sprites/big_axe.png" id="3_o8mh4"]
+
+[sub_resource type="Resource" id="Resource_s2jl8"]
+script = ExtResource("1_801cb")
+slash_dmg = 10
+
+[resource]
+script = ExtResource("1_4owdl")
+effects = SubResource("Resource_s2jl8")
+weapon_type = 3
+min_strength = 12
+min_agility = 8
+name = "Heavy Axe"
+description = "This brutish weapon is a deadly companion in battle"
+texture = ExtResource("3_o8mh4")
