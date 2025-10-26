@@ -18,7 +18,6 @@ func _ready() -> void:
 
 func interact():
 	toggle_cooking.emit(self)
-	print("interact cooking fire")
 
 func cooking():
 	var available_ingredients = []

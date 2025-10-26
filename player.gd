@@ -13,7 +13,6 @@ const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 
 var can_interact : bool = false
 @export var inventory_data : InventoryData
-var is_in_inventory : bool = false
 
 var current_health : int = 100
 var max_health : int = current_health
@@ -21,9 +20,17 @@ var max_health : int = current_health
 var weapon_selected : bool = false
 #signal weapon_used(weapon_type, weapon)
 
+@export var rpg_class : RPGClass
+signal player_level_up()
+@export var exp_curve : Curve
+var current_exp : int = 0
+var exp_needed_for_levelup : int = 0
+
 func _ready():
 	PlayerManager.player = self
 	state_machine.Initalize(self)
+	
+	#print(rpg_class.MAX_LEVEL)
 
 func _process(_delta):
 	direction = Vector2( Input.get_axis("left","right") , Input.get_axis("up","down")).normalized()
@@ -67,10 +74,17 @@ func _unhandled_input(_event):
 	
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
-		is_in_inventory = not is_in_inventory
 	
 	if Input.is_action_just_pressed("interact"):
 		check_interaction()
+	
+	if Input.is_action_just_pressed("level_up_temp"):
+		level_up()
+		pass
+	
+	if Input.is_action_just_pressed("use ability"):
+		#rpg_class.use_ability() #TODO add abilities lol
+		pass
 
 func check_interaction():
 	if ray_cast.is_colliding():
@@ -89,8 +103,8 @@ func update_raycast_direction():
 		Vector2.DOWN:
 			ray_cast.target_position = Vector2(0,15)
 
-func heal(heal_value : int): #TODO change argument to an effect rather than int
-	current_health += heal_value
+func heal(heal_value : Effect):
+	current_health += heal_value.health_change
 	print(current_health)
 	if current_health > max_health:
 		current_health = max_health
@@ -99,3 +113,21 @@ func heal(heal_value : int): #TODO change argument to an effect rather than int
 func fight(_weapon : ItemDataWeapon): #TODO pass weapon type and weapon sprite to attack state
 	weapon_selected = true
 	#weapon_used.emit()
+
+func level_up():
+	exp_needed_for_levelup = exp_level_calculator()
+	player_level_up.emit()
+	#print(exp_needed_for_levelup)
+
+func exp_level_calculator() -> int:
+	var player_level = rpg_class.current_level
+	var max_level = rpg_class.MAX_LEVEL
+	var output
+	if player_level == max_level:
+		print("you have reached max level, congrats")
+	else:
+		var player_level_ratio = float(player_level)/max_level
+		output = exp_curve.sample(player_level_ratio)
+		output *= 1000000
+		rpg_class.current_level += 1
+	return output

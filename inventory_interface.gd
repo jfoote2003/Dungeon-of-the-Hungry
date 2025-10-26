@@ -73,19 +73,29 @@ func clear_external_inventory():
 		external_inventory.hide()
 		external_inventory_owner = null
 
-func set_cooking_inventory(joe_biden):
-	print("set")
-	#cooking_inventory_owner = joe_biden
-	#var inventory_data_input = cooking_inventory_owner.inventory_input
-	#var inventory_data_output = cooking_inventory_owner.inventory_output
-	#
-	#inventory_data_input.inventory_interact.connect(on_inventory_interact)
-	#inventory_data_output.inventory_interact.connect(on_inventory_interact)
-	#
-	#cooking_inventory_input.set_inventory_data(inventory_data_input)
-	#cooking_inventory_output.set_inventory_data(inventory_data_output)
-	#
-	#cooking_ui.show()
+func set_cooking_inventory(_cooking_inventory_owner):
+	cooking_inventory_owner = _cooking_inventory_owner
+	var inventory_data_input = cooking_inventory_owner.inventory_input
+	var inventory_data_output = cooking_inventory_owner.inventory_output
+	
+	inventory_data_input.inventory_interact.connect(on_inventory_interact)
+	inventory_data_output.inventory_interact.connect(on_inventory_interact)
+	
+	cooking_inventory_input.set_inventory_data(inventory_data_input)
+	cooking_inventory_output.set_inventory_data(inventory_data_output)
+	
+	cooking_ui.show()
 
 func clear_cooking_inventory():
-	print("clear")
+	if cooking_inventory_owner:
+		var inventory_data_input = cooking_inventory_owner.inventory_input
+		var inventory_data_output = cooking_inventory_owner.inventory_output
+		
+		inventory_data_input.inventory_interact.disconnect(on_inventory_interact)
+		inventory_data_output.inventory_interact.disconnect(on_inventory_interact)
+		
+		cooking_inventory_input.clear_inventory_data(inventory_data_input)
+		cooking_inventory_output.clear_inventory_data(inventory_data_output)
+		
+		cooking_ui.hide()
+		cooking_inventory_owner = null
