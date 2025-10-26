@@ -1,13 +1,20 @@
-[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=3 format=3 uid="uid://dq7p6sovshi0f"]
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=5 format=3 uid="uid://dq7p6sovshi0f"]
 
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_64u0y"]
 [ext_resource type="Script" uid="uid://cxlqp44bh76ub" path="res://Items/Ingredients/item_data_consumable.gd" id="1_x87mx"]
 [ext_resource type="Texture2D" uid="uid://xaxw7csdxgap" path="res://Items/Recipes/Sprites/mushroom_soup.png" id="2_k0485"]
 
+[sub_resource type="Resource" id="Resource_eoggg"]
+script = ExtResource("1_64u0y")
+hunger_change = 10
+health_change = 5
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
+
 [resource]
 script = ExtResource("1_x87mx")
-heal_value = 10
+effects = SubResource("Resource_eoggg")
 name = "Mushroom Soup"
-description = "Although nothing special, this soup warms the belly"
+description = "Although nothing special, this soup warms the soul and belly"
 stackable = true
 texture = ExtResource("2_k0485")
 metadata/_custom_type_script = "uid://cxlqp44bh76ub"
