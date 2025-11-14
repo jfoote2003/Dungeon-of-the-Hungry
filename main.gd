@@ -60,6 +60,7 @@ func toggle_cooking_interface(cooking_inventory_owner = null):
 		inventory_interface.set_cooking_inventory(cooking_inventory_owner)
 	else:
 		inventory_interface.clear_cooking_inventory()
+		cooking_inventory_owner = null
 
 func update_player_stats(stat_array : Array):
 	#print(stat_array)
