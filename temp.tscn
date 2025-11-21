@@ -1,0 +1,498 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccwp1llaobfc4"]
+
+[ext_resource type="Script" uid="uid://cxqq7dugyy8q3" path="res://Player/inventory/Scripts/inventory_interface.gd" id="1_f68d1"]
+[ext_resource type="PackedScene" uid="uid://cai003s8xcg22" path="res://Player/inventory/Scenes/Slot/slot.tscn" id="2_h2clf"]
+[ext_resource type="PackedScene" uid="uid://cu7qehb71x52a" path="res://Player/inventory/Scenes/inventory.tscn" id="3_q51th"]
+[ext_resource type="PackedScene" uid="uid://cbini3x25face" path="res://Player/UI/HotBar/hot_bar_inventory.tscn" id="4_iyses"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="InventoryInterface" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f68d1")
+
+[node name="GrabbedSlot" parent="InventoryInterface" instance=ExtResource("2_h2clf")]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.568627)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="PlayerUI" type="VBoxContainer" parent="InventoryInterface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExternalInventory" parent="InventoryInterface/PlayerUI" instance=ExtResource("3_q51th")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryInterface/PlayerUI"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/PlayerUI/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerEquipmentInventory" type="VBoxContainer" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HelmetInventory" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer" instance=ExtResource("3_q51th")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Slot2" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="1"]
+visible = false
+
+[node name="Slot3" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="2"]
+visible = false
+
+[node name="Slot4" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="3"]
+visible = false
+
+[node name="Slot5" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="PanelContainer2" type="PanelContainer" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ChestInventory" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2" instance=ExtResource("3_q51th")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Slot2" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="1"]
+visible = false
+
+[node name="Slot3" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="2"]
+visible = false
+
+[node name="Slot4" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="3"]
+visible = false
+
+[node name="Slot5" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="PanelContainer3" type="PanelContainer" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="GreevesInventory" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3" instance=ExtResource("3_q51th")]
+layout_mode = 2
+
+[node name="Slot2" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="1"]
+visible = false
+
+[node name="Slot3" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="2"]
+visible = false
+
+[node name="Slot4" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="3"]
+visible = false
+
+[node name="Slot5" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="PanelContainer4" type="PanelContainer" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BootsInventory" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4" instance=ExtResource("3_q51th")]
+layout_mode = 2
+
+[node name="Slot2" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="1"]
+visible = false
+
+[node name="Slot3" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="2"]
+visible = false
+
+[node name="Slot4" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="3"]
+visible = false
+
+[node name="Slot5" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="PlayerInventory" parent="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer" instance=ExtResource("3_q51th")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CookingUI" type="VBoxContainer" parent="InventoryInterface"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_right = 138.0
+offset_bottom = 72.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="CookingInventoryInput" parent="InventoryInterface/CookingUI" instance=ExtResource("3_q51th")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ItemGrid" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer" index="0"]
+columns = 4
+
+[node name="Slot5" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="CookingInventoryOutput" parent="InventoryInterface/CookingUI" instance=ExtResource("3_q51th")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" parent="InventoryInterface/CookingUI/CookingInventoryOutput" index="0"]
+size_flags_horizontal = 4
+
+[node name="ItemGrid" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer" index="0"]
+columns = 1
+
+[node name="Slot2" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="1"]
+visible = false
+
+[node name="Slot3" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="2"]
+visible = false
+
+[node name="Slot4" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="3"]
+visible = false
+
+[node name="Slot5" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="CookingButton" type="Button" parent="InventoryInterface/CookingUI"]
+layout_mode = 2
+text = "Cook"
+
+[node name="HotBarInventory" parent="." instance=ExtResource("4_iyses")]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_top = -64.0
+offset_right = 236.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[editable path="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer/HelmetInventory"]
+[editable path="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer2/ChestInventory"]
+[editable path="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer3/GreevesInventory"]
+[editable path="InventoryInterface/PlayerUI/MarginContainer/VBoxContainer/PlayerEquipmentInventory/PanelContainer4/BootsInventory"]
+[editable path="InventoryInterface/CookingUI/CookingInventoryInput"]
+[editable path="InventoryInterface/CookingUI/CookingInventoryOutput"]

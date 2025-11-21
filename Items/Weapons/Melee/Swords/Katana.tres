@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" load_steps=3 format=3 uid="uid://casd31kl8i31f"]
+
+[ext_resource type="Script" uid="uid://cbquv6b5kjgem" path="res://Items/Weapons/item_data_weapon.gd" id="1_xrjcs"]
+[ext_resource type="Texture2D" uid="uid://iu1ieuc62bhi" path="res://Items/Weapons/Sprites/katana.png" id="2_sgfb6"]
+
+[resource]
+script = ExtResource("1_xrjcs")
+max_durability = 140
+durability = 140
+min_strength = 10
+min_agility = 14
+name = "Katana"
+description = "This trusty weapon has faced many opponents in battle. it is caked with the dried blood of its many victims."
+texture = ExtResource("2_sgfb6")

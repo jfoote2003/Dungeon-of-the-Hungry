@@ -1,0 +1,111 @@
+[gd_scene load_steps=17 format=3 uid="uid://cgc1aosd3tyk0"]
+
+[ext_resource type="Script" uid="uid://bs2kpxx3f3bn1" path="res://Props/CookingFire/cooking_fire.gd" id="1_edf8l"]
+[ext_resource type="Script" uid="uid://ek742kudxvm3" path="res://Player/inventory/Scripts/inventory_data.gd" id="2_bd86k"]
+[ext_resource type="Texture2D" uid="uid://cnefyqk88codk" path="res://Props/CookingFire/campfire_16x16.png" id="2_vnwsw"]
+[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Player/inventory/Scripts/slot_data.gd" id="3_ejghf"]
+[ext_resource type="AudioStream" uid="uid://bu5yah38n6irj" path="res://Props/CookingFire/fire-sound-334130.mp3" id="5_ejghf"]
+
+[sub_resource type="Resource" id="Resource_akl33"]
+script = ExtResource("2_bd86k")
+slot_datas = Array[ExtResource("3_ejghf")]([null, null, null, null])
+metadata/_custom_type_script = "uid://ek742kudxvm3"
+
+[sub_resource type="Resource" id="Resource_k8b21"]
+script = ExtResource("2_bd86k")
+slot_datas = Array[ExtResource("3_ejghf")]([null])
+metadata/_custom_type_script = "uid://ek742kudxvm3"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw30u"]
+atlas = ExtResource("2_vnwsw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k2un"]
+atlas = ExtResource("2_vnwsw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1xf0"]
+atlas = ExtResource("2_vnwsw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_087mw"]
+atlas = ExtResource("2_vnwsw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nyov4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw30u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3k2un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1xf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_087mw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6aiqp"]
+size = Vector2(10, 4)
+
+[sub_resource type="Gradient" id="Gradient_hxahc"]
+offsets = PackedFloat32Array(0.020920502, 1)
+colors = PackedColorArray(0.9808306, 0.47575182, 0.22755638, 1, 0.8713041, 0.14286551, 0.08403852, 1)
+
+[sub_resource type="Gradient" id="Gradient_ejghf"]
+offsets = PackedFloat32Array(0, 0.654321)
+colors = PackedColorArray(0.85882354, 0.41960785, 0, 0.8117647, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_akl33"]
+gradient = SubResource("Gradient_ejghf")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="CookingFire" type="Node2D" groups=["cooking_inventory"]]
+script = ExtResource("1_edf8l")
+inventory_input = SubResource("Resource_akl33")
+inventory_output = SubResource("Resource_k8b21")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nyov4")
+frame_progress = 0.767826
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 48
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_6aiqp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 7
+lifetime = 0.5
+preprocess = 1.19
+speed_scale = 0.5
+explosiveness = 0.1
+lifetime_randomness = 0.64
+fixed_fps = 30
+emission_shape = 3
+emission_rect_extents = Vector2(5, 2)
+spread = 120.49
+gravity = Vector2(0, -200)
+angle_min = -90.0
+angle_max = 90.0
+color_ramp = SubResource("Gradient_hxahc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ejghf")
+max_distance = 200.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_akl33")
