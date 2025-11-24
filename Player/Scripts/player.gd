@@ -14,6 +14,8 @@ const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 var can_interact : bool = false
 @export var inventory_data : InventoryData
 var is_in_inv : bool = false
+var is_in_settings : bool = false
+signal enter_settings(is_in_settings : bool)
 
 var current_health : int = 100
 var max_health : int = current_health
@@ -70,12 +72,14 @@ func anim_direction() -> String:
 		return "side"
 
 func _unhandled_input(_event):
-	if Input.is_action_just_pressed("settings") and not is_in_inv: #TODO make a pause menu with a quit button rather than quitting upon esc
-		%PauseMenu.visible = true
+	if Input.is_action_just_pressed("settings"): 
+		is_in_settings = not is_in_settings
+		enter_settings.emit(is_in_settings)
 	
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
-		is_in_inv = !is_in_inv
+		is_in_inv = not is_in_inv
+		#print(is_in_inv)
 	
 	if Input.is_action_just_pressed("interact"):
 		check_interaction()

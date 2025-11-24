@@ -6,9 +6,11 @@ extends Node
 @onready var stat_menu: Control = %StatMenu
 
 
+
 func _ready():
 	player.toggle_inventory.connect(toggle_inventory_interface)
 	inventory_interface.set_player_inventory_data(player.inventory_data)
+	player.enter_settings.connect(open_settings)
 	
 	inventory_interface.force_close.connect(toggle_inventory_interface)
 	inventory_interface.force_close.connect(toggle_cooking_interface)
@@ -24,26 +26,44 @@ func _ready():
 		node.toggle_cooking.connect(toggle_cooking_interface)
 	
 	get_player_stats()
+	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func toggle_inventory_interface(external_inventory_owner = null):
-	if inventory_interface.visible == false:
+func toggle_inventory_interface(external_inventory_owner = null): #TODO rewite this function to prevent mouse input issues
+	#if inventory_interface.visible == false:
+		#inventory_interface.show()
+	#else:
+		#inventory_interface.hide()
+	#
+	#if inventory_interface.visible:
+		#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		#hot_bar_inventory.hide()
+	#else:
+		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		#hot_bar_inventory.show()
+	#
+	#if external_inventory_owner:
+		#inventory_interface.set_external_inventory(external_inventory_owner)
+	#else:
+		#inventory_interface.clear_external_inventory()
+	
+	if inventory_interface.visible == false and external_inventory_owner: #if the inventory isn't open and there is an external_inv_owner
 		inventory_interface.show()
-	else:
-		inventory_interface.hide()
-	
-	if inventory_interface.visible:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		hot_bar_inventory.hide()
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		hot_bar_inventory.show()
-	
-	if external_inventory_owner:
 		inventory_interface.set_external_inventory(external_inventory_owner)
-	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	elif inventory_interface.visible == false: #if inventory isn't open and there is no external_inv_owner
+		inventory_interface.show()
+		hot_bar_inventory.hide()
 		inventory_interface.clear_external_inventory()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else: #closing the inventory
+		inventory_interface.hide()
+		hot_bar_inventory.show()
+		inventory_interface.clear_external_inventory()
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func toggle_cooking_interface(cooking_inventory_owner = null): #TODO fix weird bug with mouse and settings
+func toggle_cooking_interface(cooking_inventory_owner = null): #TODO rewite this function to prevent mouse input issues
 	if inventory_interface.visible == false:
 		inventory_interface.show()
 	else:
@@ -78,3 +98,11 @@ func get_player_stats():
 	%StatMenu.player_devotion = player.rpg_class.devotion
 	%StatMenu.player_luck = player.rpg_class.luck
 	%StatMenu.player_cooking = player.rpg_class.cooking
+
+func open_settings(is_in_settings : bool):
+	if is_in_settings:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	%PauseMenu.visible = true
