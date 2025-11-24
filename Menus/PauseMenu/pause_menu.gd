@@ -23,7 +23,6 @@ func _ready() -> void:
 	_update_back_button()
 	
 	settings_button.pressed.connect(_navigate_to.bind(main_settings))
-	back_button.pressed.connect(_on_back_pressed)
 	video_button.pressed.connect(_navigate_to.bind(video_settings))
 	audio_button.pressed.connect(_navigate_to.bind(audio_settings))
 	#controls_button.pressed.connect(_navigate_to.bind(controls_settings)) #TODO finish control menu and finalize player controls
@@ -58,3 +57,4 @@ func _on_quit_button_pressed() -> void:
 
 func _on_resume_button_pressed() -> void:
 	self.visible = false
+	

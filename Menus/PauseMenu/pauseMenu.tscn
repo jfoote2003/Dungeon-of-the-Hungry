@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_la2qt")
 menu = NodePath("Menu")
 main_settings = NodePath("Settings")
@@ -376,3 +377,4 @@ text = "Back"
 
 [connection signal="pressed" from="Menu/Control/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/Control3/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

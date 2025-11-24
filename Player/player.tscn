@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://duvt54fanpp2d"]
+[gd_scene load_steps=14 format=3 uid="uid://duvt54fanpp2d"]
 
 [ext_resource type="Script" uid="uid://r8l7r6d3ng7o" path="res://Player/Scripts/player.gd" id="1_bedt7"]
 [ext_resource type="PackedScene" uid="uid://c8ftxhvlfei83" path="res://Player/Stardew valley sprite test/player_sprite.tscn" id="1_ycwhk"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://cafsspiwv25e0" path="res://Player/States/state_walk.gd" id="5_7kwyo"]
 [ext_resource type="Script" uid="uid://bykewpca4llu3" path="res://Player/States/state_attack.gd" id="6_103gf"]
 [ext_resource type="PackedScene" uid="uid://ddhxafcgumhtr" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="7_dlqp6"]
-[ext_resource type="PackedScene" uid="uid://c2rqwyw6byr0m" path="res://Menus/PauseMenu/pauseMenu.tscn" id="10_x3vf3"]
 
 [sub_resource type="Resource" id="Resource_gsid7"]
 script = ExtResource("2_7xqae")
@@ -80,58 +79,6 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHurtBox"]
 shape = SubResource("CircleShape2D_0c1ih")
 debug_color = Color(0.996078, 0, 0.156863, 0.431373)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 32
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_filter = 2
-theme_override_constants/separation = 32
-
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-self_modulate = Color(0.9826036, 0.0015412188, 2.5027991e-06, 0.9098039)
-custom_minimum_size = Vector2(350, 10)
-layout_mode = 2
-mouse_filter = 2
-value = 100.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HealthBar"]
-layout_mode = 0
-offset_top = -23.0
-offset_right = 40.0
-text = "Health"
-
-[node name="HungerBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-self_modulate = Color(0.4117647, 0.8, 0, 1)
-custom_minimum_size = Vector2(350, 10)
-layout_mode = 2
-mouse_filter = 2
-value = 100.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HungerBar"]
-layout_mode = 0
-offset_top = -25.0
-offset_right = 40.0
-offset_bottom = -2.0
-text = "Hunger"
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_x3vf3")]
-unique_name_in_owner = true
-visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 8

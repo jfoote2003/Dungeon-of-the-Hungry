@@ -5,6 +5,9 @@ signal inventory_updated(inventory_data : InventoryData)
 
 @export var slot_datas : Array[SlotData]
 
+var can_use : bool = true
+var can_pickup : bool = true
+
 func on_slot_clicked(index : int, button : int):
 	inventory_interact.emit(self,index,button)
 
@@ -67,3 +70,20 @@ func use_slot_data(index : int):
 	
 	PlayerManager.use_slot_data(slot_data)
 	inventory_updated.emit(self)
+
+func pick_up_slot_data(slot_data : SlotData) -> bool:
+	if not can_pickup:
+		return false
+	
+	for index in slot_datas.size():
+		if slot_datas[index] and slot_datas[index].can_fully_merge_with(slot_data):
+			slot_datas[index].fully_merge_with(slot_data)
+			inventory_updated.emit(self)
+			return true
+	
+	for index in slot_datas.size():
+		if not slot_datas[index]:
+			slot_datas[index] = slot_data
+			inventory_updated.emit(self)
+			return true
+	return false
