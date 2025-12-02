@@ -72,7 +72,7 @@ func anim_direction() -> String:
 		return "side"
 
 func _unhandled_input(_event):
-	if Input.is_action_just_pressed("settings"): 
+	if Input.is_action_just_pressed("settings") and not is_in_inv: 
 		is_in_settings = not is_in_settings
 		enter_settings.emit(is_in_settings)
 	
@@ -97,6 +97,8 @@ func check_interaction():
 		var collider = ray_cast.get_collider()
 		if collider.get_parent().has_method("interact"):
 			collider.get_parent().interact()
+			is_in_inv = not is_in_inv
+			#print(is_in_inv)
 
 func update_raycast_direction():
 	match cardinal_direction:
