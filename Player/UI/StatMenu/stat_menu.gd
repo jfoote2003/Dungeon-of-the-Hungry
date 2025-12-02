@@ -224,3 +224,6 @@ func reset_stat_array():
 	%DevotionDisplay.text = str(devotion)
 	%LuckDisplay.text = str(luck)
 	%CookingDisplay.text = str(cooking)
+
+func set_player_class_display(className : String):
+	%PlayerClass.text = className

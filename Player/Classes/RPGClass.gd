@@ -19,23 +19,23 @@ const MAX_LEVEL : int = 609
 func use_ability():
 	match rpg_class_name:
 		0:
-			print("berserk")
+			print("Berserk")
 		1:
-			print("cleric")
+			print("Cleric")
 		2:
-			print("cook")
+			print("Cook")
 		3:
-			print("landsknecht")
+			print("Landsknecht")
 		4:
-			print("mage")
+			print("Mage")
 		5:
-			print("pact bound")
+			print("Pact bound")
 		6:
-			print("samurai")
+			print("Samurai")
 		7:
-			print("thief")
+			print("Thief")
 		_:
-			print("default")
+			print("Default")
 
 func sum_total_skills() -> int:
 	return strength + agility + endurance + intelligence + devotion + luck + cooking
