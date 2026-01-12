@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=5 format=3 uid="uid://yvo44lb737yy"]
+
+[ext_resource type="Script" uid="uid://cxlqp44bh76ub" path="res://Items/Ingredients/item_data_consumable.gd" id="1_8yplm"]
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_wr8gt"]
+[ext_resource type="Texture2D" uid="uid://bgqi3ghuci24w" path="res://Items/Ingredients/Sprites/mushroom1.png" id="2_iemqd"]
+
+[sub_resource type="Resource" id="Resource_de12f"]
+script = ExtResource("1_wr8gt")
+hunger_change = 7
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
+
+[resource]
+script = ExtResource("1_8yplm")
+effects = SubResource("Resource_de12f")
+name = "Brown Mushroom"
+description = "This mushroom has a simple meaty flavor."
+stackable = true
+texture = ExtResource("2_iemqd")
+metadata/_custom_type_script = "uid://cxlqp44bh76ub"

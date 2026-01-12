@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" load_steps=5 format=3 uid="uid://bl4dtonepra8p"]
+
+[ext_resource type="Script" uid="uid://cbquv6b5kjgem" path="res://Items/Weapons/item_data_weapon.gd" id="1_7mwcv"]
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_7qusj"]
+[ext_resource type="Texture2D" uid="uid://bq41jc1uey3or" path="res://Items/Weapons/Sprites/dragon_slayer.png" id="2_lld4v"]
+
+[sub_resource type="Resource" id="Resource_vod1j"]
+script = ExtResource("1_7qusj")
+slash_dmg = 50
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
+
+[resource]
+script = ExtResource("1_7mwcv")
+effects = SubResource("Resource_vod1j")
+name = "Dragon Slayer"
+description = "That thing was too big to be called a sword.
+Too big, too thick, too heavy, and too rough, it was more like a large hunk of iron."
+texture = ExtResource("2_lld4v")
+metadata/_custom_type_script = "uid://cbquv6b5kjgem"

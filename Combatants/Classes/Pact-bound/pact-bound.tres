@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RPGClass" load_steps=2 format=3 uid="uid://iibeh1k5oda4"]
+
+[ext_resource type="Script" uid="uid://ytrwyvsp0ghr" path="res://Combatants/Classes/RPGClass.gd" id="1_vst1p"]
+
+[resource]
+script = ExtResource("1_vst1p")
+strength = 9
+agility = 13
+endurance = 11
+intelligence = 12
+devotion = 14
+luck = 14
+cooking = 10
+rpg_class_name = 5
+metadata/_custom_type_script = "uid://ytrwyvsp0ghr"

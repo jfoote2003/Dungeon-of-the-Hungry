@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpu8oq3boscxg"]
+
+[ext_resource type="Script" uid="uid://bt00166t5swg1" path="res://Items/item_pickup/item_pickup.gd" id="1_pjtoe"]
+[ext_resource type="Texture2D" uid="uid://bgqi3ghuci24w" path="res://Items/Ingredients/Sprites/mushroom1.png" id="2_c8lbn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8lbn"]
+radius = 20.0
+
+[node name="ItemPickup" type="Area2D"]
+script = ExtResource("1_pjtoe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c8lbn")
+debug_color = Color(0.9712345, 0.13112852, 0.28446454, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_c8lbn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

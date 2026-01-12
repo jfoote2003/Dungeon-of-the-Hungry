@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="PartyMember" load_steps=19 format=3 uid="uid://gy51f0ps154m"]
+
+[ext_resource type="Script" uid="uid://c0yrnvp26clth" path="res://Combatants/Allies/PartyMember/party_member.gd" id="1_00ajl"]
+[ext_resource type="Script" uid="uid://bmthc4klvewgt" path="res://Leader/inventory/Scripts/inventory_data_boots.gd" id="1_20my1"]
+[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Leader/inventory/Scripts/slot_data.gd" id="2_winwm"]
+[ext_resource type="Script" uid="uid://dctfo83yv2n17" path="res://Leader/inventory/Scripts/inventory_data_chestplate.gd" id="3_s0mnf"]
+[ext_resource type="Script" uid="uid://dudvwcirx1mbp" path="res://Leader/inventory/Scripts/inventory_data_greeves.gd" id="4_rn3p5"]
+[ext_resource type="Script" uid="uid://dwtydadx31jd4" path="res://Leader/inventory/Scripts/inventory_data_helmet.gd" id="5_sdv3t"]
+[ext_resource type="Script" uid="uid://c46oeagxchbsi" path="res://Leader/inventory/Scripts/inventory_data_offhand.gd" id="6_dnsbc"]
+[ext_resource type="Script" uid="uid://bg13pcscr3r7" path="res://Leader/inventory/Scripts/inventory_data_ring.gd" id="7_m7qv7"]
+[ext_resource type="Resource" uid="uid://bv4vi1a7ujij1" path="res://Combatants/Classes/Mage/mage.tres" id="8_e6rib"]
+[ext_resource type="Script" uid="uid://brp1e4sp4uke2" path="res://Leader/inventory/Scripts/inventory_data_weapon.gd" id="10_vadrm"]
+
+[sub_resource type="Resource" id="Resource_whstv"]
+script = ExtResource("1_20my1")
+slot_datas = Array[ExtResource("2_winwm")]([null])
+metadata/_custom_type_script = "uid://bmthc4klvewgt"
+
+[sub_resource type="Resource" id="Resource_6lobh"]
+script = ExtResource("3_s0mnf")
+slot_datas = Array[ExtResource("2_winwm")]([null])
+metadata/_custom_type_script = "uid://dctfo83yv2n17"
+
+[sub_resource type="Resource" id="Resource_x2w07"]
+script = ExtResource("4_rn3p5")
+slot_datas = Array[ExtResource("2_winwm")]([null])
+metadata/_custom_type_script = "uid://dudvwcirx1mbp"
+
+[sub_resource type="Resource" id="Resource_81j7d"]
+script = ExtResource("5_sdv3t")
+slot_datas = Array[ExtResource("2_winwm")]([null])
+metadata/_custom_type_script = "uid://dwtydadx31jd4"
+
+[sub_resource type="Resource" id="Resource_axhoh"]
+script = ExtResource("6_dnsbc")
+slot_datas = Array[ExtResource("2_winwm")]([null])
+metadata/_custom_type_script = "uid://c46oeagxchbsi"
+
+[sub_resource type="Resource" id="Resource_20my1"]
+script = ExtResource("7_m7qv7")
+slot_datas = Array[ExtResource("2_winwm")]([null])
+metadata/_custom_type_script = "uid://bg13pcscr3r7"
+
+[sub_resource type="Resource" id="Resource_winwm"]
+script = ExtResource("7_m7qv7")
+slot_datas = Array[ExtResource("2_winwm")]([null])
+metadata/_custom_type_script = "uid://bg13pcscr3r7"
+
+[sub_resource type="Resource" id="Resource_sj4px"]
+script = ExtResource("10_vadrm")
+slot_datas = Array[ExtResource("2_winwm")]([null])
+metadata/_custom_type_script = "uid://brp1e4sp4uke2"
+
+[resource]
+script = ExtResource("1_00ajl")
+member_name = "testing"
+rpg_class = ExtResource("8_e6rib")
+helmet_inv_data = SubResource("Resource_81j7d")
+chest_inv_data = SubResource("Resource_6lobh")
+greeves_inv_data = SubResource("Resource_x2w07")
+boots_inv_data = SubResource("Resource_whstv")
+ring1_inv_data = SubResource("Resource_20my1")
+ring2_inv_data = SubResource("Resource_winwm")
+offhand_inv_data = SubResource("Resource_axhoh")
+weapon_inv_data = SubResource("Resource_sj4px")
+metadata/_custom_type_script = "uid://c0yrnvp26clth"

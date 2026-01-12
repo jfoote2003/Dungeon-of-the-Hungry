@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://b66qwfvewell0"]
+
+[ext_resource type="Script" uid="uid://dxu0pgvi5540g" path="res://Npcs/npc.gd" id="1_4aaif"]
+[ext_resource type="Texture2D" uid="uid://ddpyvmlkm5l5w" path="res://Npcs/allNpcs/testing/stardew_black_cat.png" id="2_1dmj0"]
+[ext_resource type="Script" uid="uid://dpmjpaibxq6tx" path="res://Npcs/NpcStateMachine.gd" id="2_86405"]
+[ext_resource type="Script" uid="uid://b3ivkfg7fh42p" path="res://Npcs/states/idle.gd" id="3_u2eb4"]
+[ext_resource type="Script" uid="uid://ccecgpbqhsrur" path="res://Npcs/states/walk.gd" id="4_1dmj0"]
+[ext_resource type="Script" uid="uid://e5dw5kuqnp7x" path="res://Npcs/states/talk.gd" id="5_nemdw"]
+[ext_resource type="Script" uid="uid://jan4cmpj5vcy" path="res://Npcs/states/sit.gd" id="6_8f8q2"]
+
+[sub_resource type="Animation" id="Animation_u2eb4"]
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1dmj0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dmj0"]
+_data = {
+&"RESET": SubResource("Animation_u2eb4")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2eb4"]
+
+[node name="Npc" type="Node2D"]
+script = ExtResource("1_4aaif")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("2_1dmj0")
+hframes = 4
+vframes = 8
+frame = 17
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1dmj0")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_u2eb4")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_86405")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("3_u2eb4")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("4_1dmj0")
+
+[node name="Talk" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("5_nemdw")
+
+[node name="Sit" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("6_8f8q2")

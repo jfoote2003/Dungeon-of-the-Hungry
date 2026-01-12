@@ -1,0 +1,461 @@
+[gd_scene load_steps=34 format=3 uid="uid://dlr87npxnsai2"]
+
+[ext_resource type="PackedScene" uid="uid://duvt54fanpp2d" path="res://Leader/leader.tscn" id="1_52qrq"]
+[ext_resource type="Script" uid="uid://br30xtffdatfa" path="res://Levels/Scripts/main.gd" id="1_mp84t"]
+[ext_resource type="PackedScene" uid="uid://cu7qehb71x52a" path="res://Leader/inventory/Scenes/inventory.tscn" id="3_sh7kt"]
+[ext_resource type="PackedScene" uid="uid://cd4n7af7fpgk7" path="res://Props/Chest/Chest.tscn" id="4_2lmcx"]
+[ext_resource type="Script" uid="uid://cxqq7dugyy8q3" path="res://Leader/inventory/Scripts/inventory_interface.gd" id="4_hpu4y"]
+[ext_resource type="Resource" uid="uid://wsjx7rsppxsq" path="res://Items/Weapons/Melee/Axes/HeavyAxe.tres" id="4_qtk3q"]
+[ext_resource type="Script" uid="uid://ek742kudxvm3" path="res://Leader/inventory/Scripts/inventory_data.gd" id="5_6y52f"]
+[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Leader/inventory/Scripts/slot_data.gd" id="5_grpg7"]
+[ext_resource type="PackedScene" uid="uid://cai003s8xcg22" path="res://Leader/inventory/Scenes/Slot/slot.tscn" id="6_hxhfa"]
+[ext_resource type="Resource" uid="uid://casd31kl8i31f" path="res://Items/Weapons/Melee/Swords/Katana.tres" id="6_ra37s"]
+[ext_resource type="Resource" uid="uid://yvo44lb737yy" path="res://Items/Ingredients/AllIngredients/BrownMushroom.tres" id="7_2yngh"]
+[ext_resource type="Resource" uid="uid://bl4dtonepra8p" path="res://Items/Weapons/Melee/Swords/dragon_slayer.tres" id="7_n3efn"]
+[ext_resource type="Resource" uid="uid://ef3676e6ha5b" path="res://Items/Ingredients/AllIngredients/HardyMushroom.tres" id="8_qqc7k"]
+[ext_resource type="PackedScene" uid="uid://cbini3x25face" path="res://Leader/inventory/HotBar/hot_bar_inventory.tscn" id="9_yvaok"]
+[ext_resource type="PackedScene" uid="uid://cgc1aosd3tyk0" path="res://Props/CookingFire/CookingFire.tscn" id="11_qqc7k"]
+[ext_resource type="PackedScene" uid="uid://b66qwfvewell0" path="res://Npcs/Npc.tscn" id="13_n3efn"]
+[ext_resource type="Texture2D" uid="uid://dxx5xfdjyvn6f" path="res://icon.svg" id="14_yxtlv"]
+[ext_resource type="PackedScene" uid="uid://cpu8oq3boscxg" path="res://Items/item_pickup/item_pickup.tscn" id="17_a74ic"]
+[ext_resource type="PackedScene" uid="uid://dcv0uyse71v7r" path="res://Menus/GameMenu/GameMenu.tscn" id="17_iwa5b"]
+
+[sub_resource type="Resource" id="Resource_511fw"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("4_qtk3q")
+
+[sub_resource type="Resource" id="Resource_k5je8"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("6_ra37s")
+
+[sub_resource type="Resource" id="Resource_nm6dr"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("7_n3efn")
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_egoch"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("7_2yngh")
+quantity = 9
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_a74ic"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("8_qqc7k")
+quantity = 6
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_c8hwe"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([SubResource("Resource_511fw"), SubResource("Resource_k5je8"), SubResource("Resource_nm6dr"), null, null, null, null, SubResource("Resource_egoch"), SubResource("Resource_a74ic"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_qqc7k"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("8_qqc7k")
+quantity = 5
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_52yss"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([SubResource("Resource_qqc7k"), null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_iwa5b"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([null, null, null, null])
+metadata/_custom_type_script = "uid://ek742kudxvm3"
+
+[sub_resource type="Resource" id="Resource_5hair"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([null, null, null, null])
+metadata/_custom_type_script = "uid://ek742kudxvm3"
+
+[sub_resource type="Resource" id="Resource_n3efn"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("7_2yngh")
+quantity = 8
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_yxtlv"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([null, null, SubResource("Resource_n3efn"), null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_nrmhc"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("7_2yngh")
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_s5rnx"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("8_qqc7k")
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[node name="Testing" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_mp84t")
+
+[node name="Player" parent="." instance=ExtResource("1_52qrq")]
+unique_name_in_owner = true
+inventory_data = SubResource("Resource_c8hwe")
+
+[node name="Chest" parent="." instance=ExtResource("4_2lmcx")]
+position = Vector2(151, -72)
+inventory_data = SubResource("Resource_52yss")
+
+[node name="CookingFire" parent="." node_paths=PackedStringArray("button") instance=ExtResource("11_qqc7k")]
+position = Vector2(48, -85)
+inventory_input = SubResource("Resource_iwa5b")
+button = NodePath("../UI/InventoryInterface/CookingUI/CookingButton")
+
+[node name="CookingFire2" parent="." node_paths=PackedStringArray("button") instance=ExtResource("11_qqc7k")]
+position = Vector2(117, -68)
+inventory_input = SubResource("Resource_5hair")
+button = NodePath("../UI/InventoryInterface/CookingUI/CookingButton")
+
+[node name="Chest2" parent="." instance=ExtResource("4_2lmcx")]
+position = Vector2(115, -106)
+inventory_data = SubResource("Resource_yxtlv")
+
+[node name="ItemPickup" parent="." instance=ExtResource("17_a74ic")]
+position = Vector2(-67, -84)
+slot_data = SubResource("Resource_nrmhc")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("17_a74ic")]
+position = Vector2(-109, -54)
+slot_data = SubResource("Resource_s5rnx")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("17_a74ic")]
+position = Vector2(186, -27)
+slot_data = SubResource("Resource_s5rnx")
+
+[node name="ItemPickup4" parent="." instance=ExtResource("17_a74ic")]
+position = Vector2(-46, 70)
+slot_data = SubResource("Resource_s5rnx")
+
+[node name="Npc" parent="." instance=ExtResource("13_n3efn")]
+position = Vector2(120, 72)
+sprite_sheet = ExtResource("14_yxtlv")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("4_hpu4y")
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("6_hxhfa")]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.568627)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 1
+
+[node name="CookingUI" type="VBoxContainer" parent="UI/InventoryInterface"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 268.0
+offset_top = 1.0
+offset_right = 544.0
+offset_bottom = 2213.0
+alignment = 1
+
+[node name="CookingInventoryInput" parent="UI/InventoryInterface/CookingUI" instance=ExtResource("3_sh7kt")]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ItemGrid" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer" index="0"]
+columns = 4
+
+[node name="Slot5" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="CookingInventoryOutput" parent="UI/InventoryInterface/CookingUI" instance=ExtResource("3_sh7kt")]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput" index="0"]
+size_flags_horizontal = 4
+
+[node name="ItemGrid" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer" index="0"]
+columns = 1
+
+[node name="Slot2" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="1"]
+visible = false
+
+[node name="Slot3" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="2"]
+visible = false
+
+[node name="Slot4" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="3"]
+visible = false
+
+[node name="Slot5" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="CookingButton" type="Button" parent="UI/InventoryInterface/CookingUI"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "Cook"
+
+[node name="GameMenu" parent="UI/InventoryInterface" instance=ExtResource("17_iwa5b")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_right = 308.0
+
+[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("3_sh7kt")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_top = -276.0
+offset_right = 308.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot10" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="Slot22" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="21"]
+visible = false
+
+[node name="Slot23" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="22"]
+visible = false
+
+[node name="Slot24" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="23"]
+visible = false
+
+[node name="Slot25" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="24"]
+visible = false
+
+[node name="Slot26" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="25"]
+visible = false
+
+[node name="Slot27" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="26"]
+visible = false
+
+[node name="Slot28" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="27"]
+visible = false
+
+[node name="Slot29" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="28"]
+visible = false
+
+[node name="Slot30" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="29"]
+visible = false
+
+[node name="Slot31" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="30"]
+visible = false
+
+[node name="Slot32" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="31"]
+visible = false
+
+[node name="Slot33" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="32"]
+visible = false
+
+[node name="Slot34" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="33"]
+visible = false
+
+[node name="Slot35" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="34"]
+visible = false
+
+[node name="Slot36" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="35"]
+visible = false
+
+[node name="Slot37" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="36"]
+visible = false
+
+[node name="Slot38" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="37"]
+visible = false
+
+[node name="Slot39" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="38"]
+visible = false
+
+[node name="Slot40" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="39"]
+visible = false
+
+[node name="Slot41" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="40"]
+visible = false
+
+[node name="Slot42" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="41"]
+visible = false
+
+[node name="Slot43" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="42"]
+visible = false
+
+[node name="Slot44" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="43"]
+visible = false
+
+[node name="Slot45" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="44"]
+visible = false
+
+[node name="HotBarInventory" parent="UI" instance=ExtResource("9_yvaok")]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_top = -64.0
+offset_right = 236.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+
+[editable path="UI/InventoryInterface/CookingUI/CookingInventoryInput"]
+[editable path="UI/InventoryInterface/CookingUI/CookingInventoryOutput"]
+[editable path="UI/InventoryInterface/ExternalInventory"]
