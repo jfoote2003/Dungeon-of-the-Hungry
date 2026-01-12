@@ -53,13 +53,9 @@ func get_speed() -> int:
 	
 	return output
 
-func get_equipment_effects() -> Effect: #executed at the beginning of combat
+func get_equipment_effects(): #executed at the beginning of combat
 	var equipment_array : Array = []
 	
 	var output : Effect
 	
-	return output
-
-func get_effect(input_equipment : InventoryData) -> Effect:
-	var output : Effect = Effect.new()
-	return output
+	equipment_effect = output
