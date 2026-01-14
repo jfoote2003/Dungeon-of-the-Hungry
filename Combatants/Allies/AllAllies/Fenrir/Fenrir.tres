@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="PartyMember" load_steps=19 format=3 uid="uid://b68fvk63bi00p"]
 
-[ext_resource type="Script" uid="uid://bmthc4klvewgt" path="res://Leader/inventory/Scripts/inventory_data_boots.gd" id="1_1byhg"]
+[ext_resource type="Script" uid="uid://bmthc4klvewgt" path="res://Player/inventory/Scripts/inventory_data_boots.gd" id="1_1byhg"]
 [ext_resource type="Resource" uid="uid://clqxcl4y30pwt" path="res://Combatants/Classes/Berserker/berserker.tres" id="1_nvill"]
 [ext_resource type="Script" uid="uid://c0yrnvp26clth" path="res://Combatants/Allies/PartyMember/party_member.gd" id="1_ya1xt"]
-[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Leader/inventory/Scripts/slot_data.gd" id="2_vk8jt"]
-[ext_resource type="Script" uid="uid://dctfo83yv2n17" path="res://Leader/inventory/Scripts/inventory_data_chestplate.gd" id="3_4k1yn"]
-[ext_resource type="Script" uid="uid://dudvwcirx1mbp" path="res://Leader/inventory/Scripts/inventory_data_greeves.gd" id="4_imqsq"]
-[ext_resource type="Script" uid="uid://dwtydadx31jd4" path="res://Leader/inventory/Scripts/inventory_data_helmet.gd" id="5_uw6jy"]
-[ext_resource type="Script" uid="uid://c46oeagxchbsi" path="res://Leader/inventory/Scripts/inventory_data_offhand.gd" id="6_1mbqn"]
-[ext_resource type="Script" uid="uid://bg13pcscr3r7" path="res://Leader/inventory/Scripts/inventory_data_ring.gd" id="7_qqtwp"]
-[ext_resource type="Script" uid="uid://brp1e4sp4uke2" path="res://Leader/inventory/Scripts/inventory_data_weapon.gd" id="10_8g0kn"]
+[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Player/inventory/Scripts/slot_data.gd" id="2_vk8jt"]
+[ext_resource type="Script" uid="uid://dctfo83yv2n17" path="res://Player/inventory/Scripts/inventory_data_chestplate.gd" id="3_4k1yn"]
+[ext_resource type="Script" uid="uid://dudvwcirx1mbp" path="res://Player/inventory/Scripts/inventory_data_greeves.gd" id="4_imqsq"]
+[ext_resource type="Script" uid="uid://dwtydadx31jd4" path="res://Player/inventory/Scripts/inventory_data_helmet.gd" id="5_uw6jy"]
+[ext_resource type="Script" uid="uid://c46oeagxchbsi" path="res://Player/inventory/Scripts/inventory_data_offhand.gd" id="6_1mbqn"]
+[ext_resource type="Script" uid="uid://bg13pcscr3r7" path="res://Player/inventory/Scripts/inventory_data_ring.gd" id="7_qqtwp"]
+[ext_resource type="Script" uid="uid://brp1e4sp4uke2" path="res://Player/inventory/Scripts/inventory_data_weapon.gd" id="10_8g0kn"]
 
 [sub_resource type="Resource" id="Resource_287xq"]
 script = ExtResource("1_1byhg")

@@ -3,7 +3,7 @@ extends Area2D
 @export var slot_data : SlotData
 
 var entered : bool = false
-var player : Leader
+var player : Player
 
 func _ready() -> void:
 	%Sprite2D.texture = slot_data.item_data.texture
@@ -20,11 +20,11 @@ func _process(_delta: float) -> void:
 			queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Leader:
+	if body is Player:
 		entered = true
 		player = body
 
 func _on_body_exited(body: Node2D) -> void:
-	if body is Leader:
+	if body is Player:
 		entered = false
 		player = null

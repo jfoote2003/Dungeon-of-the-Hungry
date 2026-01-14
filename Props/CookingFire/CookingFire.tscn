@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://cgc1aosd3tyk0"]
 
 [ext_resource type="Script" uid="uid://bs2kpxx3f3bn1" path="res://Props/CookingFire/cooking_fire.gd" id="1_edf8l"]
-[ext_resource type="Script" uid="uid://ek742kudxvm3" path="res://Leader/inventory/Scripts/inventory_data.gd" id="2_bd86k"]
+[ext_resource type="Script" uid="uid://ek742kudxvm3" path="res://Player/inventory/Scripts/inventory_data.gd" id="2_bd86k"]
 [ext_resource type="Texture2D" uid="uid://cnefyqk88codk" path="res://Props/CookingFire/campfire_16x16.png" id="2_vnwsw"]
-[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Leader/inventory/Scripts/slot_data.gd" id="3_ejghf"]
+[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Player/inventory/Scripts/slot_data.gd" id="3_ejghf"]
 [ext_resource type="AudioStream" uid="uid://bu5yah38n6irj" path="res://Props/CookingFire/fire-sound-334130.mp3" id="5_ejghf"]
 
 [sub_resource type="Resource" id="Resource_akl33"]

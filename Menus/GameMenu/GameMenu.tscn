@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcv0uyse71v7r"]
 
 [ext_resource type="Script" uid="uid://bnhyl2juodrgn" path="res://Menus/GameMenu/game_menu.gd" id="1_khm7e"]
-[ext_resource type="PackedScene" uid="uid://cu7qehb71x52a" path="res://Leader/inventory/Scenes/inventory.tscn" id="2_cu48p"]
+[ext_resource type="PackedScene" uid="uid://cu7qehb71x52a" path="res://Player/inventory/Scenes/inventory.tscn" id="2_cu48p"]
 [ext_resource type="Script" uid="uid://bj4ixlu46ce3x" path="res://Menus/GameMenu/party_equipment.gd" id="3_cu48p"]
 [ext_resource type="Script" uid="uid://c4h5m8oywl38m" path="res://Menus/GameMenu/party_stats.gd" id="4_qy3an"]
 

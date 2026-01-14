@@ -1,0 +1,130 @@
+[gd_scene load_steps=31 format=3 uid="uid://duvt54fanpp2d"]
+
+[ext_resource type="Script" uid="uid://r8l7r6d3ng7o" path="res://Player/Scripts/Player.gd" id="1_bedt7"]
+[ext_resource type="PackedScene" uid="uid://c8ftxhvlfei83" path="res://Player/Stardew valley sprite test/player_sprite.tscn" id="1_ycwhk"]
+[ext_resource type="Script" uid="uid://ek742kudxvm3" path="res://Player/inventory/Scripts/inventory_data.gd" id="2_7xqae"]
+[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Player/inventory/Scripts/slot_data.gd" id="3_00tjw"]
+[ext_resource type="Script" uid="uid://66rmpt3sq70e" path="res://Player/Scripts/player_state_machine.gd" id="3_nsn7q"]
+[ext_resource type="Script" uid="uid://dhpfsmxe4c3fw" path="res://Player/States/state_idle.gd" id="4_kwsm7"]
+[ext_resource type="Script" uid="uid://bmthc4klvewgt" path="res://Player/inventory/Scripts/inventory_data_boots.gd" id="4_nvaeg"]
+[ext_resource type="Script" uid="uid://cafsspiwv25e0" path="res://Player/States/state_walk.gd" id="5_7kwyo"]
+[ext_resource type="Script" uid="uid://dctfo83yv2n17" path="res://Player/inventory/Scripts/inventory_data_chestplate.gd" id="5_w8erd"]
+[ext_resource type="Script" uid="uid://bykewpca4llu3" path="res://Player/States/state_attack.gd" id="6_103gf"]
+[ext_resource type="Script" uid="uid://dudvwcirx1mbp" path="res://Player/inventory/Scripts/inventory_data_greeves.gd" id="6_cc4ul"]
+[ext_resource type="PackedScene" uid="uid://ddhxafcgumhtr" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="7_dlqp6"]
+[ext_resource type="Script" uid="uid://dwtydadx31jd4" path="res://Player/inventory/Scripts/inventory_data_helmet.gd" id="7_ras7l"]
+[ext_resource type="Script" uid="uid://c46oeagxchbsi" path="res://Player/inventory/Scripts/inventory_data_offhand.gd" id="8_h5os4"]
+[ext_resource type="Script" uid="uid://bg13pcscr3r7" path="res://Player/inventory/Scripts/inventory_data_ring.gd" id="9_b1ygp"]
+[ext_resource type="Resource" uid="uid://rqcbxo326u4e" path="res://Combatants/Classes/Samurai/samurai.tres" id="10_nvaeg"]
+[ext_resource type="Script" uid="uid://c0yrnvp26clth" path="res://Combatants/Allies/PartyMember/party_member.gd" id="11_vgo22"]
+[ext_resource type="Script" uid="uid://brp1e4sp4uke2" path="res://Player/inventory/Scripts/inventory_data_weapon.gd" id="12_4rpq3"]
+
+[sub_resource type="Resource" id="Resource_gsid7"]
+script = ExtResource("2_7xqae")
+slot_datas = Array[ExtResource("3_00tjw")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_r4xpe"]
+script = ExtResource("4_nvaeg")
+slot_datas = Array[ExtResource("3_00tjw")]([null])
+metadata/_custom_type_script = "uid://bmthc4klvewgt"
+
+[sub_resource type="Resource" id="Resource_cd5lj"]
+script = ExtResource("5_w8erd")
+slot_datas = Array[ExtResource("3_00tjw")]([null])
+metadata/_custom_type_script = "uid://dctfo83yv2n17"
+
+[sub_resource type="Resource" id="Resource_dq21n"]
+script = ExtResource("6_cc4ul")
+slot_datas = Array[ExtResource("3_00tjw")]([null])
+metadata/_custom_type_script = "uid://dudvwcirx1mbp"
+
+[sub_resource type="Resource" id="Resource_iqxsa"]
+script = ExtResource("7_ras7l")
+slot_datas = Array[ExtResource("3_00tjw")]([null])
+metadata/_custom_type_script = "uid://dwtydadx31jd4"
+
+[sub_resource type="Resource" id="Resource_80hf7"]
+script = ExtResource("8_h5os4")
+slot_datas = Array[ExtResource("3_00tjw")]([null])
+metadata/_custom_type_script = "uid://c46oeagxchbsi"
+
+[sub_resource type="Resource" id="Resource_o28un"]
+script = ExtResource("9_b1ygp")
+slot_datas = Array[ExtResource("3_00tjw")]([null])
+metadata/_custom_type_script = "uid://bg13pcscr3r7"
+
+[sub_resource type="Resource" id="Resource_n471f"]
+script = ExtResource("9_b1ygp")
+slot_datas = Array[ExtResource("3_00tjw")]([null])
+metadata/_custom_type_script = "uid://bg13pcscr3r7"
+
+[sub_resource type="Resource" id="Resource_8fbe1"]
+script = ExtResource("12_4rpq3")
+slot_datas = Array[ExtResource("3_00tjw")]([null])
+metadata/_custom_type_script = "uid://brp1e4sp4uke2"
+
+[sub_resource type="Resource" id="Resource_2qksf"]
+script = ExtResource("11_vgo22")
+rpg_class = ExtResource("10_nvaeg")
+helmet_inv_data = SubResource("Resource_iqxsa")
+chest_inv_data = SubResource("Resource_cd5lj")
+greeves_inv_data = SubResource("Resource_dq21n")
+boots_inv_data = SubResource("Resource_r4xpe")
+ring1_inv_data = SubResource("Resource_o28un")
+ring2_inv_data = SubResource("Resource_n471f")
+offhand_inv_data = SubResource("Resource_80hf7")
+weapon_inv_data = SubResource("Resource_8fbe1")
+metadata/_custom_type_script = "uid://c0yrnvp26clth"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r183l"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0c1ih"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 272
+script = ExtResource("1_bedt7")
+inventory_data = SubResource("Resource_gsid7")
+main_character = SubResource("Resource_2qksf")
+
+[node name="PlayerSprite" parent="." instance=ExtResource("1_ycwhk")]
+unique_name_in_owner = true
+position = Vector2(0, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r183l")
+
+[node name="StateMachine" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_nsn7q")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("4_kwsm7")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("5_7kwyo")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("6_103gf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.57782, 1.14863)
+target_position = Vector2(0, 16)
+collision_mask = 48
+
+[node name="AttackHurtBox" parent="." instance=ExtResource("7_dlqp6")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHurtBox"]
+shape = SubResource("CircleShape2D_0c1ih")
+debug_color = Color(0.996078, 0, 0.156863, 0.431373)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_polyphony = 8
