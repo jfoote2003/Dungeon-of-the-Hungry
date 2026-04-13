@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://k7wsl4edt777"]
+
+[ext_resource type="Script" uid="uid://dvi8g4xkqqv8y" path="res://Combatants/Ability/ability.gd" id="1_uvbg1"]
+
+[resource]
+script = ExtResource("1_uvbg1")
+ability_name = "heal"
+hunger_cost = 5
+scales_with_stat = 4
+target_type = 2
+eligible_classes = Array[int]([2, 7, 3])
+metadata/_custom_type_script = "uid://dvi8g4xkqqv8y"

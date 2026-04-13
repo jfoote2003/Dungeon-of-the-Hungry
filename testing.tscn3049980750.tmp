@@ -1,0 +1,601 @@
+[gd_scene load_steps=33 format=4 uid="uid://dlr87npxnsai2"]
+
+[ext_resource type="PackedScene" uid="uid://duvt54fanpp2d" path="res://Player/player.tscn" id="1_52qrq"]
+[ext_resource type="Script" uid="uid://br30xtffdatfa" path="res://Levels/Scripts/main.gd" id="1_mp84t"]
+[ext_resource type="PackedScene" uid="uid://cu7qehb71x52a" path="res://Player/inventory/Scenes/inventory.tscn" id="3_sh7kt"]
+[ext_resource type="PackedScene" uid="uid://cd4n7af7fpgk7" path="res://Props/Chest/Chest.tscn" id="4_2lmcx"]
+[ext_resource type="Script" uid="uid://cxqq7dugyy8q3" path="res://Player/inventory/Scripts/inventory_interface.gd" id="4_hpu4y"]
+[ext_resource type="Resource" uid="uid://wsjx7rsppxsq" path="res://Items/Weapons/Melee/Axes/HeavyAxe.tres" id="4_qtk3q"]
+[ext_resource type="Script" uid="uid://ek742kudxvm3" path="res://Player/inventory/Scripts/inventory_data.gd" id="5_6y52f"]
+[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Player/inventory/Scripts/slot_data.gd" id="5_grpg7"]
+[ext_resource type="PackedScene" uid="uid://cai003s8xcg22" path="res://Player/inventory/Scenes/Slot/slot.tscn" id="6_hxhfa"]
+[ext_resource type="Resource" uid="uid://casd31kl8i31f" path="res://Items/Weapons/Melee/Swords/Katana.tres" id="6_ra37s"]
+[ext_resource type="Resource" uid="uid://yvo44lb737yy" path="res://Items/Ingredients/AllIngredients/BrownMushroom.tres" id="7_2yngh"]
+[ext_resource type="Resource" uid="uid://bl4dtonepra8p" path="res://Items/Weapons/Melee/Swords/dragon_slayer.tres" id="7_n3efn"]
+[ext_resource type="Resource" uid="uid://ef3676e6ha5b" path="res://Items/Ingredients/AllIngredients/HardyMushroom.tres" id="8_qqc7k"]
+[ext_resource type="PackedScene" uid="uid://cgc1aosd3tyk0" path="res://Props/CookingFire/CookingFire.tscn" id="11_qqc7k"]
+[ext_resource type="PackedScene" uid="uid://cpu8oq3boscxg" path="res://Items/item_pickup/item_pickup.tscn" id="17_a74ic"]
+[ext_resource type="PackedScene" uid="uid://dcv0uyse71v7r" path="res://Menus/GameMenu/GameMenu.tscn" id="17_iwa5b"]
+[ext_resource type="PackedScene" uid="uid://b66qwfvewell0" path="res://Npcs/Npc.tscn" id="18_iwa5b"]
+[ext_resource type="PackedScene" uid="uid://b7rwi3ojrin51" path="res://TileMaps/Scenes/tile_map.tscn" id="18_n3efn"]
+
+[sub_resource type="Resource" id="Resource_511fw"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("4_qtk3q")
+
+[sub_resource type="Resource" id="Resource_k5je8"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("6_ra37s")
+
+[sub_resource type="Resource" id="Resource_nm6dr"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("7_n3efn")
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_egoch"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("7_2yngh")
+quantity = 9
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_a74ic"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("8_qqc7k")
+quantity = 6
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_c8hwe"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([SubResource("Resource_511fw"), SubResource("Resource_k5je8"), SubResource("Resource_nm6dr"), null, null, null, null, SubResource("Resource_egoch"), SubResource("Resource_a74ic"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_qqc7k"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("8_qqc7k")
+quantity = 5
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_52yss"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([SubResource("Resource_qqc7k"), null, null, null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_iwa5b"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([null, null, null, null])
+metadata/_custom_type_script = "uid://ek742kudxvm3"
+
+[sub_resource type="Resource" id="Resource_5hair"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([null, null, null, null])
+metadata/_custom_type_script = "uid://ek742kudxvm3"
+
+[sub_resource type="Resource" id="Resource_n3efn"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("7_2yngh")
+quantity = 8
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_yxtlv"]
+script = ExtResource("5_6y52f")
+slot_datas = Array[ExtResource("5_grpg7")]([null, null, SubResource("Resource_n3efn"), null, null, null, null, null, null])
+
+[sub_resource type="Resource" id="Resource_nrmhc"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("7_2yngh")
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[sub_resource type="Resource" id="Resource_s5rnx"]
+script = ExtResource("5_grpg7")
+item_data = ExtResource("8_qqc7k")
+metadata/_custom_type_script = "uid://bf2npp2mjwn80"
+
+[node name="Testing" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_mp84t")
+
+[node name="Player" parent="." instance=ExtResource("1_52qrq")]
+unique_name_in_owner = true
+position = Vector2(242, 169)
+inventory_data = SubResource("Resource_c8hwe")
+
+[node name="Chest" parent="." instance=ExtResource("4_2lmcx")]
+position = Vector2(392, 182)
+inventory_data = SubResource("Resource_52yss")
+
+[node name="CookingFire" parent="." node_paths=PackedStringArray("button") instance=ExtResource("11_qqc7k")]
+position = Vector2(124, 190)
+inventory_input = SubResource("Resource_iwa5b")
+button = NodePath("../UI/InventoryInterface/CookingUI/CookingButton")
+
+[node name="CookingFire2" parent="." node_paths=PackedStringArray("button") instance=ExtResource("11_qqc7k")]
+position = Vector2(299, 260)
+inventory_input = SubResource("Resource_5hair")
+button = NodePath("../UI/InventoryInterface/CookingUI/CookingButton")
+
+[node name="Chest2" parent="." instance=ExtResource("4_2lmcx")]
+position = Vector2(51, 86)
+inventory_data = SubResource("Resource_yxtlv")
+
+[node name="ItemPickup" parent="." instance=ExtResource("17_a74ic")]
+position = Vector2(73, 231)
+slot_data = SubResource("Resource_nrmhc")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("17_a74ic")]
+position = Vector2(177, 72)
+slot_data = SubResource("Resource_s5rnx")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("17_a74ic")]
+position = Vector2(237, 272)
+slot_data = SubResource("Resource_s5rnx")
+
+[node name="ItemPickup4" parent="." instance=ExtResource("17_a74ic")]
+position = Vector2(412, 187)
+slot_data = SubResource("Resource_s5rnx")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("4_hpu4y")
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("6_hxhfa")]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.568627)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 1
+
+[node name="CookingUI" type="VBoxContainer" parent="UI/InventoryInterface"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_right = 138.0
+offset_bottom = 2212.0
+grow_horizontal = 2
+
+[node name="CookingInventoryInput" parent="UI/InventoryInterface/CookingUI" instance=ExtResource("3_sh7kt")]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ItemGrid" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer" index="0"]
+columns = 4
+
+[node name="Slot5" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="Slot22" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="21"]
+visible = false
+
+[node name="Slot23" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="22"]
+visible = false
+
+[node name="Slot24" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="23"]
+visible = false
+
+[node name="Slot25" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="24"]
+visible = false
+
+[node name="Slot26" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="25"]
+visible = false
+
+[node name="Slot27" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="26"]
+visible = false
+
+[node name="Slot28" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="27"]
+visible = false
+
+[node name="Slot29" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="28"]
+visible = false
+
+[node name="Slot30" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="29"]
+visible = false
+
+[node name="Slot31" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="30"]
+visible = false
+
+[node name="Slot32" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="31"]
+visible = false
+
+[node name="Slot33" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="32"]
+visible = false
+
+[node name="Slot34" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="33"]
+visible = false
+
+[node name="Slot35" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="34"]
+visible = false
+
+[node name="Slot36" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="35"]
+visible = false
+
+[node name="Slot37" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="36"]
+visible = false
+
+[node name="Slot38" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="37"]
+visible = false
+
+[node name="Slot39" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="38"]
+visible = false
+
+[node name="Slot40" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="39"]
+visible = false
+
+[node name="Slot41" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="40"]
+visible = false
+
+[node name="Slot42" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="41"]
+visible = false
+
+[node name="Slot43" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="42"]
+visible = false
+
+[node name="Slot44" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="43"]
+visible = false
+
+[node name="Slot45" parent="UI/InventoryInterface/CookingUI/CookingInventoryInput/MarginContainer/ItemGrid" index="44"]
+visible = false
+
+[node name="CookingInventoryOutput" parent="UI/InventoryInterface/CookingUI" instance=ExtResource("3_sh7kt")]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput" index="0"]
+size_flags_horizontal = 4
+
+[node name="ItemGrid" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer" index="0"]
+columns = 1
+
+[node name="Slot2" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="1"]
+visible = false
+
+[node name="Slot3" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="2"]
+visible = false
+
+[node name="Slot4" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="3"]
+visible = false
+
+[node name="Slot5" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="4"]
+visible = false
+
+[node name="Slot6" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="5"]
+visible = false
+
+[node name="Slot7" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="6"]
+visible = false
+
+[node name="Slot8" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="7"]
+visible = false
+
+[node name="Slot9" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="8"]
+visible = false
+
+[node name="Slot10" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="Slot22" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="21"]
+visible = false
+
+[node name="Slot23" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="22"]
+visible = false
+
+[node name="Slot24" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="23"]
+visible = false
+
+[node name="Slot25" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="24"]
+visible = false
+
+[node name="Slot26" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="25"]
+visible = false
+
+[node name="Slot27" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="26"]
+visible = false
+
+[node name="Slot28" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="27"]
+visible = false
+
+[node name="Slot29" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="28"]
+visible = false
+
+[node name="Slot30" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="29"]
+visible = false
+
+[node name="Slot31" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="30"]
+visible = false
+
+[node name="Slot32" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="31"]
+visible = false
+
+[node name="Slot33" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="32"]
+visible = false
+
+[node name="Slot34" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="33"]
+visible = false
+
+[node name="Slot35" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="34"]
+visible = false
+
+[node name="Slot36" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="35"]
+visible = false
+
+[node name="Slot37" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="36"]
+visible = false
+
+[node name="Slot38" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="37"]
+visible = false
+
+[node name="Slot39" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="38"]
+visible = false
+
+[node name="Slot40" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="39"]
+visible = false
+
+[node name="Slot41" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="40"]
+visible = false
+
+[node name="Slot42" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="41"]
+visible = false
+
+[node name="Slot43" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="42"]
+visible = false
+
+[node name="Slot44" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="43"]
+visible = false
+
+[node name="Slot45" parent="UI/InventoryInterface/CookingUI/CookingInventoryOutput/MarginContainer/ItemGrid" index="44"]
+visible = false
+
+[node name="CookingButton" type="Button" parent="UI/InventoryInterface/CookingUI"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "Cook"
+
+[node name="GameMenu" parent="UI/InventoryInterface" instance=ExtResource("17_iwa5b")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_right = 308.0
+
+[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("3_sh7kt")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_top = -276.0
+offset_right = 308.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot10" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="9"]
+visible = false
+
+[node name="Slot11" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="10"]
+visible = false
+
+[node name="Slot12" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="11"]
+visible = false
+
+[node name="Slot13" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="12"]
+visible = false
+
+[node name="Slot14" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="13"]
+visible = false
+
+[node name="Slot15" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="14"]
+visible = false
+
+[node name="Slot16" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="15"]
+visible = false
+
+[node name="Slot17" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="16"]
+visible = false
+
+[node name="Slot18" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="17"]
+visible = false
+
+[node name="Slot19" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="18"]
+visible = false
+
+[node name="Slot20" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="19"]
+visible = false
+
+[node name="Slot21" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="20"]
+visible = false
+
+[node name="Slot22" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="21"]
+visible = false
+
+[node name="Slot23" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="22"]
+visible = false
+
+[node name="Slot24" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="23"]
+visible = false
+
+[node name="Slot25" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="24"]
+visible = false
+
+[node name="Slot26" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="25"]
+visible = false
+
+[node name="Slot27" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="26"]
+visible = false
+
+[node name="Slot28" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="27"]
+visible = false
+
+[node name="Slot29" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="28"]
+visible = false
+
+[node name="Slot30" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="29"]
+visible = false
+
+[node name="Slot31" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="30"]
+visible = false
+
+[node name="Slot32" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="31"]
+visible = false
+
+[node name="Slot33" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="32"]
+visible = false
+
+[node name="Slot34" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="33"]
+visible = false
+
+[node name="Slot35" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="34"]
+visible = false
+
+[node name="Slot36" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="35"]
+visible = false
+
+[node name="Slot37" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="36"]
+visible = false
+
+[node name="Slot38" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="37"]
+visible = false
+
+[node name="Slot39" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="38"]
+visible = false
+
+[node name="Slot40" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="39"]
+visible = false
+
+[node name="Slot41" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="40"]
+visible = false
+
+[node name="Slot42" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="41"]
+visible = false
+
+[node name="Slot43" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="42"]
+visible = false
+
+[node name="Slot44" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="43"]
+visible = false
+
+[node name="Slot45" parent="UI/InventoryInterface/ExternalInventory/MarginContainer/ItemGrid" index="44"]
+visible = false
+
+[node name="Npc" parent="." instance=ExtResource("18_iwa5b")]
+position = Vector2(389, 260)
+npc_name = "testing"
+
+[node name="TileMap" parent="." instance=ExtResource("18_n3efn")]
+
+[node name="Ground" parent="TileMap" index="0"]
+tile_map_data = PackedByteArray("AAAAAAAAAQAFAAoAAAAAAAEAAQAEAAoAAAAAAAIAAQAAAAcAAAAAAAMAAQAEAAoAAAAAAAQAAQAAAAcAAAAAAAUAAQAFAAoAAAAAAAYAAQAEAAoAAAAAAAcAAQAAAAcAAAAAAAgAAQAAAAcAAAAAAAkAAQAFAAoAAAAAAAoAAQAEAAoAAAAAAAsAAQAFAAoAAAAAAAwAAQAFAAoAAAAAAA0AAQAEAAoAAAAAAA4AAQAAAAcAAAAAAA8AAQAFAAoAAAAAABAAAQAAAAcAAAAAABEAAQAAAAcAAAAAABIAAQAAAAcAAAAAABMAAQAFAAoAAAABAAAAAQAEAAoAAAABAAEAAQAFAAoAAAABAAIAAQAFAAoAAAABAAMAAQAEAAoAAAABAAQAAQAAAAcAAAABAAUAAQAEAAoAAAABAAYAAQAAAAcAAAABAAcAAQAAAAcAAAABAAgAAQAAAAcAAAABAAkAAQAEAAoAAAABAAoAAQAEAAoAAAABAAsAAQAAAAcAAAABAAwAAQAAAAcAAAABAA0AAQAFAAoAAAABAA4AAQAAAAcAAAABAA8AAQAEAAoAAAABABAAAQAFAAoAAAABABEAAQAEAAoAAAABABIAAQAAAAcAAAABABMAAQAAAAcAAAACAAAAAQAFAAoAAAACAAEAAQAAAAcAAAACAAIAAQAAAAcAAAACAAMAAQAAAAcAAAACAAQAAQAEAAoAAAACAAUAAQAAAAcAAAACAAYAAQAEAAoAAAACAAcAAQAFAAoAAAACAAgAAQAAAAcAAAACAAkAAQAFAAoAAAACAAoAAQAFAAoAAAACAAsAAQAFAAoAAAACAAwAAQAEAAoAAAACAA0AAQAAAAcAAAACAA4AAQAAAAcAAAACAA8AAQAEAAoAAAACABAAAQAEAAoAAAACABEAAQAAAAcAAAACABIAAQAEAAoAAAACABMAAQAAAAcAAAADAAAAAQAFAAoAAAADAAEAAQAFAAoAAAADAAIAAQAAAAcAAAADAAMAAQAEAAoAAAADAAQAAQAEAAoAAAADAAUAAQAEAAoAAAADAAYAAQAAAAcAAAADAAcAAQAEAAoAAAADAAgAAQAAAAcAAAADAAkAAQAEAAoAAAADAAoAAQAFAAoAAAADAAsAAQAFAAoAAAADAAwAAQAEAAoAAAADAA0AAQAFAAoAAAADAA4AAQAEAAoAAAADAA8AAQAEAAoAAAADABAAAQAEAAoAAAADABEAAQAEAAoAAAADABIAAQAAAAcAAAADABMAAQAEAAoAAAAEAAAAAQAAAAcAAAAEAAEAAQAAAAcAAAAEAAIAAQAEAAoAAAAEAAMAAQAEAAoAAAAEAAQAAQAEAAoAAAAEAAUAAQAFAAoAAAAEAAYAAQAEAAoAAAAEAAcAAQAFAAoAAAAEAAgAAQAAAAcAAAAEAAkAAQAFAAoAAAAEAAoAAQAFAAoAAAAEAAsAAQAAAAcAAAAEAAwAAQAAAAcAAAAEAA0AAQAEAAoAAAAEAA4AAQAAAAcAAAAEAA8AAQAAAAcAAAAEABAAAQAFAAoAAAAEABEAAQAEAAoAAAAEABIAAQAEAAoAAAAEABMAAQAEAAoAAAAFAAAAAQAAAAcAAAAFAAEAAQAEAAoAAAAFAAIAAQAEAAoAAAAFAAMAAQAFAAoAAAAFAAQAAQAFAAoAAAAFAAUAAQAEAAoAAAAFAAYAAQAEAAoAAAAFAAcAAQAEAAoAAAAFAAgAAQAFAAoAAAAFAAkAAQAFAAoAAAAFAAoAAQAEAAoAAAAFAAsAAQAFAAoAAAAFAAwAAQAEAAoAAAAFAA0AAQAEAAoAAAAFAA4AAQAEAAoAAAAFAA8AAQAAAAcAAAAFABAAAQAEAAoAAAAFABEAAQAFAAoAAAAFABIAAQAEAAoAAAAFABMAAQAEAAoAAAAGAAAAAQAAAAcAAAAGAAEAAQAEAAoAAAAGAAIAAQAAAAcAAAAGAAMAAQAAAAcAAAAGAAQAAQAEAAoAAAAGAAUAAQAEAAoAAAAGAAYAAQAFAAoAAAAGAAcAAQAEAAoAAAAGAAgAAQAAAAcAAAAGAAkAAQAFAAoAAAAGAAoAAQAEAAoAAAAGAAsAAQAEAAoAAAAGAAwAAQAFAAoAAAAGAA0AAQAFAAoAAAAGAA4AAQAEAAoAAAAGAA8AAQAAAAcAAAAGABAAAQAFAAoAAAAGABEAAQAFAAoAAAAGABIAAQAEAAoAAAAGABMAAQAEAAoAAAAHAAAAAQAEAAoAAAAHAAEAAQAEAAoAAAAHAAIAAQAFAAoAAAAHAAMAAQAFAAoAAAAHAAQAAQAAAAcAAAAHAAUAAQAAAAcAAAAHAAYAAQAAAAcAAAAHAAcAAQAFAAoAAAAHAAgAAQAEAAoAAAAHAAkAAQAEAAoAAAAHAAoAAQAAAAcAAAAHAAsAAQAFAAoAAAAHAAwAAQAFAAoAAAAHAA0AAQAEAAoAAAAHAA4AAQAFAAoAAAAHAA8AAQAAAAcAAAAHABAAAQAAAAcAAAAHABEAAQAAAAcAAAAHABIAAQAFAAoAAAAHABMAAQAAAAcAAAAIAAAAAQAAAAcAAAAIAAEAAQAFAAoAAAAIAAIAAQAEAAoAAAAIAAMAAQAEAAoAAAAIAAQAAQAFAAoAAAAIAAUAAQAAAAcAAAAIAAYAAQAEAAoAAAAIAAcAAQAEAAoAAAAIAAgAAQAFAAoAAAAIAAkAAQAAAAcAAAAIAAoAAQAAAAcAAAAIAAsAAQAFAAoAAAAIAAwAAQAEAAoAAAAIAA0AAQAFAAoAAAAIAA4AAQAFAAoAAAAIAA8AAQAFAAoAAAAIABAAAQAAAAcAAAAIABEAAQAFAAoAAAAIABIAAQAFAAoAAAAIABMAAQAEAAoAAAAJAAAAAQAFAAoAAAAJAAEAAQAFAAoAAAAJAAIAAQAFAAoAAAAJAAMAAQAEAAoAAAAJAAQAAQAFAAoAAAAJAAUAAQAAAAcAAAAJAAYAAQAFAAoAAAAJAAcAAQAFAAoAAAAJAAgAAQAFAAoAAAAJAAkAAQAEAAoAAAAJAAoAAQAFAAoAAAAJAAsAAQAFAAoAAAAJAAwAAQAEAAoAAAAJAA0AAQAEAAoAAAAJAA4AAQAAAAcAAAAJAA8AAQAAAAcAAAAJABAAAQAAAAcAAAAJABEAAQAFAAoAAAAJABIAAQAFAAoAAAAJABMAAQAFAAoAAAAKAAAAAQAAAAcAAAAKAAEAAQAAAAcAAAAKAAIAAQAFAAoAAAAKAAMAAQAEAAoAAAAKAAQAAQAEAAoAAAAKAAUAAQAFAAoAAAAKAAYAAQAEAAoAAAAKAAcAAQAAAAcAAAAKAAgAAQAFAAoAAAAKAAkAAQAAAAcAAAAKAAoAAQAEAAoAAAAKAAsAAQAFAAoAAAAKAAwAAQAAAAcAAAAKAA0AAQAFAAoAAAAKAA4AAQAEAAoAAAAKAA8AAQAAAAcAAAAKABAAAQAEAAoAAAAKABEAAQAFAAoAAAAKABIAAQAEAAoAAAAKABMAAQAFAAoAAAALAAAAAQAAAAcAAAALAAEAAQAAAAcAAAALAAIAAQAAAAcAAAALAAMAAQAFAAoAAAALAAQAAQAAAAcAAAALAAUAAQAAAAcAAAALAAYAAQAFAAoAAAALAAcAAQAEAAoAAAALAAgAAQAEAAoAAAALAAkAAQAFAAoAAAALAAoAAQAEAAoAAAALAAsAAQAEAAoAAAALAAwAAQAAAAcAAAALAA0AAQAEAAoAAAALAA4AAQAAAAcAAAALAA8AAQAEAAoAAAALABAAAQAEAAoAAAALABEAAQAAAAcAAAALABIAAQAAAAcAAAALABMAAQAFAAoAAAAMAAAAAQAFAAoAAAAMAAEAAQAEAAoAAAAMAAIAAQAEAAoAAAAMAAMAAQAFAAoAAAAMAAQAAQAAAAcAAAAMAAUAAQAAAAcAAAAMAAYAAQAAAAcAAAAMAAcAAQAFAAoAAAAMAAgAAQAAAAcAAAAMAAkAAQAFAAoAAAAMAAoAAQAEAAoAAAAMAAsAAQAEAAoAAAAMAAwAAQAFAAoAAAAMAA0AAQAFAAoAAAAMAA4AAQAEAAoAAAAMAA8AAQAFAAoAAAAMABAAAQAFAAoAAAAMABEAAQAEAAoAAAAMABIAAQAEAAoAAAAMABMAAQAEAAoAAAANAAAAAQAEAAoAAAANAAEAAQAFAAoAAAANAAIAAQAAAAcAAAANAAMAAQAEAAoAAAANAAQAAQAAAAcAAAANAAUAAQAEAAoAAAANAAYAAQAAAAcAAAANAAcAAQAEAAoAAAANAAgAAQAEAAoAAAANAAkAAQAEAAoAAAANAAoAAQAAAAcAAAANAAsAAQAEAAoAAAANAAwAAQAEAAoAAAANAA0AAQAAAAcAAAANAA4AAQAEAAoAAAANAA8AAQAFAAoAAAANABAAAQAFAAoAAAANABEAAQAFAAoAAAANABIAAQAEAAoAAAANABMAAQAFAAoAAAAOAAAAAQAFAAoAAAAOAAEAAQAEAAoAAAAOAAIAAQAFAAoAAAAOAAMAAQAFAAoAAAAOAAQAAQAEAAoAAAAOAAUAAQAAAAcAAAAOAAYAAQAEAAoAAAAOAAcAAQAAAAcAAAAOAAgAAQAEAAoAAAAOAAkAAQAAAAcAAAAOAAoAAQAFAAoAAAAOAAsAAQAEAAoAAAAOAAwAAQAAAAcAAAAOAA0AAQAEAAoAAAAOAA4AAQAAAAcAAAAOAA8AAQAEAAoAAAAOABAAAQAAAAcAAAAOABEAAQAEAAoAAAAOABIAAQAAAAcAAAAOABMAAQAAAAcAAAAPAAAAAQAEAAoAAAAPAAEAAQAAAAcAAAAPAAIAAQAAAAcAAAAPAAMAAQAEAAoAAAAPAAQAAQAFAAoAAAAPAAUAAQAEAAoAAAAPAAYAAQAFAAoAAAAPAAcAAQAAAAcAAAAPAAgAAQAFAAoAAAAPAAkAAQAAAAcAAAAPAAoAAQAFAAoAAAAPAAsAAQAAAAcAAAAPAAwAAQAAAAcAAAAPAA0AAQAEAAoAAAAPAA4AAQAFAAoAAAAPAA8AAQAFAAoAAAAPABAAAQAAAAcAAAAPABEAAQAFAAoAAAAPABIAAQAAAAcAAAAPABMAAQAFAAoAAAAQAAAAAQAEAAoAAAAQAAEAAQAFAAoAAAAQAAIAAQAAAAcAAAAQAAMAAQAEAAoAAAAQAAQAAQAEAAoAAAAQAAUAAQAFAAoAAAAQAAYAAQAFAAoAAAAQAAcAAQAEAAoAAAAQAAgAAQAAAAcAAAAQAAkAAQAAAAcAAAAQAAoAAQAEAAoAAAAQAAsAAQAAAAcAAAAQAAwAAQAFAAoAAAAQAA0AAQAAAAcAAAAQAA4AAQAEAAoAAAAQAA8AAQAAAAcAAAAQABAAAQAEAAoAAAAQABEAAQAAAAcAAAAQABIAAQAEAAoAAAAQABMAAQAEAAoAAAARAAAAAQAFAAoAAAARAAEAAQAFAAoAAAARAAIAAQAFAAoAAAARAAMAAQAAAAcAAAARAAQAAQAEAAoAAAARAAUAAQAFAAoAAAARAAYAAQAAAAcAAAARAAcAAQAFAAoAAAARAAgAAQAAAAcAAAARAAkAAQAFAAoAAAARAAoAAQAFAAoAAAARAAsAAQAEAAoAAAARAAwAAQAEAAoAAAARAA0AAQAEAAoAAAARAA4AAQAAAAcAAAARAA8AAQAFAAoAAAARABAAAQAAAAcAAAARABEAAQAFAAoAAAARABIAAQAFAAoAAAARABMAAQAEAAoAAAASAAAAAQAEAAoAAAASAAEAAQAEAAoAAAASAAIAAQAFAAoAAAASAAMAAQAAAAcAAAASAAQAAQAEAAoAAAASAAUAAQAAAAcAAAASAAYAAQAAAAcAAAASAAcAAQAFAAoAAAASAAgAAQAFAAoAAAASAAkAAQAFAAoAAAASAAoAAQAFAAoAAAASAAsAAQAAAAcAAAASAAwAAQAFAAoAAAASAA0AAQAFAAoAAAASAA4AAQAFAAoAAAASAA8AAQAFAAoAAAASABAAAQAEAAoAAAASABEAAQAEAAoAAAASABIAAQAEAAoAAAASABMAAQAEAAoAAAATAAAAAQAEAAoAAAATAAEAAQAEAAoAAAATAAIAAQAFAAoAAAATAAMAAQAEAAoAAAATAAQAAQAEAAoAAAATAAUAAQAFAAoAAAATAAYAAQAEAAoAAAATAAcAAQAFAAoAAAATAAgAAQAAAAcAAAATAAkAAQAFAAoAAAATAAoAAQAFAAoAAAATAAsAAQAAAAcAAAATAAwAAQAAAAcAAAATAA0AAQAFAAoAAAATAA4AAQAFAAoAAAATAA8AAQAAAAcAAAATABAAAQAAAAcAAAATABEAAQAEAAoAAAATABIAAQAEAAoAAAATABMAAQAFAAoAAAAUAAAAAQAFAAoAAAAUAAEAAQAFAAoAAAAUAAIAAQAAAAcAAAAUAAMAAQAAAAcAAAAUAAQAAQAEAAoAAAAUAAUAAQAAAAcAAAAUAAYAAQAAAAcAAAAUAAcAAQAEAAoAAAAUAAgAAQAAAAcAAAAUAAkAAQAAAAcAAAAUAAoAAQAAAAcAAAAUAAsAAQAAAAcAAAAUAAwAAQAAAAcAAAAUAA0AAQAAAAcAAAAUAA4AAQAFAAoAAAAUAA8AAQAAAAcAAAAUABAAAQAAAAcAAAAUABEAAQAFAAoAAAAUABIAAQAEAAoAAAAUABMAAQAAAAcAAAAVAAAAAQAFAAoAAAAVAAEAAQAEAAoAAAAVAAIAAQAFAAoAAAAVAAMAAQAFAAoAAAAVAAQAAQAEAAoAAAAVAAUAAQAFAAoAAAAVAAYAAQAAAAcAAAAVAAcAAQAEAAoAAAAVAAgAAQAAAAcAAAAVAAkAAQAEAAoAAAAVAAoAAQAAAAcAAAAVAAsAAQAEAAoAAAAVAAwAAQAAAAcAAAAVAA0AAQAFAAoAAAAVAA4AAQAAAAcAAAAVAA8AAQAEAAoAAAAVABAAAQAEAAoAAAAVABEAAQAFAAoAAAAVABIAAQAEAAoAAAAVABMAAQAEAAoAAAAWAAAAAQAAAAcAAAAWAAEAAQAEAAoAAAAWAAIAAQAEAAoAAAAWAAMAAQAAAAcAAAAWAAQAAQAAAAcAAAAWAAUAAQAEAAoAAAAWAAYAAQAEAAoAAAAWAAcAAQAFAAoAAAAWAAgAAQAAAAcAAAAWAAkAAQAEAAoAAAAWAAoAAQAAAAcAAAAWAAsAAQAEAAoAAAAWAA0AAQAFAAoAAAAWAA4AAQAFAAoAAAAWAA8AAQAEAAoAAAAWABAAAQAFAAoAAAAWABEAAQAEAAoAAAAWABIAAQAAAAcAAAAWABMAAQAFAAoAAAAXAAAAAQAAAAcAAAAXAAEAAQAFAAoAAAAXAAIAAQAAAAcAAAAXAAMAAQAFAAoAAAAXAAQAAQAEAAoAAAAXAAUAAQAAAAcAAAAXAAYAAQAFAAoAAAAXAAcAAQAAAAcAAAAXAAgAAQAEAAoAAAAXAAkAAQAFAAoAAAAXAAoAAQAEAAoAAAAXAAsAAQAAAAcAAAAXAAwAAQAAAAcAAAAXAA0AAQAFAAoAAAAXAA4AAQAEAAoAAAAXAA8AAQAFAAoAAAAXABAAAQAFAAoAAAAXABEAAQAFAAoAAAAXABIAAQAFAAoAAAAXABMAAQAAAAcAAAAYAAAAAQAFAAoAAAAYAAEAAQAFAAoAAAAYAAIAAQAAAAcAAAAYAAMAAQAAAAcAAAAYAAQAAQAFAAoAAAAYAAUAAQAAAAcAAAAYAAYAAQAAAAcAAAAYAAcAAQAEAAoAAAAYAAgAAQAEAAoAAAAYAAkAAQAAAAcAAAAYAAoAAQAEAAoAAAAYAAsAAQAFAAoAAAAYAAwAAQAFAAoAAAAYAA0AAQAFAAoAAAAYAA4AAQAFAAoAAAAYAA8AAQAEAAoAAAAYABAAAQAEAAoAAAAYABEAAQAFAAoAAAAYABIAAQAAAAcAAAAYABMAAQAFAAoAAAAZAAAAAQAAAAcAAAAZAAEAAQAFAAoAAAAZAAIAAQAFAAoAAAAZAAMAAQAAAAcAAAAZAAQAAQAEAAoAAAAZAAUAAQAEAAoAAAAZAAYAAQAAAAcAAAAZAAcAAQAAAAcAAAAZAAgAAQAAAAcAAAAZAAkAAQAEAAoAAAAZAAoAAQAEAAoAAAAZAAsAAQAEAAoAAAAZAAwAAQAAAAcAAAAZAA0AAQAAAAcAAAAZAA4AAQAFAAoAAAAZAA8AAQAEAAoAAAAZABAAAQAFAAoAAAAZABEAAQAAAAcAAAAZABIAAQAFAAoAAAAZABMAAQAFAAoAAAAaAAAAAQAAAAcAAAAaAAEAAQAFAAoAAAAaAAIAAQAEAAoAAAAaAAMAAQAFAAoAAAAaAAQAAQAEAAoAAAAaAAUAAQAFAAoAAAAaAAYAAQAEAAoAAAAaAAcAAQAFAAoAAAAaAAgAAQAFAAoAAAAaAAkAAQAEAAoAAAAaAAoAAQAEAAoAAAAaAAsAAQAFAAoAAAAaAAwAAQAEAAoAAAAaAA0AAQAFAAoAAAAaAA4AAQAAAAcAAAAaAA8AAQAAAAcAAAAaABAAAQAAAAcAAAAaABEAAQAAAAcAAAAaABIAAQAAAAcAAAAaABMAAQAEAAoAAAAbAAAAAQAEAAoAAAAbAAEAAQAAAAcAAAAbAAIAAQAAAAcAAAAbAAMAAQAAAAcAAAAbAAQAAQAAAAcAAAAbAAUAAQAEAAoAAAAbAAYAAQAAAAcAAAAbAAcAAQAAAAcAAAAbAAgAAQAAAAcAAAAbAAkAAQAAAAcAAAAbAAoAAQAFAAoAAAAbAAsAAQAEAAoAAAAbAAwAAQAEAAoAAAAbAA0AAQAFAAoAAAAbAA4AAQAAAAcAAAAbAA8AAQAEAAoAAAAbABAAAQAAAAcAAAAbABEAAQAAAAcAAAAbABIAAQAEAAoAAAAbABMAAQAEAAoAAAAcAAAAAQAAAAcAAAAcAAEAAQAEAAoAAAAcAAIAAQAAAAcAAAAcAAMAAQAFAAoAAAAcAAQAAQAEAAoAAAAcAAUAAQAAAAcAAAAcAAYAAQAEAAoAAAAcAAcAAQAEAAoAAAAcAAgAAQAAAAcAAAAcAAkAAQAFAAoAAAAcAAoAAQAAAAcAAAAcAAsAAQAAAAcAAAAcAAwAAQAAAAcAAAAcAA0AAQAFAAoAAAAcAA4AAQAAAAcAAAAcAA8AAQAEAAoAAAAcABAAAQAAAAcAAAAcABEAAQAAAAcAAAAcABIAAQAFAAoAAAAcABMAAQAFAAoAAAAdAAAAAQAAAAcAAAAdAAEAAQAEAAoAAAAdAAIAAQAAAAcAAAAdAAMAAQAEAAoAAAAdAAQAAQAEAAoAAAAdAAUAAQAAAAcAAAAdAAYAAQAFAAoAAAAdAAcAAQAFAAoAAAAdAAgAAQAEAAoAAAAdAAkAAQAFAAoAAAAdAAoAAQAFAAoAAAAdAAsAAQAFAAoAAAAdAAwAAQAAAAcAAAAdAA0AAQAEAAoAAAAdAA4AAQAAAAcAAAAdAA8AAQAFAAoAAAAdABAAAQAFAAoAAAAdABEAAQAEAAoAAAAdABIAAQAAAAcAAAAdABMAAQAEAAoAAAAeAAAAAQAEAAoAAAAeAAEAAQAEAAoAAAAeAAIAAQAFAAoAAAAeAAMAAQAAAAcAAAAeAAQAAQAAAAcAAAAeAAUAAQAFAAoAAAAeAAYAAQAFAAoAAAAeAAcAAQAFAAoAAAAeAAgAAQAAAAcAAAAeAAkAAQAAAAcAAAAeAAoAAQAFAAoAAAAeAAsAAQAEAAoAAAAeAAwAAQAAAAcAAAAeAA0AAQAEAAoAAAAeAA4AAQAEAAoAAAAeAA8AAQAFAAoAAAAeABAAAQAFAAoAAAAeABEAAQAFAAoAAAAeABIAAQAAAAcAAAAeABMAAQAEAAoAAAAfAAAAAQAAAAcAAAAfAAEAAQAAAAcAAAAfAAIAAQAAAAcAAAAfAAMAAQAEAAoAAAAfAAQAAQAAAAcAAAAfAAUAAQAAAAcAAAAfAAYAAQAFAAoAAAAfAAcAAQAAAAcAAAAfAAgAAQAFAAoAAAAfAAkAAQAAAAcAAAAfAAoAAQAFAAoAAAAfAAsAAQAAAAcAAAAfAAwAAQAAAAcAAAAfAA0AAQAFAAoAAAAfAA4AAQAFAAoAAAAfAA8AAQAAAAcAAAAfABAAAQAEAAoAAAAfABEAAQAFAAoAAAAfABIAAQAAAAcAAAAfABMAAQAAAAcAAAAgAAAAAQAEAAoAAAAgAAEAAQAEAAoAAAAgAAIAAQAEAAoAAAAgAAMAAQAFAAoAAAAgAAQAAQAFAAoAAAAgAAUAAQAFAAoAAAAgAAYAAQAAAAcAAAAgAAcAAQAFAAoAAAAgAAgAAQAAAAcAAAAgAAkAAQAAAAcAAAAgAAoAAQAAAAcAAAAgAAsAAQAAAAcAAAAgAAwAAQAEAAoAAAAgAA0AAQAEAAoAAAAgAA4AAQAEAAoAAAAgAA8AAQAAAAcAAAAgABAAAQAEAAoAAAAgABEAAQAAAAcAAAAgABIAAQAEAAoAAAAgABMAAQAAAAcAAAAhAAAAAQAFAAoAAAAhAAEAAQAAAAcAAAAhAAIAAQAFAAoAAAAhAAMAAQAEAAoAAAAhAAQAAQAFAAoAAAAhAAUAAQAFAAoAAAAhAAYAAQAEAAoAAAAhAAcAAQAAAAcAAAAhAAgAAQAFAAoAAAAhAAkAAQAFAAoAAAAhAAoAAQAEAAoAAAAhAAsAAQAAAAcAAAAhAAwAAQAAAAcAAAAhAA0AAQAAAAcAAAAhAA4AAQAAAAcAAAAhAA8AAQAEAAoAAAAhABAAAQAAAAcAAAAhABEAAQAAAAcAAAAhABIAAQAAAAcAAAAhABMAAQAAAAcAAAAiAAAAAQAEAAoAAAAiAAEAAQAEAAoAAAAiAAIAAQAFAAoAAAAiAAMAAQAAAAcAAAAiAAQAAQAEAAoAAAAiAAUAAQAFAAoAAAAiAAYAAQAFAAoAAAAiAAcAAQAAAAcAAAAiAAgAAQAEAAoAAAAiAAkAAQAFAAoAAAAiAAoAAQAAAAcAAAAiAAsAAQAEAAoAAAAiAAwAAQAAAAcAAAAiAA0AAQAAAAcAAAAiAA4AAQAFAAoAAAAiAA8AAQAFAAoAAAAiABAAAQAEAAoAAAAiABEAAQAEAAoAAAAiABIAAQAEAAoAAAAiABMAAQAAAAcAAAAWAAwAAQAFAAoAAAAAAPn/AQAAAAcAAAAAAPr/AQAFAAoAAAAAAPv/AQAEAAoAAAAAAPz/AQAAAAcAAAAAAP3/AQAAAAcAAAAAAP7/AQAFAAoAAAAAAP//AQAAAAcAAAABAPn/AQAEAAoAAAABAPr/AQAEAAoAAAABAPv/AQAEAAoAAAABAPz/AQAAAAcAAAABAP3/AQAAAAcAAAABAP7/AQAAAAcAAAABAP//AQAFAAoAAAACAPn/AQAAAAcAAAACAPr/AQAFAAoAAAACAPv/AQAAAAcAAAACAPz/AQAAAAcAAAACAP3/AQAEAAoAAAACAP7/AQAFAAoAAAACAP//AQAAAAcAAAADAPn/AQAEAAoAAAADAPr/AQAEAAoAAAADAPv/AQAEAAoAAAADAPz/AQAFAAoAAAADAP3/AQAEAAoAAAADAP7/AQAAAAcAAAADAP//AQAFAAoAAAAEAPn/AQAEAAoAAAAEAPr/AQAAAAcAAAAEAPv/AQAFAAoAAAAEAPz/AQAAAAcAAAAEAP3/AQAAAAcAAAAEAP7/AQAFAAoAAAAEAP//AQAFAAoAAAAFAPn/AQAEAAoAAAAFAPr/AQAAAAcAAAAFAPv/AQAFAAoAAAAFAPz/AQAFAAoAAAAFAP3/AQAFAAoAAAAFAP7/AQAFAAoAAAAFAP//AQAFAAoAAAAGAPn/AQAFAAoAAAAGAPr/AQAFAAoAAAAGAPv/AQAAAAcAAAAGAPz/AQAAAAcAAAAGAP3/AQAAAAcAAAAGAP7/AQAEAAoAAAAGAP//AQAEAAoAAAAHAPn/AQAEAAoAAAAHAPr/AQAAAAcAAAAHAPv/AQAAAAcAAAAHAPz/AQAEAAoAAAAHAP3/AQAFAAoAAAAHAP7/AQAEAAoAAAAHAP//AQAFAAoAAAAIAPn/AQAEAAoAAAAIAPr/AQAAAAcAAAAIAPv/AQAAAAcAAAAIAPz/AQAEAAoAAAAIAP3/AQAEAAoAAAAIAP7/AQAFAAoAAAAIAP//AQAAAAcAAAAJAPn/AQAEAAoAAAAJAPr/AQAAAAcAAAAJAPv/AQAEAAoAAAAJAPz/AQAEAAoAAAAJAP3/AQAEAAoAAAAJAP7/AQAFAAoAAAAJAP//AQAFAAoAAAAKAPn/AQAFAAoAAAAKAPr/AQAEAAoAAAAKAPv/AQAAAAcAAAAKAPz/AQAFAAoAAAAKAP3/AQAFAAoAAAAKAP7/AQAAAAcAAAAKAP//AQAEAAoAAAALAPn/AQAAAAcAAAALAPr/AQAEAAoAAAALAPv/AQAEAAoAAAALAPz/AQAAAAcAAAALAP3/AQAEAAoAAAALAP7/AQAFAAoAAAALAP//AQAFAAoAAAAMAPn/AQAEAAoAAAAMAPr/AQAEAAoAAAAMAPv/AQAEAAoAAAAMAPz/AQAFAAoAAAAMAP3/AQAEAAoAAAAMAP7/AQAFAAoAAAAMAP//AQAEAAoAAAANAPn/AQAAAAcAAAANAPr/AQAFAAoAAAANAPv/AQAFAAoAAAANAPz/AQAFAAoAAAANAP3/AQAFAAoAAAANAP7/AQAEAAoAAAANAP//AQAFAAoAAAAOAPn/AQAFAAoAAAAOAPr/AQAEAAoAAAAOAPv/AQAAAAcAAAAOAPz/AQAEAAoAAAAOAP3/AQAEAAoAAAAOAP7/AQAEAAoAAAAOAP//AQAFAAoAAAAPAPn/AQAAAAcAAAAPAPr/AQAFAAoAAAAPAPv/AQAEAAoAAAAPAPz/AQAAAAcAAAAPAP3/AQAFAAoAAAAPAP7/AQAFAAoAAAAPAP//AQAEAAoAAAAQAPn/AQAFAAoAAAAQAPr/AQAEAAoAAAAQAPv/AQAAAAcAAAAQAPz/AQAAAAcAAAAQAP3/AQAAAAcAAAAQAP7/AQAEAAoAAAAQAP//AQAFAAoAAAARAPn/AQAFAAoAAAARAPr/AQAAAAcAAAARAPv/AQAEAAoAAAARAPz/AQAFAAoAAAARAP3/AQAEAAoAAAARAP7/AQAAAAcAAAARAP//AQAFAAoAAAASAPn/AQAFAAoAAAASAPr/AQAEAAoAAAASAPv/AQAAAAcAAAASAPz/AQAFAAoAAAASAP3/AQAEAAoAAAASAP7/AQAAAAcAAAASAP//AQAAAAcAAAATAPn/AQAAAAcAAAATAPr/AQAEAAoAAAATAPv/AQAFAAoAAAATAPz/AQAFAAoAAAATAP3/AQAEAAoAAAATAP7/AQAEAAoAAAATAP//AQAEAAoAAAAUAPn/AQAEAAoAAAAUAPr/AQAAAAcAAAAUAPv/AQAFAAoAAAAUAPz/AQAFAAoAAAAUAP3/AQAEAAoAAAAUAP7/AQAAAAcAAAAUAP//AQAAAAcAAAAVAPn/AQAFAAoAAAAVAPr/AQAFAAoAAAAVAPv/AQAAAAcAAAAVAPz/AQAFAAoAAAAVAP3/AQAFAAoAAAAVAP7/AQAFAAoAAAAVAP//AQAEAAoAAAAWAPn/AQAEAAoAAAAWAPr/AQAEAAoAAAAWAPv/AQAEAAoAAAAWAPz/AQAEAAoAAAAWAP3/AQAFAAoAAAAWAP7/AQAEAAoAAAAWAP//AQAFAAoAAAAXAPn/AQAAAAcAAAAXAPr/AQAAAAcAAAAXAPv/AQAFAAoAAAAXAPz/AQAAAAcAAAAXAP3/AQAAAAcAAAAXAP7/AQAAAAcAAAAXAP//AQAEAAoAAAAYAPn/AQAAAAcAAAAYAPr/AQAEAAoAAAAYAPv/AQAAAAcAAAAYAPz/AQAEAAoAAAAYAP3/AQAFAAoAAAAYAP7/AQAEAAoAAAAYAP//AQAEAAoAAAAZAPn/AQAEAAoAAAAZAPr/AQAAAAcAAAAZAPv/AQAFAAoAAAAZAPz/AQAEAAoAAAAZAP3/AQAEAAoAAAAZAP7/AQAAAAcAAAAZAP//AQAFAAoAAAAaAPn/AQAAAAcAAAAaAPr/AQAAAAcAAAAaAPv/AQAFAAoAAAAaAPz/AQAAAAcAAAAaAP3/AQAEAAoAAAAaAP7/AQAEAAoAAAAaAP//AQAFAAoAAAAbAPn/AQAFAAoAAAAbAPr/AQAEAAoAAAAbAPv/AQAAAAcAAAAbAPz/AQAEAAoAAAAbAP3/AQAEAAoAAAAbAP7/AQAAAAcAAAAbAP//AQAAAAcAAAAcAPn/AQAFAAoAAAAcAPr/AQAFAAoAAAAcAPv/AQAAAAcAAAAcAPz/AQAEAAoAAAAcAP3/AQAAAAcAAAAcAP7/AQAAAAcAAAAcAP//AQAEAAoAAAAdAPn/AQAAAAcAAAAdAPr/AQAEAAoAAAAdAPv/AQAFAAoAAAAdAPz/AQAAAAcAAAAdAP3/AQAAAAcAAAAdAP7/AQAAAAcAAAAdAP//AQAFAAoAAAAeAPn/AQAEAAoAAAAeAPr/AQAFAAoAAAAeAPv/AQAEAAoAAAAeAPz/AQAFAAoAAAAeAP3/AQAFAAoAAAAeAP7/AQAAAAcAAAAeAP//AQAFAAoAAAAfAPn/AQAEAAoAAAAfAPr/AQAAAAcAAAAfAPv/AQAAAAcAAAAfAPz/AQAEAAoAAAAfAP3/AQAEAAoAAAAfAP7/AQAEAAoAAAAfAP//AQAEAAoAAAAgAPn/AQAEAAoAAAAgAPr/AQAEAAoAAAAgAPv/AQAEAAoAAAAgAPz/AQAAAAcAAAAgAP3/AQAEAAoAAAAgAP7/AQAEAAoAAAAgAP//AQAEAAoAAAAhAPn/AQAAAAcAAAAhAPr/AQAEAAoAAAAhAPv/AQAFAAoAAAAhAPz/AQAAAAcAAAAhAP3/AQAEAAoAAAAhAP7/AQAEAAoAAAAhAP//AQAEAAoAAAAiAPn/AQAEAAoAAAAiAPr/AQAFAAoAAAAiAPv/AQAEAAoAAAAiAPz/AQAFAAoAAAAiAP3/AQAEAAoAAAAiAP7/AQAEAAoAAAAiAP//AQAFAAoAAAD5//n/AQAAAAcAAAD5//r/AQAAAAcAAAD5//v/AQAEAAoAAAD5//z/AQAAAAcAAAD5//3/AQAAAAcAAAD5//7/AQAEAAoAAAD5////AQAAAAcAAAD5/wAAAQAEAAoAAAD5/wEAAQAFAAoAAAD5/wIAAQAEAAoAAAD5/wMAAQAEAAoAAAD5/wQAAQAEAAoAAAD5/wUAAQAFAAoAAAD5/wYAAQAEAAoAAAD5/wcAAQAFAAoAAAD5/wgAAQAEAAoAAAD5/wkAAQAFAAoAAAD5/woAAQAEAAoAAAD5/wsAAQAAAAcAAAD5/wwAAQAEAAoAAAD5/w0AAQAFAAoAAAD5/w4AAQAEAAoAAAD5/w8AAQAFAAoAAAD5/xAAAQAAAAcAAAD5/xEAAQAAAAcAAAD5/xIAAQAFAAoAAAD5/xMAAQAAAAcAAAD6//n/AQAAAAcAAAD6//r/AQAEAAoAAAD6//v/AQAEAAoAAAD6//z/AQAAAAcAAAD6//3/AQAAAAcAAAD6//7/AQAFAAoAAAD6////AQAAAAcAAAD6/wAAAQAFAAoAAAD6/wEAAQAAAAcAAAD6/wIAAQAAAAcAAAD6/wMAAQAEAAoAAAD6/wQAAQAEAAoAAAD6/wUAAQAFAAoAAAD6/wYAAQAFAAoAAAD6/wcAAQAFAAoAAAD6/wgAAQAEAAoAAAD6/wkAAQAEAAoAAAD6/woAAQAFAAoAAAD6/wsAAQAAAAcAAAD6/wwAAQAEAAoAAAD6/w0AAQAEAAoAAAD6/w4AAQAAAAcAAAD6/w8AAQAFAAoAAAD6/xAAAQAFAAoAAAD6/xEAAQAFAAoAAAD6/xIAAQAEAAoAAAD6/xMAAQAAAAcAAAD7//n/AQAEAAoAAAD7//r/AQAAAAcAAAD7//v/AQAEAAoAAAD7//z/AQAAAAcAAAD7//3/AQAFAAoAAAD7//7/AQAFAAoAAAD7////AQAAAAcAAAD7/wAAAQAFAAoAAAD7/wEAAQAFAAoAAAD7/wIAAQAFAAoAAAD7/wMAAQAAAAcAAAD7/wQAAQAAAAcAAAD7/wUAAQAFAAoAAAD7/wYAAQAEAAoAAAD7/wcAAQAFAAoAAAD7/wgAAQAEAAoAAAD7/wkAAQAAAAcAAAD7/woAAQAFAAoAAAD7/wsAAQAAAAcAAAD7/wwAAQAEAAoAAAD7/w0AAQAFAAoAAAD7/w4AAQAAAAcAAAD7/w8AAQAEAAoAAAD7/xAAAQAFAAoAAAD7/xEAAQAAAAcAAAD7/xIAAQAEAAoAAAD7/xMAAQAEAAoAAAD8//n/AQAFAAoAAAD8//r/AQAAAAcAAAD8//v/AQAFAAoAAAD8//z/AQAEAAoAAAD8//3/AQAAAAcAAAD8//7/AQAEAAoAAAD8////AQAFAAoAAAD8/wAAAQAAAAcAAAD8/wEAAQAFAAoAAAD8/wIAAQAEAAoAAAD8/wMAAQAFAAoAAAD8/wQAAQAFAAoAAAD8/wUAAQAAAAcAAAD8/wYAAQAFAAoAAAD8/wcAAQAAAAcAAAD8/wgAAQAFAAoAAAD8/wkAAQAFAAoAAAD8/woAAQAFAAoAAAD8/wsAAQAAAAcAAAD8/wwAAQAFAAoAAAD8/w0AAQAAAAcAAAD8/w4AAQAEAAoAAAD8/w8AAQAAAAcAAAD8/xAAAQAFAAoAAAD8/xEAAQAFAAoAAAD8/xIAAQAEAAoAAAD8/xMAAQAEAAoAAAD9//n/AQAAAAcAAAD9//r/AQAEAAoAAAD9//v/AQAEAAoAAAD9//z/AQAEAAoAAAD9//3/AQAEAAoAAAD9//7/AQAAAAcAAAD9////AQAAAAcAAAD9/wAAAQAEAAoAAAD9/wEAAQAEAAoAAAD9/wIAAQAFAAoAAAD9/wMAAQAAAAcAAAD9/wQAAQAAAAcAAAD9/wUAAQAAAAcAAAD9/wYAAQAFAAoAAAD9/wcAAQAAAAcAAAD9/wgAAQAFAAoAAAD9/wkAAQAAAAcAAAD9/woAAQAEAAoAAAD9/wsAAQAFAAoAAAD9/wwAAQAAAAcAAAD9/w0AAQAFAAoAAAD9/w4AAQAEAAoAAAD9/w8AAQAEAAoAAAD9/xAAAQAFAAoAAAD9/xEAAQAEAAoAAAD9/xIAAQAFAAoAAAD9/xMAAQAAAAcAAAD+//n/AQAFAAoAAAD+//r/AQAAAAcAAAD+//v/AQAEAAoAAAD+//z/AQAAAAcAAAD+//3/AQAAAAcAAAD+//7/AQAEAAoAAAD+////AQAEAAoAAAD+/wAAAQAAAAcAAAD+/wEAAQAAAAcAAAD+/wIAAQAFAAoAAAD+/wMAAQAEAAoAAAD+/wQAAQAAAAcAAAD+/wUAAQAAAAcAAAD+/wYAAQAFAAoAAAD+/wcAAQAFAAoAAAD+/wgAAQAEAAoAAAD+/wkAAQAAAAcAAAD+/woAAQAEAAoAAAD+/wsAAQAAAAcAAAD+/wwAAQAAAAcAAAD+/w0AAQAFAAoAAAD+/w4AAQAAAAcAAAD+/w8AAQAAAAcAAAD+/xAAAQAEAAoAAAD+/xEAAQAAAAcAAAD+/xIAAQAEAAoAAAD+/xMAAQAAAAcAAAD///n/AQAEAAoAAAD///r/AQAEAAoAAAD///v/AQAAAAcAAAD///z/AQAEAAoAAAD///3/AQAFAAoAAAD///7/AQAEAAoAAAD/////AQAEAAoAAAD//wAAAQAAAAcAAAD//wEAAQAEAAoAAAD//wIAAQAEAAoAAAD//wMAAQAEAAoAAAD//wQAAQAFAAoAAAD//wUAAQAAAAcAAAD//wYAAQAAAAcAAAD//wcAAQAFAAoAAAD//wgAAQAEAAoAAAD//wkAAQAFAAoAAAD//woAAQAEAAoAAAD//wsAAQAFAAoAAAD//wwAAQAEAAoAAAD//w0AAQAEAAoAAAD//w4AAQAFAAoAAAD//w8AAQAAAAcAAAD//xAAAQAAAAcAAAD//xEAAQAFAAoAAAD//xIAAQAAAAcAAAD//xMAAQAFAAoAAAD5/xQAAQAEAAoAAAD5/xUAAQAFAAoAAAD5/xYAAQAEAAoAAAD5/xcAAQAFAAoAAAD5/xgAAQAEAAoAAAD5/xkAAQAFAAoAAAD6/xQAAQAAAAcAAAD6/xUAAQAAAAcAAAD6/xYAAQAAAAcAAAD6/xcAAQAFAAoAAAD6/xgAAQAFAAoAAAD6/xkAAQAAAAcAAAD7/xQAAQAFAAoAAAD7/xUAAQAFAAoAAAD7/xYAAQAAAAcAAAD7/xcAAQAAAAcAAAD7/xgAAQAEAAoAAAD7/xkAAQAEAAoAAAD8/xQAAQAEAAoAAAD8/xUAAQAAAAcAAAD8/xYAAQAEAAoAAAD8/xcAAQAAAAcAAAD8/xgAAQAAAAcAAAD8/xkAAQAFAAoAAAD9/xQAAQAFAAoAAAD9/xUAAQAFAAoAAAD9/xYAAQAAAAcAAAD9/xcAAQAFAAoAAAD9/xgAAQAAAAcAAAD9/xkAAQAEAAoAAAD+/xQAAQAAAAcAAAD+/xUAAQAFAAoAAAD+/xYAAQAAAAcAAAD+/xcAAQAEAAoAAAD+/xgAAQAEAAoAAAD+/xkAAQAFAAoAAAD//xQAAQAAAAcAAAD//xUAAQAEAAoAAAD//xYAAQAEAAoAAAD//xcAAQAEAAoAAAD//xgAAQAEAAoAAAD//xkAAQAEAAoAAAAAABQAAQAAAAcAAAAAABUAAQAEAAoAAAAAABYAAQAAAAcAAAAAABcAAQAAAAcAAAAAABgAAQAFAAoAAAAAABkAAQAAAAcAAAABABQAAQAFAAoAAAABABUAAQAAAAcAAAABABYAAQAEAAoAAAABABcAAQAEAAoAAAABABgAAQAEAAoAAAABABkAAQAEAAoAAAACABQAAQAEAAoAAAACABUAAQAEAAoAAAACABYAAQAEAAoAAAACABcAAQAEAAoAAAACABgAAQAEAAoAAAACABkAAQAEAAoAAAADABQAAQAEAAoAAAADABUAAQAFAAoAAAADABYAAQAAAAcAAAADABcAAQAAAAcAAAADABgAAQAAAAcAAAADABkAAQAEAAoAAAAEABQAAQAFAAoAAAAEABUAAQAAAAcAAAAEABYAAQAEAAoAAAAEABcAAQAAAAcAAAAEABgAAQAFAAoAAAAEABkAAQAAAAcAAAAFABQAAQAFAAoAAAAFABUAAQAEAAoAAAAFABYAAQAEAAoAAAAFABcAAQAFAAoAAAAFABgAAQAEAAoAAAAFABkAAQAFAAoAAAAGABQAAQAEAAoAAAAGABUAAQAAAAcAAAAGABYAAQAFAAoAAAAGABcAAQAAAAcAAAAGABgAAQAAAAcAAAAGABkAAQAEAAoAAAAHABQAAQAEAAoAAAAHABUAAQAEAAoAAAAHABYAAQAAAAcAAAAHABcAAQAAAAcAAAAHABgAAQAAAAcAAAAHABkAAQAFAAoAAAAIABQAAQAFAAoAAAAIABUAAQAEAAoAAAAIABYAAQAAAAcAAAAIABcAAQAEAAoAAAAIABgAAQAEAAoAAAAIABkAAQAFAAoAAAAJABQAAQAAAAcAAAAJABUAAQAAAAcAAAAJABYAAQAEAAoAAAAJABcAAQAEAAoAAAAJABgAAQAEAAoAAAAJABkAAQAAAAcAAAAKABQAAQAAAAcAAAAKABUAAQAAAAcAAAAKABYAAQAAAAcAAAAKABcAAQAEAAoAAAAKABgAAQAAAAcAAAAKABkAAQAFAAoAAAALABQAAQAAAAcAAAALABUAAQAAAAcAAAALABYAAQAFAAoAAAALABcAAQAAAAcAAAALABgAAQAAAAcAAAALABkAAQAAAAcAAAAMABQAAQAEAAoAAAAMABUAAQAFAAoAAAAMABYAAQAAAAcAAAAMABcAAQAEAAoAAAAMABgAAQAAAAcAAAAMABkAAQAFAAoAAAANABQAAQAFAAoAAAANABUAAQAAAAcAAAANABYAAQAEAAoAAAANABcAAQAAAAcAAAANABgAAQAFAAoAAAANABkAAQAAAAcAAAAOABQAAQAFAAoAAAAOABUAAQAEAAoAAAAOABYAAQAFAAoAAAAOABcAAQAFAAoAAAAOABgAAQAEAAoAAAAOABkAAQAAAAcAAAAPABQAAQAEAAoAAAAPABUAAQAEAAoAAAAPABYAAQAAAAcAAAAPABcAAQAFAAoAAAAPABgAAQAFAAoAAAAPABkAAQAEAAoAAAAQABQAAQAAAAcAAAAQABUAAQAFAAoAAAAQABYAAQAFAAoAAAAQABcAAQAEAAoAAAAQABgAAQAAAAcAAAAQABkAAQAFAAoAAAARABQAAQAAAAcAAAARABUAAQAEAAoAAAARABYAAQAEAAoAAAARABcAAQAEAAoAAAARABgAAQAAAAcAAAARABkAAQAAAAcAAAASABQAAQAAAAcAAAASABUAAQAEAAoAAAASABYAAQAFAAoAAAASABcAAQAFAAoAAAASABgAAQAFAAoAAAASABkAAQAFAAoAAAATABQAAQAEAAoAAAATABUAAQAFAAoAAAATABYAAQAAAAcAAAATABcAAQAEAAoAAAATABgAAQAEAAoAAAATABkAAQAAAAcAAAAUABQAAQAEAAoAAAAUABUAAQAFAAoAAAAUABYAAQAFAAoAAAAUABcAAQAEAAoAAAAUABgAAQAAAAcAAAAUABkAAQAAAAcAAAAVABQAAQAFAAoAAAAVABUAAQAAAAcAAAAVABYAAQAEAAoAAAAVABcAAQAFAAoAAAAVABgAAQAFAAoAAAAVABkAAQAEAAoAAAAWABQAAQAAAAcAAAAWABUAAQAEAAoAAAAWABYAAQAAAAcAAAAWABcAAQAEAAoAAAAWABgAAQAEAAoAAAAWABkAAQAFAAoAAAAXABQAAQAEAAoAAAAXABUAAQAFAAoAAAAXABYAAQAAAAcAAAAXABcAAQAAAAcAAAAXABgAAQAEAAoAAAAXABkAAQAFAAoAAAAYABQAAQAEAAoAAAAYABUAAQAEAAoAAAAYABYAAQAFAAoAAAAYABcAAQAFAAoAAAAYABgAAQAFAAoAAAAYABkAAQAAAAcAAAAZABQAAQAEAAoAAAAZABUAAQAAAAcAAAAZABYAAQAAAAcAAAAZABcAAQAFAAoAAAAZABgAAQAAAAcAAAAZABkAAQAFAAoAAAAaABQAAQAFAAoAAAAaABUAAQAAAAcAAAAaABYAAQAEAAoAAAAaABcAAQAEAAoAAAAaABgAAQAEAAoAAAAaABkAAQAEAAoAAAAbABQAAQAAAAcAAAAbABUAAQAAAAcAAAAbABYAAQAFAAoAAAAbABcAAQAFAAoAAAAbABgAAQAEAAoAAAAbABkAAQAAAAcAAAAcABQAAQAEAAoAAAAcABUAAQAFAAoAAAAcABYAAQAAAAcAAAAcABcAAQAFAAoAAAAcABgAAQAAAAcAAAAcABkAAQAAAAcAAAAdABQAAQAFAAoAAAAdABUAAQAEAAoAAAAdABYAAQAFAAoAAAAdABcAAQAFAAoAAAAdABgAAQAAAAcAAAAdABkAAQAFAAoAAAAeABQAAQAAAAcAAAAeABUAAQAEAAoAAAAeABYAAQAAAAcAAAAeABcAAQAFAAoAAAAeABgAAQAFAAoAAAAeABkAAQAAAAcAAAAfABQAAQAAAAcAAAAfABUAAQAFAAoAAAAfABYAAQAAAAcAAAAfABcAAQAFAAoAAAAfABgAAQAEAAoAAAAfABkAAQAEAAoAAAAgABQAAQAFAAoAAAAgABUAAQAFAAoAAAAgABYAAQAAAAcAAAAgABcAAQAFAAoAAAAgABgAAQAAAAcAAAAgABkAAQAFAAoAAAAhABQAAQAEAAoAAAAhABUAAQAFAAoAAAAhABYAAQAAAAcAAAAhABcAAQAAAAcAAAAhABgAAQAFAAoAAAAhABkAAQAEAAoAAAAiABQAAQAEAAoAAAAiABUAAQAEAAoAAAAiABYAAQAAAAcAAAAiABcAAQAEAAoAAAAiABgAAQAAAAcAAAAiABkAAQAAAAcAAAAjAPv/AQAAAAcAAAAjAPz/AQAEAAoAAAAjAP3/AQAAAAcAAAAjAP7/AQAEAAoAAAAjAP//AQAAAAcAAAAjAAAAAQAEAAoAAAAjAAEAAQAEAAoAAAAjAAIAAQAFAAoAAAAjAAMAAQAFAAoAAAAjAAQAAQAAAAcAAAAjAAUAAQAAAAcAAAAjAAYAAQAEAAoAAAAjAAcAAQAEAAoAAAAjAAgAAQAAAAcAAAAjAAkAAQAEAAoAAAAjAAoAAQAFAAoAAAAjAAsAAQAEAAoAAAAjAAwAAQAEAAoAAAAjAA0AAQAEAAoAAAAjAA4AAQAAAAcAAAAjAA8AAQAEAAoAAAAjABAAAQAEAAoAAAAjABEAAQAAAAcAAAAjABIAAQAFAAoAAAAjABMAAQAFAAoAAAAjABQAAQAAAAcAAAAjABUAAQAEAAoAAAAjABYAAQAFAAoAAAAjABcAAQAEAAoAAAAjABgAAQAEAAoAAAAjABkAAQAFAAoAAAAkAPv/AQAAAAcAAAAkAPz/AQAFAAoAAAAkAP3/AQAAAAcAAAAkAP7/AQAAAAcAAAAkAP//AQAAAAcAAAAkAAAAAQAFAAoAAAAkAAEAAQAFAAoAAAAkAAIAAQAFAAoAAAAkAAMAAQAFAAoAAAAkAAQAAQAFAAoAAAAkAAUAAQAFAAoAAAAkAAYAAQAFAAoAAAAkAAcAAQAEAAoAAAAkAAgAAQAAAAcAAAAkAAkAAQAFAAoAAAAkAAoAAQAEAAoAAAAkAAsAAQAEAAoAAAAkAAwAAQAEAAoAAAAkAA0AAQAEAAoAAAAkAA4AAQAAAAcAAAAkAA8AAQAEAAoAAAAkABAAAQAAAAcAAAAkABEAAQAEAAoAAAAkABIAAQAEAAoAAAAkABMAAQAEAAoAAAAkABQAAQAAAAcAAAAkABUAAQAEAAoAAAAkABYAAQAFAAoAAAAkABcAAQAEAAoAAAAkABgAAQAFAAoAAAAkABkAAQAFAAoAAAAlAPv/AQAEAAoAAAAlAPz/AQAAAAcAAAAlAP3/AQAFAAoAAAAlAP7/AQAEAAoAAAAlAP//AQAAAAcAAAAlAAAAAQAFAAoAAAAlAAEAAQAFAAoAAAAlAAIAAQAAAAcAAAAlAAMAAQAFAAoAAAAlAAQAAQAAAAcAAAAlAAUAAQAFAAoAAAAlAAYAAQAFAAoAAAAlAAcAAQAAAAcAAAAlAAgAAQAEAAoAAAAlAAkAAQAAAAcAAAAlAAoAAQAEAAoAAAAlAAsAAQAAAAcAAAAlAAwAAQAAAAcAAAAlAA0AAQAAAAcAAAAlAA4AAQAAAAcAAAAlAA8AAQAFAAoAAAAlABAAAQAEAAoAAAAlABEAAQAFAAoAAAAlABIAAQAAAAcAAAAlABMAAQAEAAoAAAAlABQAAQAAAAcAAAAlABUAAQAFAAoAAAAlABYAAQAEAAoAAAAlABcAAQAFAAoAAAAlABgAAQAAAAcAAAAlABkAAQAEAAoAAAAmAPv/AQAEAAoAAAAmAPz/AQAEAAoAAAAmAP3/AQAEAAoAAAAmAP7/AQAEAAoAAAAmAP//AQAFAAoAAAAmAAAAAQAAAAcAAAAmAAEAAQAAAAcAAAAmAAIAAQAAAAcAAAAmAAMAAQAFAAoAAAAmAAQAAQAFAAoAAAAmAAUAAQAEAAoAAAAmAAYAAQAEAAoAAAAmAAcAAQAFAAoAAAAmAAgAAQAAAAcAAAAmAAkAAQAEAAoAAAAmAAoAAQAAAAcAAAAmAAsAAQAAAAcAAAAmAAwAAQAEAAoAAAAmAA0AAQAEAAoAAAAmAA4AAQAAAAcAAAAmAA8AAQAEAAoAAAAmABAAAQAEAAoAAAAmABEAAQAFAAoAAAAmABIAAQAFAAoAAAAmABMAAQAFAAoAAAAmABQAAQAAAAcAAAAmABUAAQAFAAoAAAAmABYAAQAAAAcAAAAmABcAAQAAAAcAAAAmABgAAQAAAAcAAAAmABkAAQAFAAoAAAAnAPv/AQAFAAoAAAAnAPz/AQAFAAoAAAAnAP3/AQAFAAoAAAAnAP7/AQAEAAoAAAAnAP//AQAEAAoAAAAnAAAAAQAEAAoAAAAnAAEAAQAFAAoAAAAnAAIAAQAEAAoAAAAnAAMAAQAAAAcAAAAnAAQAAQAFAAoAAAAnAAUAAQAEAAoAAAAnAAYAAQAAAAcAAAAnAAcAAQAFAAoAAAAnAAgAAQAEAAoAAAAnAAkAAQAAAAcAAAAnAAoAAQAEAAoAAAAnAAsAAQAFAAoAAAAnAAwAAQAEAAoAAAAnAA0AAQAAAAcAAAAnAA4AAQAFAAoAAAAnAA8AAQAFAAoAAAAnABAAAQAFAAoAAAAnABEAAQAAAAcAAAAnABIAAQAAAAcAAAAnABMAAQAEAAoAAAAnABQAAQAFAAoAAAAnABUAAQAFAAoAAAAnABYAAQAEAAoAAAAnABcAAQAEAAoAAAAnABgAAQAFAAoAAAAnABkAAQAAAAcAAAAoAPv/AQAFAAoAAAAoAPz/AQAEAAoAAAAoAP3/AQAEAAoAAAAoAP7/AQAFAAoAAAAoAP//AQAEAAoAAAAoAAAAAQAEAAoAAAAoAAEAAQAAAAcAAAAoAAIAAQAEAAoAAAAoAAMAAQAFAAoAAAAoAAQAAQAFAAoAAAAoAAUAAQAFAAoAAAAoAAYAAQAEAAoAAAAoAAcAAQAEAAoAAAAoAAgAAQAFAAoAAAAoAAkAAQAFAAoAAAAoAAoAAQAFAAoAAAAoAAsAAQAEAAoAAAAoAAwAAQAFAAoAAAAoAA0AAQAFAAoAAAAoAA4AAQAFAAoAAAAoAA8AAQAEAAoAAAAoABAAAQAEAAoAAAAoABEAAQAFAAoAAAAoABIAAQAEAAoAAAAoABMAAQAAAAcAAAAoABQAAQAAAAcAAAAoABUAAQAEAAoAAAAoABYAAQAAAAcAAAAoABcAAQAAAAcAAAAoABgAAQAFAAoAAAAoABkAAQAAAAcAAAApAPv/AQAFAAoAAAApAPz/AQAEAAoAAAApAP3/AQAEAAoAAAApAP7/AQAEAAoAAAApAP//AQAEAAoAAAApAAAAAQAFAAoAAAApAAEAAQAAAAcAAAApAAIAAQAEAAoAAAApAAMAAQAAAAcAAAApAAQAAQAFAAoAAAApAAUAAQAEAAoAAAApAAYAAQAEAAoAAAApAAcAAQAAAAcAAAApAAgAAQAAAAcAAAApAAkAAQAAAAcAAAApAAoAAQAAAAcAAAApAAsAAQAAAAcAAAApAAwAAQAEAAoAAAApAA0AAQAAAAcAAAApAA4AAQAEAAoAAAApAA8AAQAAAAcAAAApABAAAQAFAAoAAAApABEAAQAAAAcAAAApABIAAQAFAAoAAAApABMAAQAFAAoAAAApABQAAQAFAAoAAAApABUAAQAAAAcAAAApABYAAQAEAAoAAAApABcAAQAFAAoAAAApABgAAQAAAAcAAAApABkAAQAFAAoAAAAjAPn/AQAFAAoAAAAjAPr/AQAAAAcAAAAkAPn/AQAFAAoAAAAkAPr/AQAEAAoAAAAlAPn/AQAFAAoAAAAlAPr/AQAAAAcAAAAmAPn/AQAAAAcAAAAmAPr/AQAAAAcAAAAnAPn/AQAAAAcAAAAnAPr/AQAAAAcAAAAoAPn/AQAFAAoAAAAoAPr/AQAFAAoAAAApAPn/AQAEAAoAAAApAPr/AQAAAAcAAAA=")
+
+[node name="Props" parent="TileMap" index="2"]
+tile_map_data = PackedByteArray("AAAMAAEAAAAAAAEAAAA=")
+
+[editable path="UI/InventoryInterface/CookingUI/CookingInventoryInput"]
+[editable path="UI/InventoryInterface/CookingUI/CookingInventoryOutput"]
+[editable path="UI/InventoryInterface/ExternalInventory"]
+[editable path="TileMap"]

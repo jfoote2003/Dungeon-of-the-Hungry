@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://pdgp7itlmje1"]
+
+[ext_resource type="Script" uid="uid://dfwk7btykafbt" path="res://Menus/BattleMenu/battle_manager.gd" id="1_pgwby"]
+[ext_resource type="Script" uid="uid://bc57ufbnxhv6y" path="res://Menus/BattleMenu/battle_ui.gd" id="2_8w1qs"]
+[ext_resource type="PackedScene" uid="uid://clcgjtb2f4qmq" path="res://Menus/BattleMenu/player_stat_display.tscn" id="3_w2dpq"]
+
+[node name="BattleMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("1_pgwby")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_8w1qs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ActionMenu" type="VBoxContainer" parent="CanvasLayer/UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Fight" type="Button" parent="CanvasLayer/UI/HBoxContainer/ActionMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fight"
+
+[node name="Ability" type="Button" parent="CanvasLayer/UI/HBoxContainer/ActionMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ability"
+
+[node name="Item" type="Button" parent="CanvasLayer/UI/HBoxContainer/ActionMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Item"
+
+[node name="Run" type="Button" parent="CanvasLayer/UI/HBoxContainer/ActionMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Run"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/UI/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="player_stat_display" parent="CanvasLayer/UI/HBoxContainer/VBoxContainer2" instance=ExtResource("3_w2dpq")]
+layout_mode = 2
+
+[node name="player_stat_display2" parent="CanvasLayer/UI/HBoxContainer/VBoxContainer2" instance=ExtResource("3_w2dpq")]
+layout_mode = 2
+
+[node name="player_stat_display3" parent="CanvasLayer/UI/HBoxContainer/VBoxContainer2" instance=ExtResource("3_w2dpq")]
+layout_mode = 2
+
+[node name="player_stat_display4" parent="CanvasLayer/UI/HBoxContainer/VBoxContainer2" instance=ExtResource("3_w2dpq")]
+layout_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/ActionMenu/Fight" to="CanvasLayer/UI" method="_on_fight_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/ActionMenu/Ability" to="CanvasLayer/UI" method="_on_ability_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/ActionMenu/Item" to="CanvasLayer/UI" method="_on_item_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/ActionMenu/Run" to="CanvasLayer/UI" method="_on_run_pressed"]

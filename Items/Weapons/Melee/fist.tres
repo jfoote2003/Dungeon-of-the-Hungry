@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://cb7htn8hlmxdj"]
+
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_0bcgj"]
+
+[resource]
+script = ExtResource("1_0bcgj")
+effect_name = "Fist"
+description = "A basic fist attack"
+blunt_dmg = 1
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"

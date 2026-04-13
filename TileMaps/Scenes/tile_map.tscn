@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7rwi3ojrin51"]
+
+[ext_resource type="Script" uid="uid://5f0f4qi4nhwg" path="res://TileMaps/Scripts/tile_map.gd" id="1_bri18"]
+[ext_resource type="TileSet" uid="uid://cxapd4iigcomb" path="res://TileMaps/testing.tres" id="1_x06kw"]
+
+[node name="TileMap" type="Node"]
+script = ExtResource("1_bri18")
+
+[node name="ground" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+tile_set = ExtResource("1_x06kw")
+
+[node name="props_ground" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("1_x06kw")
+
+[node name="walls" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("1_x06kw")
+
+[node name="props_air" type="TileMapLayer" parent="."]
+z_index = 1
+y_sort_enabled = true
+tile_set = ExtResource("1_x06kw")

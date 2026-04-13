@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" load_steps=5 format=3 uid="uid://casd31kl8i31f"]
+
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_xdmya"]
+[ext_resource type="Script" uid="uid://cbquv6b5kjgem" path="res://Items/Weapons/item_data_weapon.gd" id="1_xrjcs"]
+[ext_resource type="Texture2D" uid="uid://iu1ieuc62bhi" path="res://Items/Weapons/Sprites/katana.png" id="2_sgfb6"]
+
+[sub_resource type="Resource" id="Resource_ixdp4"]
+script = ExtResource("1_xdmya")
+slash_dmg = 35.0
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
+
+[resource]
+script = ExtResource("1_xrjcs")
+effect = SubResource("Resource_ixdp4")
+primary_stat_scale = 1
+accuracy = 95
+name = "Katana"
+description = "This trusty weapon has faced many opponents in battle. it is caked with the dried blood of its many victims."
+texture = ExtResource("2_sgfb6")

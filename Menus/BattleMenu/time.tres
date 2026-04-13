@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cikklua3nkkvq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ip7xm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxp8w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7sfm4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i431l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t8i5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cow4l"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qupkc"]
+bg_color = Color(0.90625, 0.6942625, 0.13098145, 1)
+
+[resource]
+Button/colors/font_hover_color = Color(0.91796875, 0.796051, 0, 1)
+Button/colors/font_pressed_color = Color(0.71484375, 0.70925903, 0.70925903, 1)
+Button/colors/icon_hover_color = Color(0.99224854, 1, 0.0078125, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_ip7xm")
+Button/styles/focus = SubResource("StyleBoxEmpty_oxp8w")
+Button/styles/hover = SubResource("StyleBoxEmpty_7sfm4")
+Button/styles/normal = SubResource("StyleBoxEmpty_i431l")
+Button/styles/pressed = SubResource("StyleBoxEmpty_6t8i5")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_cow4l")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_qupkc")

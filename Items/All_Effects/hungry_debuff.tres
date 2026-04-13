@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://b5jag8re8rern"]
+
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_jjbqh"]
+
+[resource]
+script = ExtResource("1_jjbqh")
+effect_name = "Hungry"
+description = "you are now hungry"
+hungry = true
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
