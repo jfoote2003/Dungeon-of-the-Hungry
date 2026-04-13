@@ -175,3 +175,7 @@ func is_atb_gauge_full() -> bool:
 
 func get_random_atb(): #called at start of combat for each combatant
 	atb_gauge = randf_range(0, get_speed() + 10) #0 - 30
+
+func take_damage(attack_effect : Effect):
+	var total_dmg : int = attack_effect.get_total_dmg(equipment_effect)
+	change_health(total_dmg)

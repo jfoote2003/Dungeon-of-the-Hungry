@@ -26,12 +26,6 @@ func _ready():
 	PlayerManager.player = self
 	state_machine.Initalize(self)
 	
-	#party.add_member(PLAYER_COMBATANT) #important do not remove
-	#party.add_member(TESTING)
-	#print(rpg_class.MAX_LEVEL)
-
-#func _init() -> void:
-	#get_parent().player_initialize()
 
 func _process(_delta):
 	direction = Vector2( Input.get_axis("left","right") , Input.get_axis("up","down")).normalized()
