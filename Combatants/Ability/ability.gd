@@ -27,7 +27,7 @@ enum TargetType {
 	random_enemy,
 	random_ally,
 	random_combatant,
-	area
+	all_combatants
 }
 
 enum AbilityType{

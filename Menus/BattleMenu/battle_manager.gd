@@ -74,10 +74,27 @@ func get_random_ally() -> Combatant:
 func get_random_enemy() -> Combatant:
 	return enemies.pick_random()
 
-func remove_combatant(combatant : Combatant) -> bool:
-	var output : bool = false
-	var location = all_combatants.find(combatant)
-	if location == -1:
-		return output #combatant not in all_combatants
-	all_combatants.pop_at(location)
-	return output
+func get_valid_targets(ability : Ability, user : Combatant) -> Array[Combatant]:
+	match ability.target_type:
+		Ability.TargetType.single_enemy:
+			return enemies.filter(is_alive)
+		Ability.TargetType.all_enemies:
+			return enemies.filter(is_alive)
+		Ability.TargetType.random_enemy:
+			return enemies.filter(is_alive)
+		Ability.TargetType.single_ally:
+			return allies.filter(is_alive)
+		Ability.TargetType.all_allies:
+			return allies.filter(is_alive)
+		Ability.TargetType.random_ally:
+			return allies.filter(is_alive)
+		Ability.TargetType.Self:
+			return [user]
+		Ability.TargetType.all_combatants:
+			return all_combatants.filter(is_alive)
+		Ability.TargetType.random_combatant:
+			return all_combatants.filter(is_alive)
+	return []
+
+func is_alive(combatant : Combatant) -> bool:
+	return combatant.is_alive()
