@@ -11,13 +11,13 @@ z_index = 1
 script = ExtResource("1_pjtoe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -8)
+position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_c8lbn")
 debug_color = Color(0.9712345, 0.13112852, 0.28446454, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(8, -8)
+position = Vector2(8, 8)
 texture = ExtResource("2_c8lbn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://brpwhgi3ip3oe"]
+[gd_scene load_steps=23 format=4 uid="uid://brpwhgi3ip3oe"]
 
 [ext_resource type="Script" uid="uid://br30xtffdatfa" path="res://Levels/Scripts/main.gd" id="1_1drdg"]
 [ext_resource type="PackedScene" uid="uid://b7rwi3ojrin51" path="res://TileMaps/Scenes/tile_map.tscn" id="1_dd6y1"]
@@ -15,6 +15,9 @@
 [ext_resource type="Resource" uid="uid://ci7kyrnldm7ic" path="res://Items/Armor/Helmets/AllHelmets/temp_helmet.tres" id="12_m2t7n"]
 [ext_resource type="PackedScene" uid="uid://cgc1aosd3tyk0" path="res://Props/CookingFire/CookingFire.tscn" id="14_2rrke"]
 [ext_resource type="PackedScene" uid="uid://cl0dm4fen1cmy" path="res://Levels/LevelTransition/level_transition.tscn" id="15_7nioc"]
+[ext_resource type="PackedScene" uid="uid://cpu8oq3boscxg" path="res://Items/item_pickup/item_pickup.tscn" id="16_m2t7n"]
+[ext_resource type="Resource" uid="uid://bl4dtonepra8p" path="res://Items/Weapons/Melee/Swords/dragon_slayer.tres" id="17_y8pu0"]
+[ext_resource type="Resource" uid="uid://yvo44lb737yy" path="res://Items/Ingredients/AllIngredients/BrownMushroom.tres" id="18_uljri"]
 
 [sub_resource type="Resource" id="Resource_qqc7k"]
 script = ExtResource("9_7nioc")
@@ -363,6 +366,30 @@ position = Vector2(168, 120)
 level = "uid://caya2g7bj5tge"
 size = 1
 side = 2
+
+[node name="ItemPickup" parent="." instance=ExtResource("16_m2t7n")]
+position = Vector2(271, 122)
+item_data = ExtResource("10_hfyob")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("16_m2t7n")]
+position = Vector2(236, 231)
+item_data = ExtResource("10_hfyob")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("16_m2t7n")]
+position = Vector2(513, 144)
+item_data = ExtResource("17_y8pu0")
+
+[node name="ItemPickup4" parent="." instance=ExtResource("16_m2t7n")]
+position = Vector2(114, 204)
+item_data = ExtResource("18_uljri")
+
+[node name="ItemPickup5" parent="." instance=ExtResource("16_m2t7n")]
+position = Vector2(161, 347)
+item_data = ExtResource("10_hfyob")
+
+[node name="ItemPickup6" parent="." instance=ExtResource("16_m2t7n")]
+position = Vector2(406, 385)
+item_data = ExtResource("18_uljri")
 
 [editable path="TileMap"]
 [editable path="UI/InventoryInterface/CookingUI/CookingInventoryInput"]
