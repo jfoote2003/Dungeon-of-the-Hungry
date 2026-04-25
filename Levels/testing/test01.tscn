@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://brpwhgi3ip3oe"]
+[gd_scene load_steps=24 format=4 uid="uid://brpwhgi3ip3oe"]
 
 [ext_resource type="Script" uid="uid://br30xtffdatfa" path="res://Levels/Scripts/main.gd" id="1_1drdg"]
 [ext_resource type="PackedScene" uid="uid://b7rwi3ojrin51" path="res://TileMaps/Scenes/tile_map.tscn" id="1_dd6y1"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cpu8oq3boscxg" path="res://Items/item_pickup/item_pickup.tscn" id="16_m2t7n"]
 [ext_resource type="Resource" uid="uid://bl4dtonepra8p" path="res://Items/Weapons/Melee/Swords/dragon_slayer.tres" id="17_y8pu0"]
 [ext_resource type="Resource" uid="uid://yvo44lb737yy" path="res://Items/Ingredients/AllIngredients/BrownMushroom.tres" id="18_uljri"]
+[ext_resource type="PackedScene" uid="uid://b00hb7ds51iv0" path="res://Levels/LevelTransition/door_transition.tscn" id="19_y8pu0"]
 
 [sub_resource type="Resource" id="Resource_qqc7k"]
 script = ExtResource("9_7nioc")
@@ -39,7 +40,7 @@ metadata/_custom_type_script = "uid://bf2npp2mjwn80"
 script = ExtResource("8_2rrke")
 slot_datas = Array[ExtResource("9_7nioc")]([SubResource("Resource_qqc7k"), SubResource("Resource_nm6dr"), SubResource("Resource_yu074"), null, null, null, null, null, null])
 
-[node name="temp_town" type="Node2D"]
+[node name="temp_town" type="Node2D" groups=["level"]]
 y_sort_enabled = true
 script = ExtResource("1_1drdg")
 
@@ -350,11 +351,10 @@ inventory_data = SubResource("Resource_y8pu0")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("7_4tlgu")]
 z_index = 1
-position = Vector2(197, 187)
+position = Vector2(420, 495)
 
-[node name="CookingFire" parent="." node_paths=PackedStringArray("button") instance=ExtResource("14_2rrke")]
+[node name="CookingFire" parent="." instance=ExtResource("14_2rrke")]
 position = Vector2(386, 533)
-button = NodePath("../UI/InventoryInterface/CookingUI/CookingButton")
 
 [node name="Chest2" parent="." instance=ExtResource("7_f7il7")]
 position = Vector2(451, 409)
@@ -390,6 +390,17 @@ item_data = ExtResource("10_hfyob")
 [node name="ItemPickup6" parent="." instance=ExtResource("16_m2t7n")]
 position = Vector2(406, 385)
 item_data = ExtResource("18_uljri")
+
+[node name="DoorTransition" parent="." instance=ExtResource("19_y8pu0")]
+position = Vector2(304, 440)
+level = "uid://caya2g7bj5tge"
+target_transistion_area = "LevelTransition"
+
+[node name="DoorTransition2" parent="." instance=ExtResource("19_y8pu0")]
+position = Vector2(336, 440)
+scale = Vector2(-1, 1)
+level = "uid://caya2g7bj5tge"
+target_transistion_area = "LevelTransition"
 
 [editable path="TileMap"]
 [editable path="UI/InventoryInterface/CookingUI/CookingInventoryInput"]

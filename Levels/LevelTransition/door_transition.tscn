@@ -1,3 +1,37 @@
-[gd_scene format=3 uid="uid://b00hb7ds51iv0"]
+[gd_scene load_steps=6 format=3 uid="uid://b00hb7ds51iv0"]
+
+[ext_resource type="Script" uid="uid://ebhl8x33e4pp" path="res://Levels/Scripts/door_transition.gd" id="1_pteqe"]
+[ext_resource type="Texture2D" uid="uid://cti4tsl46vtlf" path="res://TileMaps/Sprites/test2.png" id="2_mluay"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4f3j"]
+atlas = ExtResource("2_mluay")
+region = Rect2(0, 240, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wc3c"]
+atlas = ExtResource("2_mluay")
+region = Rect2(32, 240, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mluay"]
+size = Vector2(16, 32)
 
 [node name="DoorTransition" type="Node2D"]
+z_index = 1
+script = ExtResource("1_pteqe")
+target_transistion_area = "DoorTransition"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_o4f3j")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(8, 24)
+texture = SubResource("AtlasTexture_2wc3c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 48
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(8, 16)
+shape = SubResource("RectangleShape2D_mluay")
+debug_color = Color(0.4509804, 0, 0.7019608, 0.27450982)

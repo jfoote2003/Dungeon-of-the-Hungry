@@ -9,12 +9,10 @@ var all_recipes = [MUSHROOM_SOUP_R]
 
 @export var inventory_input : InventoryData
 @export var inventory_output : InventoryData
-@export var button : Button
 @export var can_interact : bool = true
 
 func _ready() -> void:
 	$Sprite2D.play("default",1,false)
-	#button.pressed.connect(cooking)
 	$AudioStreamPlayer2D.playing = true
 
 func interact():

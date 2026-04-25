@@ -28,6 +28,10 @@ SceneTransistion="*res://Menus/GameMenu/scene_transistion/scene_transistion.tscn
 
 window/size/mode=3
 
+[global_group]
+
+level=""
+
 [gui]
 
 theme/default_theme_scale=1.5

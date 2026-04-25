@@ -60,22 +60,20 @@ metadata/_custom_type_script = "uid://bf2npp2mjwn80"
 script = ExtResource("5_6y52f")
 slot_datas = Array[ExtResource("5_grpg7")]([null, null, SubResource("Resource_n3efn"), null, null, null, null, null, null])
 
-[node name="Testing" type="Node2D"]
+[node name="Testing" type="Node2D" groups=["level"]]
 script = ExtResource("1_mp84t")
 
 [node name="Chest" parent="." instance=ExtResource("4_2lmcx")]
 position = Vector2(392, 182)
 inventory_data = SubResource("Resource_52yss")
 
-[node name="CookingFire" parent="." node_paths=PackedStringArray("button") instance=ExtResource("11_qqc7k")]
+[node name="CookingFire" parent="." instance=ExtResource("11_qqc7k")]
 position = Vector2(124, 190)
 inventory_input = SubResource("Resource_iwa5b")
-button = NodePath("../UI/InventoryInterface/CookingUI/CookingButton")
 
-[node name="CookingFire2" parent="." node_paths=PackedStringArray("button") instance=ExtResource("11_qqc7k")]
+[node name="CookingFire2" parent="." instance=ExtResource("11_qqc7k")]
 position = Vector2(299, 260)
 inventory_input = SubResource("Resource_5hair")
-button = NodePath("../UI/InventoryInterface/CookingUI/CookingButton")
 
 [node name="Chest2" parent="." instance=ExtResource("4_2lmcx")]
 position = Vector2(51, 86)

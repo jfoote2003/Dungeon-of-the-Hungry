@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://caya2g7bj5tge"]
+[gd_scene load_steps=10 format=4 uid="uid://caya2g7bj5tge"]
 
 [ext_resource type="Script" uid="uid://br30xtffdatfa" path="res://Levels/Scripts/main.gd" id="1_q268e"]
 [ext_resource type="PackedScene" uid="uid://b7rwi3ojrin51" path="res://TileMaps/Scenes/tile_map.tscn" id="1_qcl3m"]
@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dcv0uyse71v7r" path="res://Menus/GameMenu/GameMenu.tscn" id="5_fe7vn"]
 [ext_resource type="PackedScene" uid="uid://bj6fb7gtno5lt" path="res://Levels/player_spawn.tscn" id="6_lw506"]
 [ext_resource type="PackedScene" uid="uid://cl0dm4fen1cmy" path="res://Levels/LevelTransition/level_transition.tscn" id="8_fe7vn"]
+[ext_resource type="PackedScene" uid="uid://cd4n7af7fpgk7" path="res://Props/Chest/Chest.tscn" id="9_wd7ou"]
 
-[node name="dungeon_01_01" type="Node2D"]
+[node name="dungeon_01_01" type="Node2D" groups=["level"]]
 script = ExtResource("1_q268e")
 
 [node name="TileMap" parent="." instance=ExtResource("1_qcl3m")]
@@ -333,6 +334,9 @@ side = 3
 z_index = 1
 position = Vector2(0, 304)
 level = "uid://dlr87npxnsai2"
+
+[node name="Chest" parent="." instance=ExtResource("9_wd7ou")]
+position = Vector2(495, 341)
 
 [editable path="TileMap"]
 [editable path="UI/InventoryInterface/CookingUI/CookingInventoryInput"]

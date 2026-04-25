@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b6bcmgfimhktm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fr2xq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cr7u1"]
+
+[resource]
+Button/colors/font_hover_color = Color(0.74609375, 0.74609375, 0.74609375, 1)
+Button/colors/font_hover_pressed_color = Color(0.8603821, 0.91015625, 0, 1)
+Button/styles/normal = SubResource("StyleBoxEmpty_fr2xq")
+Button/styles/pressed = SubResource("StyleBoxEmpty_cr7u1")

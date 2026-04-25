@@ -17,12 +17,12 @@ signal died(combatant : Combatant)
 @export var weapon_inv_data : InventoryDataWeapon
 
 enum CombatantState {
-	idle, 		#atb gauge filling 0
-	ready,		#atb gauge full, awaiting input 1
-	acting,		#preforming action 2
-	casting,	#using ability 3
-	stunned,	#can't act temp 4
-	dead		#can't act 5
+	idle, 		#atb gauge filling -> 0
+	ready,		#atb gauge full, awaiting input -> 1
+	acting,		#preforming action -> 2
+	casting,	#using ability -> 3
+	stunned,	#can't act temp -> 4
+	dead		#can't act -> 5
 }
 
 var equipment_effect : Effect
@@ -87,7 +87,7 @@ func reset_speed():
 func increase_speed(new_speed : float):
 	rpg_class.speed = new_speed + (rpg_class.agility / 10.0)
 
-func get_equipment_effects() -> Effect: #executed at the beginning of combat for each combatant
+func get_equipment_effects(): #executed at the beginning of combat for each combatant
 	var equipment_array : Array = []
 	var output : Effect = Effect.new()
 	
@@ -100,7 +100,7 @@ func get_equipment_effects() -> Effect: #executed at the beginning of combat for
 	
 	output.combine(equipment_array)
 	
-	return output
+	equipment_effect = output
 
 func get_weapon_effect() -> Effect: #called when combatant attacks with primary/basic attack
 	var weapon_effect : Effect

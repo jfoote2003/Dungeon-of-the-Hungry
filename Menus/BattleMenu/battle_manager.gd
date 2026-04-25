@@ -35,32 +35,33 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	for combatant in all_combatants:
-		if combatant.current_state == 0:
+		if combatant and combatant.current_state == 0:
 			combatant.increase_atb(battle_speed)
 			combatant_ready(combatant)
 	
 	pass
 
 func _unhandled_input(_event: InputEvent) -> void: #temp
-	if Input.is_action_just_pressed("settings"): 
+	if Input.is_action_just_pressed("settings"): #for debugging
 		get_tree().quit()
 
 func start_of_combat() -> void:
-	
+	for combatant in all_combatants:
+		combatant.get_equipment_effects()
 	pass
 
 func combatant_ready(combatant : Combatant):
 	if combatant.is_ally:
-		combatant.current_state = combatant.BattleState.ready
+		combatant.current_state = Combatant.CombatantState.ready
 		show_action_menu()
 	else:
 		get_ai_action(combatant)
 
 func hide_action_menu():
-	%UI.hide_action_menu()
+	%UI.hide_option_menu()
 
 func show_action_menu():
-	%UI.show_action_menu()
+	%UI.show_option_menu()
 
 func get_ai_action(combatant : Combatant):
 	pass

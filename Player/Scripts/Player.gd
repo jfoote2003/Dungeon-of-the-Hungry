@@ -76,8 +76,6 @@ func check_interaction():
 		var collider = ray_cast.get_collider()
 		if collider.get_parent().has_method("interact"):
 			collider.get_parent().interact()
-		#elif collider.get_parent().has_method("open"):
-			#collider.get_parent().open()
 
 func update_raycast_direction():
 	match cardinal_direction:
