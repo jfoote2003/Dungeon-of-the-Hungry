@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://pdgp7itlmje1"]
+[gd_scene load_steps=7 format=3 uid="uid://pdgp7itlmje1"]
 
 [ext_resource type="Script" uid="uid://dfwk7btykafbt" path="res://Menus/BattleMenu/battle_manager.gd" id="1_pgwby"]
 [ext_resource type="Script" uid="uid://bc57ufbnxhv6y" path="res://Menus/BattleMenu/battle_ui.gd" id="2_8w1qs"]
 [ext_resource type="Theme" uid="uid://b6bcmgfimhktm" path="res://Menus/BattleMenu/DefaultTheme.tres" id="3_hbj0w"]
 [ext_resource type="PackedScene" uid="uid://cxxrylm7dfxws" path="res://Menus/BattleMenu/window_default.tscn" id="3_q25w5"]
 [ext_resource type="PackedScene" uid="uid://clcgjtb2f4qmq" path="res://Menus/BattleMenu/player_stat_display.tscn" id="3_w2dpq"]
+[ext_resource type="PackedScene" uid="uid://bv8thunph2cmc" path="res://Menus/BattleMenu/battle_menu_combatant_display.tscn" id="6_318xx"]
 
 [node name="BattleMenu" type="Control"]
 layout_mode = 3
@@ -46,18 +47,41 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -425.0
-offset_top = -120.0
+offset_top = -160.0
 offset_right = 425.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 2
 
 [node name="Enemies" parent="UI/InfoMenu" instance=ExtResource("3_q25w5")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Players" parent="UI/InfoMenu" instance=ExtResource("3_q25w5")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_stretch_ratio = 1.6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InfoMenu/Players"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="player_stat_display" parent="UI/InfoMenu/Players/VBoxContainer" instance=ExtResource("3_w2dpq")]
+layout_mode = 2
+
+[node name="player_stat_display2" parent="UI/InfoMenu/Players/VBoxContainer" instance=ExtResource("3_w2dpq")]
+layout_mode = 2
+
+[node name="player_stat_display3" parent="UI/InfoMenu/Players/VBoxContainer" instance=ExtResource("3_w2dpq")]
+layout_mode = 2
+
+[node name="player_stat_display4" parent="UI/InfoMenu/Players/VBoxContainer" instance=ExtResource("3_w2dpq")]
+layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UI/InfoMenu"]
 visible = false
@@ -87,7 +111,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -319.0
-offset_top = -120.0
+offset_top = -125.0
 offset_right = -119.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -100,7 +124,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 5
 alignment = 1
 
 [node name="current_combatant_label" type="Label" parent="UI/Options/ActionMenu"]
@@ -128,6 +152,14 @@ text = "Item"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Run"
+
+[node name="BattleMenuCombatantDisplay" parent="UI" instance=ExtResource("6_318xx")]
+layout_mode = 0
+offset_left = 961.0
+offset_top = 74.0
+offset_right = 961.0
+offset_bottom = 74.0
+scale = Vector2(2, 2)
 
 [connection signal="pressed" from="UI/Options/ActionMenu/Fight" to="UI" method="_on_fight_pressed"]
 [connection signal="pressed" from="UI/Options/ActionMenu/Ability" to="UI" method="_on_ability_pressed"]
