@@ -1,5 +1,9 @@
 class_name BattleUI extends Control
 
+func _ready() -> void:
+	for child in %VisualPlayers.get_children():
+		child.play_animation("none","down")
+		print("testing")
 
 func show_option_menu():
 	%Options.visible = true

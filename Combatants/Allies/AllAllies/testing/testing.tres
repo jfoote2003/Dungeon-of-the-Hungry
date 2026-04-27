@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Combatant" load_steps=19 format=3 uid="uid://gy51f0ps154m"]
+[gd_resource type="Resource" script_class="Combatant" load_steps=20 format=3 uid="uid://gy51f0ps154m"]
 
 [ext_resource type="Script" uid="uid://c0yrnvp26clth" path="res://Combatants/Combatant/combatants.gd" id="1_00ajl"]
 [ext_resource type="Script" uid="uid://bmthc4klvewgt" path="res://Player/inventory/Scripts/inventory_data_boots.gd" id="1_20my1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bg13pcscr3r7" path="res://Player/inventory/Scripts/inventory_data_ring.gd" id="7_m7qv7"]
 [ext_resource type="Resource" uid="uid://bv4vi1a7ujij1" path="res://Combatants/Classes/Mage/mage.tres" id="8_e6rib"]
 [ext_resource type="Script" uid="uid://brp1e4sp4uke2" path="res://Player/inventory/Scripts/inventory_data_weapon.gd" id="10_vadrm"]
+[ext_resource type="Texture2D" uid="uid://bbn06yrvt67ep" path="res://Npcs/allNpcs/testing/sprite_template_test.png" id="10_winwm"]
 
 [sub_resource type="Resource" id="Resource_whstv"]
 script = ExtResource("1_20my1")
@@ -63,5 +64,6 @@ ring1_inv_data = SubResource("Resource_20my1")
 ring2_inv_data = SubResource("Resource_winwm")
 offhand_inv_data = SubResource("Resource_axhoh")
 weapon_inv_data = SubResource("Resource_sj4px")
-is_ally = null
+texture = ExtResource("10_winwm")
+is_ally = true
 metadata/_custom_type_script = "uid://c0yrnvp26clth"

@@ -16,6 +16,8 @@ signal died(combatant : Combatant)
 @export var offhand_inv_data : InventoryDataOffhand
 @export var weapon_inv_data : InventoryDataWeapon
 
+@export var texture : Texture2D
+
 enum CombatantState {
 	idle, 		#atb gauge filling -> 0
 	ready,		#atb gauge full, awaiting input -> 1

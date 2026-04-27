@@ -28,8 +28,13 @@ func update_initial_visuals() -> void:
 	%DefaultVisuals.custom_minimum_size = Vector2(x,y)
 	if combatant:
 		%DefaultVisuals.visible = false
+		%VBoxContainer.custom_minimum_size = combatant.texture.get_size()
+		%CombatantDisplay.texture = combatant.texture
+		%CombatantDisplay.visible = true
 	else:
 		%DefaultVisuals.visible = true
+		%VBoxContainer.custom_minimum_size = Vector2(16,32)
+		%CombatantDisplay.visible = false
 
 func show_selection_arrow() -> void:
 	#%SelectionArrow.visible = true
@@ -46,4 +51,4 @@ func set_arrow_color(r : int, g : int, b : int) -> void:
 	#%SelectionArrow.modulate = Color(r,g,b,1)
 
 func play_animation(ability_name : String, direction : String) -> void:
-	%AnimationPlayer.play(combatant.combatant_name + ability_name + direction)
+	%AnimationPlayer.play(combatant.combatant_name + "_" + ability_name + "_" + direction)
