@@ -1,11 +1,6 @@
 @tool
 class_name ItemPickup extends Area2D
 
-#@export var slot_data : SlotData :
-	#set(_value):
-		#slot_data = _value
-		#update_visuals()
-
 @export var item_data : ItemData :
 	set(_value):
 		item_data = _value

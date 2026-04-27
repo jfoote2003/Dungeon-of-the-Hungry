@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwc1mu8x2ifpc"
-path="res://.godot/imported/temp_sprite_display.png-54a42d6520ba890a1a46ac8e866fb335.ctex"
+uid="uid://dml4fe6bgckgi"
+path="res://.godot/imported/temp_arrow.png-ec5aba5f3e92cb41ac9efb5785791b7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Menus/BattleMenu/temp_sprite_display.png"
-dest_files=["res://.godot/imported/temp_sprite_display.png-54a42d6520ba890a1a46ac8e866fb335.ctex"]
+source_file="res://Menus/BattleMenu/temp_arrow.png"
+dest_files=["res://.godot/imported/temp_arrow.png-ec5aba5f3e92cb41ac9efb5785791b7c.ctex"]
 
 [params]
 
