@@ -171,7 +171,6 @@ offset_left = 104.0
 offset_top = 114.0
 offset_right = 104.0
 offset_bottom = 114.0
-scale = Vector2(2, 2)
 combatant = ExtResource("7_muh00")
 
 [connection signal="pressed" from="UI/Options/ActionMenu/Fight" to="UI" method="_on_fight_pressed"]

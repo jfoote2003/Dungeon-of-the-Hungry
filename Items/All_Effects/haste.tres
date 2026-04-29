@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://cfkrss8ogl1fy"]
+
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_0s57n"]
+
+[resource]
+script = ExtResource("1_0s57n")
+effect_name = "Haste"
+description = "increases speed of targeted combatant."
+speed_change = 10
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"

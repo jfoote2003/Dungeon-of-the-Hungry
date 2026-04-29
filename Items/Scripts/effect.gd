@@ -39,6 +39,9 @@ class_name Effect extends Resource
 @export var speed_change : int = 0
 @export var hunger_change : int = 0
 @export var max_health_change : int = 0
+@export var health_change : int = 0 :
+	set(_value):
+		health_change = max(0,_value)
 
 var prim_modifier : int = 0
 

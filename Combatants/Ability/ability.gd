@@ -61,3 +61,6 @@ func use(user : Combatant, targets : Array[Combatant]):
 
 func can_use(user : Combatant) -> bool:
 	return user.get_hunger() >= hunger_cost
+
+func is_combo_ability() -> bool:
+	return false
