@@ -5,7 +5,7 @@ signal died(combatant : Combatant)
 @export var combatant_name : String = "default"
 @export var rpg_class : RPGClass = null
 
-#@export var combat_sprite_sheet : Texture2D
+@export var stealable_item : InventoryData = null
 
 @export var helmet_inv_data : InventoryDataHelmet
 @export var chest_inv_data : InventoryDataChestplate
@@ -28,12 +28,12 @@ enum CombatantState {
 }
 
 var equipment_effect : Effect
-
 var status_effects : Array[StatusEffect]
 
 var atb_gauge : float = 0.0 #0.0 - 100.0
 const MAX_ATB : float = 100.0
 @export var is_ally : bool = false
+@export var dodge_chance : int = 0
 
 var current_state : CombatantState = CombatantState.idle
 
@@ -178,6 +178,8 @@ func is_atb_gauge_full() -> bool:
 func get_random_atb(): #called at start of combat for each combatant
 	atb_gauge = randf_range(0, get_speed() + 10) #0 - 30
 
-func take_damage(attack_effect : Effect):
+func take_damage(attack_effect : Effect) -> bool:
+	var took_dmg : bool = false
 	var total_dmg : int = attack_effect.get_total_dmg(equipment_effect)
 	change_health(total_dmg)
+	return took_dmg

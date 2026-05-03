@@ -7,7 +7,7 @@ enum stat {strength, agility, endurance, intelligence, devotion, cooking, luck}
 @export var effect : Effect
 @export var weapon_type : weapon_types
 @export var primary_stat_scale : stat
-@export_range(0,100) var accuracy : int = 90
+
 
 func use(target):
 	target.fight(self)
@@ -53,5 +53,5 @@ func get_primary_dmg_scale() -> String:
 func get_effect() -> Effect:
 	if effect:
 		return effect
-	else:
+	else: #weapon with no effect
 		return Effect.new()

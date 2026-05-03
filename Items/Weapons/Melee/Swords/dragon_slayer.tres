@@ -13,7 +13,6 @@ metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
 [resource]
 script = ExtResource("1_7mwcv")
 effect = SubResource("Resource_vod1j")
-accuracy = 95
 name = "Dragon Slayer"
 description = "That thing was too big to be called a sword. Too big, too thick, too heavy, and too rough, it was more like a large hunk of iron."
 texture = ExtResource("2_lld4v")

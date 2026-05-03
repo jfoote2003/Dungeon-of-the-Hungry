@@ -13,7 +13,6 @@ metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
 script = ExtResource("1_xrjcs")
 effect = SubResource("Resource_ixdp4")
 primary_stat_scale = 1
-accuracy = 95
 name = "Katana"
 description = "This trusty weapon has faced many opponents in battle. it is caked with the dried blood of its many victims."
 texture = ExtResource("2_sgfb6")

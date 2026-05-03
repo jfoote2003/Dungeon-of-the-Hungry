@@ -3,7 +3,9 @@ class_name Ability extends Resource
 @export var ability_name : String = "Unknown"
 @export_multiline var description : String = ""
 @export var hunger_cost : int = 0
-@export var effect : Effect = null
+@export var effect : Effect = Effect.new()
+
+@export_range(0,100) var accuracy : int = 90
 
 @export var animation_id: String = "default"
 @export var sound_effect: String = ""
@@ -33,6 +35,7 @@ enum TargetType {
 enum AbilityType{
 	damage,
 	heal,
+	buff,
 	steal,
 	add_status,
 	remove_status,
