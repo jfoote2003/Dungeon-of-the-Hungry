@@ -162,6 +162,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -727.0
+offset_bottom = -161.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -172,6 +173,21 @@ offset_top = 114.0
 offset_right = 104.0
 offset_bottom = 114.0
 combatant = ExtResource("7_muh00")
+
+[node name="VisualEnemies" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 418.0
+offset_bottom = -161.0
+grow_vertical = 2
+
+[node name="BattleMenuCombatantDisplay" parent="UI/VisualEnemies" instance=ExtResource("6_318xx")]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 121.0
+offset_right = 182.0
+offset_bottom = 121.0
 
 [connection signal="pressed" from="UI/Options/ActionMenu/Fight" to="UI" method="_on_fight_pressed"]
 [connection signal="pressed" from="UI/Options/ActionMenu/Ability" to="UI" method="_on_ability_pressed"]

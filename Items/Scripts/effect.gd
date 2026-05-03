@@ -36,6 +36,7 @@ class_name Effect extends Resource
 @export_range(-20,20,1) var cooking_change : int = 0
 
 #other
+@export_range(0,2) var dmg_multiplier : float = 1 #
 @export var speed_change : int = 0
 @export var hunger_change : int = 0
 @export var max_health_change : int = 0

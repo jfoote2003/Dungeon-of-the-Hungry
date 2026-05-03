@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://budy3pbxyvqsx"]
+
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_aoi4y"]
+
+[resource]
+script = ExtResource("1_aoi4y")
+effect_name = "Berserk"
+description = "In this world, is the destiny of man controlled by some transcendental entity or law?"
+dmg_multiplier = 1.5
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"

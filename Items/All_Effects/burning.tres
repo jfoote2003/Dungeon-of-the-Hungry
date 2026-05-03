@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://pyxtinik0x2b"]
+
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_uxi7n"]
+
+[resource]
+script = ExtResource("1_uxi7n")
+effect_name = "Burning"
+description = "this effect is applied once per combatant turn"
+fire_dmg = 10.0
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"

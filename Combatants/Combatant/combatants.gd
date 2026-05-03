@@ -29,7 +29,7 @@ enum CombatantState {
 
 var equipment_effect : Effect
 
-var status_effects : Array[Effect]
+var status_effects : Array[StatusEffect]
 
 var atb_gauge : float = 0.0 #0.0 - 100.0
 const MAX_ATB : float = 100.0
@@ -42,7 +42,6 @@ var all_abilities  : Array[Ability] = []
 var max_abilities : int = 1
 
 const FIST = preload("uid://cb7htn8hlmxdj")
-const HUNGRY_DEBUFF = preload("uid://b5jag8re8rern")
 
 
 func _ready():
@@ -156,8 +155,9 @@ func change_hunger(change : int):
 	set_hunger( get_hunger() + change )
 	#hunger_changed.emit(get_hunger(), get_max_health())
 	if get_hunger() <= 0:
-		status_effects.append(HUNGRY_DEBUFF)
-
+		#status_effects.append(HUNGRY_DEBUFF)
+		status_effects.append(StatusEffect.new_hungry())
+ 
 func get_combatant_name() -> String:
 	return self.combatant_name
 

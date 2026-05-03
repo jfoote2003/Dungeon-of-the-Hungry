@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://daruo3m6ftvmn"]
+
+[ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_twtsq"]
+
+[resource]
+script = ExtResource("1_twtsq")
+effect_name = "flesh rot"
+necrotic_dmg = 10.0
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
