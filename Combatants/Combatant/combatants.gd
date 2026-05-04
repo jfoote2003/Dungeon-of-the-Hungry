@@ -6,6 +6,27 @@ signal status_effect_applied(status_name : String)
 @export var combatant_name : String = "default"
 @export var rpg_class : RPGClass = null
 
+#@export var override_rpg_stat : Array[int] = [] :
+	#set(_value):
+		#override_rpg_stat.resize(7)
+		#override_rpg_stats(_value)
+
+@export var override_strength : int
+@export var override_agility : int
+@export var override_endurance : int
+@export var override_intelligence : int
+@export var override_devotion : int
+@export var override_cooking : int
+@export var override_luck : int
+
+var override_rpg_stat_array = [override_strength, 
+override_agility, 
+override_endurance, 
+override_intelligence,
+override_devotion,
+override_cooking,
+override_luck]
+
 @export var stealable_item : InventoryData = null
 
 @export var helmet_inv_data : InventoryDataHelmet
@@ -43,10 +64,9 @@ var all_abilities  : Array[Ability] = []
 var max_abilities : int = 1
 
 const FIST = preload("uid://cb7htn8hlmxdj") #used if no weapon equipped
-const BASIC_ATTACK = preload("uid://cfk0cmt31lyfe") #used when fight button is pressed in BattleMenu
-
 
 func _ready():
+	
 	max_abilities = rpg_class.get_current_level()
 	if rpg_class:
 		apply_initial_stats()
@@ -201,3 +221,9 @@ func add_status(effect : StatusEffect):
 
 func apply_status_effects():
 	pass
+
+func make_basic_attack() -> Ability:
+	return null
+
+func override_rpg_stats(stat_array : Array[int]):
+	rpg_class.set_stats(stat_array)

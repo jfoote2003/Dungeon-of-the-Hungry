@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Combatant" load_steps=3 format=3 uid="uid://1jqo1lmoi5in"]
+
+[ext_resource type="Script" uid="uid://c0yrnvp26clth" path="res://Combatants/Combatant/combatants.gd" id="1_tacy7"]
+[ext_resource type="Resource" uid="uid://cleavl4cmnuyt" path="res://Combatants/Classes/Empty/empty.tres" id="1_wai5d"]
+
+[resource]
+script = ExtResource("1_tacy7")
+combatant_name = "Peacock Mantis Shrimp"
+rpg_class = ExtResource("1_wai5d")
+metadata/_custom_type_script = "uid://c0yrnvp26clth"

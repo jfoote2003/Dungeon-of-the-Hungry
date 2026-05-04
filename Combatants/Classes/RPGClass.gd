@@ -51,7 +51,7 @@ func get_rpg_class() -> String:
 func _to_string() -> String:
 	return str(strength) + " " + str(agility) + " " + str(endurance) + " " + str(intelligence) + " " + str(devotion) + " " + str(luck) + " " + str(cooking)
 
-func set_stats(stat_array : Array):
+func set_stats(stat_array : Array[int]):
 	strength = stat_array[0]
 	agility = stat_array[1]
 	endurance = stat_array[2]

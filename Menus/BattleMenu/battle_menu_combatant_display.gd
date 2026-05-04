@@ -1,6 +1,8 @@
 @tool
 class_name BattleMenuCombatantDisplay extends Control
 
+var yellow : Color = Color.YELLOW
+
 @export var x : int = 16 :
 	set(_value):
 		x = _value
@@ -15,6 +17,7 @@ class_name BattleMenuCombatantDisplay extends Control
 	set(_value):
 		combatant = _value
 		update_initial_visuals()
+
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 
@@ -25,6 +28,7 @@ func _ready() -> void:
 	#code
 
 func update_initial_visuals() -> void:
+	set_arrow_color_yellow()
 	%DefaultVisuals.custom_minimum_size = Vector2(x,y)
 	if combatant:
 		%DefaultVisuals.visible = false
@@ -37,18 +41,13 @@ func update_initial_visuals() -> void:
 		%CombatantDisplay.visible = false
 
 func show_selection_arrow() -> void:
-	#%SelectionArrow.visible = true
-	pass
+	%ArrowDisplay.visible = true
 
 func hide_selection_arrow() -> void:
-	#%SelectionArrow.visible = false
-	pass
+	%ArrowDisplay.visible = false
 
-func set_arrow_color(r : int, g : int, b : int) -> void:
-	r = clampi(r,0,255)
-	g = clampi(g,0,255)
-	b = clampi(b,0,255)
-	#%SelectionArrow.modulate = Color(r,g,b,1)
+func set_arrow_color_yellow() -> void:
+	%ArrowDisplay.modulate = Color.YELLOW
 
 func play_animation(ability_name : String, direction : String) -> void:
 	%AnimationPlayer.play(combatant.combatant_name + "_" + ability_name + "_" + direction)

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RPGClass" load_steps=2 format=3 uid="uid://cleavl4cmnuyt"]
+
+[ext_resource type="Script" uid="uid://ytrwyvsp0ghr" path="res://Combatants/Classes/RPGClass.gd" id="1_forhs"]
+
+[resource]
+script = ExtResource("1_forhs")
+rpg_class_name = 8
+metadata/_custom_type_script = "uid://ytrwyvsp0ghr"

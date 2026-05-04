@@ -99,8 +99,8 @@ func is_alive(combatant : Combatant) -> bool:
 func apply_abilities(ability : Ability, user : Combatant, targets : Array[Combatant]):
 	var final_targets : Array[Combatant]
 	
-	#if user.has_status("Berserk"):
-		#ability.target_type = Ability.TargetType.random_combatant
+	if user.has_status("Berserk"):
+		ability.target_type = Ability.TargetType.random_combatant
 	
 	if ability.target_type in [Ability.TargetType.all_enemies, 
 	Ability.TargetType.all_allies, 
@@ -113,9 +113,9 @@ func apply_abilities(ability : Ability, user : Combatant, targets : Array[Combat
 		final_targets = targets
 	
 	for target in targets:
-		resolve_effect(ability,user,target)
+		resolve_abilities(ability,user,target)
 
-func resolve_effect(ability : Ability, user : Combatant, target : Combatant):
+func resolve_abilities(ability : Ability, user : Combatant, target : Combatant):
 	match ability.effect_type:
 		Ability.AbilityType.damage:
 			resolve_dmg(ability,user,target)

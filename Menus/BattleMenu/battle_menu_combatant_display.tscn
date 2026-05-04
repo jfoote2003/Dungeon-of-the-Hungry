@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv8thunph2cmc"]
+[gd_scene load_steps=7 format=3 uid="uid://bv8thunph2cmc"]
 
 [ext_resource type="Script" uid="uid://dllt16qblimc5" path="res://Menus/BattleMenu/battle_menu_combatant_display.gd" id="1_pxn60"]
+[ext_resource type="Texture2D" uid="uid://dug6ipux47lu5" path="res://Menus/BattleMenu/temp_arrow.png" id="2_5myy8"]
 [ext_resource type="Texture2D" uid="uid://bbn06yrvt67ep" path="res://Npcs/allNpcs/testing/sprite_template_test.png" id="2_pxn60"]
 
 [sub_resource type="Animation" id="Animation_pxn60"]
@@ -125,6 +126,18 @@ custom_minimum_size = Vector2(16, 32)
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 38.0
+theme_override_constants/separation = 1
+
+[node name="ArrowDisplay" type="Control" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 0, 1)
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/ArrowDisplay"]
+position = Vector2(8, 4)
+texture = ExtResource("2_5myy8")
 
 [node name="DefaultVisuals" type="ColorRect" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -136,6 +149,7 @@ layout_mode = 2
 
 [node name="CombatantDisplay" type="Sprite2D" parent="VBoxContainer/Container"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(11, 17.5)
 hframes = 25
 
