@@ -8,7 +8,6 @@ class_name Ability extends Resource
 @export_range(0,100) var accuracy : int = 90
 
 @export var animation_id: String = "default"
-@export var sound_effect: String = ""
 
 enum stats {
 	strength,

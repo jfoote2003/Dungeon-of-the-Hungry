@@ -119,6 +119,18 @@ func resolve_effect(ability : Ability, user : Combatant, target : Combatant):
 	match ability.effect_type:
 		Ability.AbilityType.damage:
 			resolve_dmg(ability,user,target)
+		Ability.AbilityType.heal:
+			resolve_heal(ability,user,target)
+		Ability.AbilityType.buff:
+			resolve_buff(ability,user,target)
+		Ability.AbilityType.steal:
+			resolve_steal(ability,user,target)
+		Ability.AbilityType.add_status:
+			resolve_add_status(ability,user,target)
+		Ability.AbilityType.remove_status:
+			resolve_remove_status(ability,user,target)
+		Ability.AbilityType.revive:
+			resolve_revive(ability,user,target)
 
 func resolve_dmg(ability : Ability, user : Combatant, target : Combatant):
 	pass

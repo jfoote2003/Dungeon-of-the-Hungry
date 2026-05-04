@@ -1,6 +1,7 @@
 class_name Combatant extends Resource
 
 signal died(combatant : Combatant)
+signal status_effect_applied(status_name : String)
 
 @export var combatant_name : String = "default"
 @export var rpg_class : RPGClass = null
@@ -41,7 +42,8 @@ var prepped_abilities : Array[Ability] = []
 var all_abilities  : Array[Ability] = []
 var max_abilities : int = 1
 
-const FIST = preload("uid://cb7htn8hlmxdj")
+const FIST = preload("uid://cb7htn8hlmxdj") #used if no weapon equipped
+const BASIC_ATTACK = preload("uid://cfk0cmt31lyfe") #used when fight button is pressed in BattleMenu
 
 
 func _ready():
@@ -178,8 +180,24 @@ func is_atb_gauge_full() -> bool:
 func get_random_atb(): #called at start of combat for each combatant
 	atb_gauge = randf_range(0, get_speed() + 10) #0 - 30
 
-func take_damage(attack_effect : Effect) -> bool:
-	var took_dmg : bool = false
+func take_damage(attack_effect : Effect):
 	var total_dmg : int = attack_effect.get_total_dmg(equipment_effect)
-	change_health(total_dmg)
-	return took_dmg
+	change_health(-1 * total_dmg)
+
+func has_status(status_name : String) -> bool:
+	var output : bool = false
+	for effect in status_effects:
+		if effect.name == status_name:
+			output = true
+	return output
+
+func add_status(effect : StatusEffect):
+	for existing in status_effects:
+		if existing.name == effect.name:
+			existing.turn_duration += effect.turn_duration
+			return
+	status_effects.append(effect)
+	status_effect_applied.emit(effect.name)
+
+func apply_status_effects():
+	pass

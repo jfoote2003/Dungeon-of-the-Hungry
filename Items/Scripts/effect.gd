@@ -4,15 +4,15 @@ class_name Effect extends Resource
 @export_multiline var description : String = ""
 
 #damage
-@export var blunt_dmg : float = 0
-@export var piercing_dmg : float = 0
-@export var slash_dmg : float = 0
-@export var fire_dmg : float = 0
-@export var ice_dmg : float = 0
-@export var lightning_dmg : float = 0
-@export var holy_dmg : float = 0
-@export var necrotic_dmg : float = 0
-@export var chaotic_dmg : float = 0
+@export var blunt_dmg : int = 0
+@export var piercing_dmg : int = 0
+@export var slash_dmg : int = 0
+@export var fire_dmg : int = 0
+@export var ice_dmg : int = 0
+@export var lightning_dmg : int = 0
+@export var holy_dmg : int = 0
+@export var necrotic_dmg : int = 0
+@export var chaotic_dmg : int = 0
 
 #resistances
 #as the resistance gets closer to 1 you ignore all damage od a certain type and closer to -1 you take double damage of that type
@@ -119,3 +119,6 @@ func get_total_dmg(resistances : Effect) -> float: #gets applied to combatant wh
 
 func set_weapon_dmg(value : int): #adds primary scaling to basic attack
 	prim_modifier = value
+
+func has_dmg() -> bool:
+	return blunt_dmg > 0 or slash_dmg > 0 or piercing_dmg > 0 or fire_dmg > 0 or ice_dmg > 0 or lightning_dmg > 0 or holy_dmg > 0 or necrotic_dmg > 0 or chaotic_dmg > 0

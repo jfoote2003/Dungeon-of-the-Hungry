@@ -7,7 +7,7 @@ enum stat {strength, agility, endurance, intelligence, devotion, cooking, luck}
 @export var effect : Effect
 @export var weapon_type : weapon_types
 @export var primary_stat_scale : stat
-
+@export var accuracy : int = 90
 
 func use(target):
 	target.fight(self)
