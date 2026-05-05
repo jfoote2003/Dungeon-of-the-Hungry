@@ -14,6 +14,8 @@ class_name StatusEffect extends Resource
 
 @export var effect : Effect
 
+@export var dmg_multiplier : float = 1
+
 static func new_haste() -> StatusEffect:
 	var output = StatusEffect.new()
 	output.name = "haste"

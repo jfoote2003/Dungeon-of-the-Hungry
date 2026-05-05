@@ -7,10 +7,6 @@
 [sub_resource type="Resource" id="Resource_6hjua"]
 script = ExtResource("1_h6axr")
 effect_name = "temp helmet"
-blunt_res = 0.3500000000000001
-piercing_res = 0.19999999999999996
-slash_res = 0.30000000000000004
-necrotic_res = 0.19999999999999996
 metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
 
 [resource]

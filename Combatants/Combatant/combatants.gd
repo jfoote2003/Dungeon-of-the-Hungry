@@ -76,8 +76,11 @@ func _process(_delta):
 		pass
 
 func apply_initial_stats(): #function ran at the start of battle
+	#code to override initial rpgclass stats with the overriden ones
+	
 	rpg_class.set_health(rpg_class.get_max_health())
 	rpg_class.set_hunger(rpg_class.get_max_hunger())
+	
 	atb_gauge = randf_range(0,rpg_class.agility)
 
 func get_hunger() -> int:
@@ -204,20 +207,33 @@ func take_damage(attack_effect : Effect):
 	var total_dmg : int = attack_effect.get_total_dmg(equipment_effect)
 	change_health(-1 * total_dmg)
 
-func has_status(status_name : String) -> bool:
-	var output : bool = false
+func has_status(status_name : String) -> Array:
+	var output : Array = [false,null]
+	var index : int = 0
 	for effect in status_effects:
 		if effect.name == status_name:
-			output = true
+			output[0] = true
+			output[1] = index
+		index += 1
 	return output
 
 func add_status(effect : StatusEffect):
-	for existing in status_effects:
-		if existing.name == effect.name:
-			existing.turn_duration += effect.turn_duration
-			return
-	status_effects.append(effect)
-	status_effect_applied.emit(effect.name)
+	var location_array = has_status(effect.name)
+	if location_array[0] == true:
+		status_effects[location_array[1]].turn_duration += effect.turn_duration
+	else: #status_effect not in array
+		status_effects.append(effect)
+		status_effect_applied.emit(effect.name)
+
+func remove_status(status_name : String) -> bool:
+	var removed : bool = false
+	var location_array = has_status(status_name)
+	
+	if location_array[0] == true:
+		status_effects.pop_at(location_array[1])
+		removed = true
+	
+	return removed
 
 func apply_status_effects():
 	pass

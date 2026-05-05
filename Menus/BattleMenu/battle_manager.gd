@@ -22,9 +22,12 @@ enum BattleState{
 var current_battle_state : BattleState = BattleState.selecting_action
 var increase_atb : bool = true
 var current_combatant : Combatant
-var target_cursor : int = 0
+var target_cursor : int = 0 #index
 
-var battle_speed : float = 1.0 #speed of combat
+var battle_speed : float = 1.0
+
+var selected_ability : Ability
+var valid_targets : Array[Combatant] = []
 
 func _ready() -> void:
 	pass
@@ -41,6 +44,16 @@ func _unhandled_input(_event: InputEvent) -> void: #temp
 	if Input.is_action_just_pressed("settings"): #for debugging
 		get_tree().quit()
 
+func _input(event: InputEvent) -> void:
+	if current_battle_state == BattleState.selecting_target:
+		if event.is_action_pressed("ui_right"):
+			target_cursor = (target_cursor + 1) % valid_targets.size()
+		if event.is_action_pressed("ui_left"):
+			target_cursor = (target_cursor - 1 + valid_targets.size()) % valid_targets.size()
+		if event.is_action_pressed("ui_accept"):
+			#confirm_target()
+			pass
+
 func start_of_combat() -> void:
 	for combatant in all_combatants:
 		combatant.get_equipment_effects()
@@ -52,6 +65,24 @@ func combatant_ready(combatant : Combatant):
 		show_action_menu()
 	else:
 		get_ai_action(combatant)
+
+func confirm_target():
+	if valid_targets.is_empty():
+		return
+	var chosen = valid_targets[target_cursor]
+	apply_abilities(selected_ability, current_combatant, [chosen])
+	#end_turn() #TODO make end_turn method
+
+func select_abilities(ability : Ability):
+	selected_ability = ability
+	valid_targets = get_valid_targets(ability,current_combatant)
+	
+	if ability.target_type in [Ability.TargetType.all_enemies, Ability.TargetType.all_allies, Ability.TargetType.all_combatants]:
+		apply_abilities(ability, current_combatant, [])
+		#end_turn() #TODO make end_turn method
+	else:
+		current_battle_state = BattleState.selecting_target
+		target_cursor = 0
 
 func hide_action_menu():
 	%UI.hide_option_menu()

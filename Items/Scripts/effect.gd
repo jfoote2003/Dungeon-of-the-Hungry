@@ -15,16 +15,15 @@ class_name Effect extends Resource
 @export var chaotic_dmg : int = 0
 
 #resistances
-#as the resistance gets closer to 1 you ignore all damage od a certain type and closer to -1 you take double damage of that type
-@export_range(-1,1,.05) var blunt_res : float = 0
-@export_range(-1,1,.05) var piercing_res : float = 0
-@export_range(-1,1,.05) var slash_res : float = 0
-@export_range(-1,1,.05) var fire_res : float = 0
-@export_range(-1,1,.05) var ice_res : float = 0
-@export_range(-1,1,.05) var lightning_res : float = 0
-@export_range(-1,1,.05) var holy_res : float = 0
-@export_range(-1,1,.05) var necrotic_res : float = 0
-@export_range(-1,1,.05) var chaotic_res : float = 0
+@export var blunt_res : int = 0
+@export var piercing_res : int = 0
+@export var slash_res : int = 0
+@export var fire_res : int = 0
+@export var ice_res : int = 0
+@export var lightning_res : int = 0
+@export var holy_res : int = 0
+@export var necrotic_res : int = 0
+@export var chaotic_res : int = 0
 
 #stat modifiers
 @export_range(-20,20,1) var strength_change : int = 0
@@ -58,22 +57,15 @@ func combine(effects : Array[Effect]):
 		self.necrotic_dmg += effect.necrotic_dmg
 		self.chaotic_dmg += effect.chaotic_dmg
 		
-		self.blunt_res = clampf(self.blunt_res + effect.blunt_res, 0.0, 1.0)
-		self.piercing_res = clampf(self.piercing_res + effect.piercing_res, 0.0, 1.0)
-		self.slash_res = clampf(self.slash_res + effect.slash_res, 0.0, 1.0)
-		self.fire_res = clampf(self.fire_res + effect.fire_res, 0.0, 1.0)
-		self.ice_res = clampf(self.ice_res + effect.ice_res, 0.0, 1.0)
-		self.lightning_res = clampf(self.lightning_res + effect.lightning_res, 0.0, 1.0)
-		self.holy_res = clampf(self.holy_res + effect.holy_res, 0.0, 1.0)
-		self.necrotic_res = clampf(self.necrotic_res + effect.necrotic_res, 0.0, 1.0)
-		self.chaotic_res = clampf(self.chaotic_res + effect.chaotic_res, 0.0, 1.0)
-		
-		#self.burning = self.burning or effect.burning
-		#self.hungry = self.hungry or effect.hungry
-		#self.drunk = self.drunk or effect.drunk
-		#self.poisoned = self.poisoned or effect.poisoned
-		#self.bleeding = self.bleeding or effect.bleeding
-		#self.frozen = self.frozen or effect.frozen
+		self.blunt_res += effect.blunt_res
+		self.piercing_res += effect.piercing_res
+		self.slash_res += effect.slash_res
+		self.fire_res += effect.fire_res
+		self.ice_res += effect.ice_res
+		self.lightning_res += effect.lightning_res
+		self.holy_res += effect.holy_res
+		self.necrotic_res += effect.necrotic_res
+		self.chaotic_res += effect.chaotic_res
 		
 		self.strength_change += effect.strength_change
 		self.agility_change += effect.agility_change
@@ -100,18 +92,18 @@ func has_physical_damage() -> bool:
 func has_magic_damage() -> bool:
 	return fire_dmg > 0 or ice_dmg > 0 or lightning_dmg > 0 or holy_dmg > 0 or necrotic_dmg > 0 or chaotic_dmg > 0
 
-func get_total_dmg(resistances : Effect) -> float: #gets applied to combatant when they take dmg
-	var output : float = 0
+func get_total_dmg(resistances : Effect) -> int: #gets applied to combatant when they take dmg
+	var output : int = 0
 	
-	blunt_dmg -= (blunt_dmg * resistances.blunt_res)
-	slash_dmg -= (slash_dmg * resistances.slash_res)
-	piercing_dmg -= (piercing_dmg * resistances.piercing_res)
-	fire_dmg -= (fire_dmg * resistances.fire_res)
-	ice_dmg -= (ice_dmg * resistances.ice_res)
-	lightning_dmg -= (lightning_dmg * resistances.lightning_res)
-	holy_dmg -= (holy_dmg * resistances.holy_res)
-	necrotic_dmg -= (necrotic_dmg * resistances.necrotic_res)
-	chaotic_dmg -= (chaotic_dmg * resistances.chaotic_res)
+	blunt_dmg -= resistances.blunt_res
+	slash_dmg -= resistances.slash_res
+	piercing_dmg -= resistances.piercing_res
+	fire_dmg -= resistances.fire_res
+	ice_dmg -= resistances.ice_res
+	lightning_dmg -= resistances.lightning_res
+	holy_dmg -= resistances.holy_res
+	necrotic_dmg -= resistances.necrotic_res
+	chaotic_dmg -= resistances.chaotic_res
 	
 	output = blunt_dmg + slash_dmg + piercing_dmg + fire_dmg + ice_dmg + lightning_dmg + holy_dmg + necrotic_dmg + chaotic_dmg + prim_modifier
 	
