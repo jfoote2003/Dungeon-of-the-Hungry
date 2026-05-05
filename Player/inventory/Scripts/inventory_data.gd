@@ -58,12 +58,6 @@ func use_slot_data(index : int):
 		if slot_data.quantity < 1:
 			slot_datas[index] = null
 	
-	#when a spell is used spells are more like spells in ds1
-	if slot_data.item_data is Spell:
-		slot_data.quantity -= 1
-		if slot_data.quantity < 1:
-			return
-	
 	#when a weapon is used
 	if slot_data.item_data is ItemDataWeapon:
 		pass

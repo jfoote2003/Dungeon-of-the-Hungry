@@ -63,7 +63,7 @@ var prepped_abilities : Array[Ability] = []
 var all_abilities  : Array[Ability] = []
 var max_abilities : int = 1
 
-const FIST = preload("uid://cb7htn8hlmxdj") #used if no weapon equipped
+const FIST = preload("uid://cb7htn8hlmxdj")
 
 func _ready():
 	
@@ -128,35 +128,6 @@ func get_equipment_effects(): #executed at the beginning of combat for each comb
 	
 	equipment_effect = output
 
-func get_weapon_effect() -> Effect: #called when combatant attacks with primary/basic attack
-	var weapon_effect : Effect
-	var dmg_scale_stat
-	if weapon_equipped():
-		weapon_effect = weapon_inv_data.slot_datas[0].item_data.get_effect()
-		dmg_scale_stat = weapon_inv_data.slot_datas[0].item_data.get_primary_dmg_scale()
-	else: #no weapon equipped
-		weapon_effect = FIST
-		dmg_scale_stat = ItemDataWeapon.stat.strength
-	
-	#apply dmg scaling with primary stat
-	match dmg_scale_stat: #most likely agility or strength
-		ItemDataWeapon.stat.strength:
-			weapon_effect.set_weapon_dmg(rpg_class.strength)
-		ItemDataWeapon.stat.agility:
-			weapon_effect.set_weapon_dmg(rpg_class.agility)
-		ItemDataWeapon.stat.endurance:
-			weapon_effect.set_weapon_dmg(rpg_class.endurance)
-		ItemDataWeapon.stat.devotion:
-			weapon_effect.set_weapon_dmg(rpg_class.devotion)
-		ItemDataWeapon.stat.intelligence:
-			weapon_effect.set_weapon_dmg(rpg_class.intelligence)
-		ItemDataWeapon.stat.cooking:
-			weapon_effect.set_weapon_dmg(rpg_class.cooking)
-		ItemDataWeapon.stat.luck:
-			weapon_effect.set_weapon_dmg(rpg_class.luck)
-	
-	return weapon_effect
-
 func get_stats() -> Array:
 	return rpg_class.get_stats()
 
@@ -166,8 +137,11 @@ func weapon_equipped() -> bool:
 	else:
 		return false
 
-func get_weapon_type() -> String:
-	return weapon_inv_data.slot_datas[0].item_data.get_weapon_type()
+func get_weapon() -> ItemDataWeapon:
+	if weapon_equipped():
+		return weapon_inv_data.slot_datas[0].item_data
+	else:
+		return FIST
 
 func change_health(change : int):
 	set_health( get_health() + change )
@@ -220,6 +194,8 @@ func has_status(status_name : String) -> Array:
 func add_status(effect : StatusEffect):
 	var location_array = has_status(effect.name)
 	if location_array[0] == true:
+		if status_effects[location_array[1]].turn_duration == -1:
+			return
 		status_effects[location_array[1]].turn_duration += effect.turn_duration
 	else: #status_effect not in array
 		status_effects.append(effect)
@@ -236,10 +212,34 @@ func remove_status(status_name : String) -> bool:
 	return removed
 
 func apply_status_effects():
-	pass
+	for s in status_effects:
+		if s.effect.has_damage():
+			take_damage(s.effect)
+		
+		status_effects = status_effects.filter(func(d):
+			if d.turn_duration == -1: 
+				return true
+			d.turn_duration -= 1
+			if d.turn_duration <= 0:
+				return false
+			return true
+			)
 
 func make_basic_attack() -> Ability:
-	return null
+	var output : Ability = Ability.new()
+	var weapon : ItemDataWeapon = get_weapon() #returns weapon equiped otherwise is a fist
+	
+	output.ability_name = "basic attack"
+	output.effect = weapon.effect
+	
+	if has_status("Berserk"):
+		output.target_type = Ability.TargetType.random_combatant
+	else:
+		output.target_type = Ability.TargetType.single_enemy
+	
+	output.ability_type = Ability.AbilityType.damage
+	output.accuracy = weapon.accuracy
+	return output
 
 func override_rpg_stats(stat_array : Array[int]):
 	rpg_class.set_stats(stat_array)

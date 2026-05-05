@@ -6,6 +6,8 @@
 
 [sub_resource type="Resource" id="Resource_vod1j"]
 script = ExtResource("1_7qusj")
+blunt_dmg = 10
+slash_dmg = 35
 metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
 
 [resource]

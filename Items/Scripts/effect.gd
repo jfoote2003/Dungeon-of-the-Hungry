@@ -43,8 +43,6 @@ class_name Effect extends Resource
 	set(_value):
 		health_change = max(0,_value)
 
-var prim_modifier : int = 0
-
 func combine(effects : Array[Effect]):
 	for effect in effects:
 		self.blunt_dmg += effect.blunt_dmg
@@ -80,9 +78,6 @@ func combine(effects : Array[Effect]):
 		self.max_health_change += effect.max_health_change
 		self.time_limit += effect.time_limit
 
-#func has_status_effect() -> bool:
-	#return burning or hungry or drunk or poisoned or bleeding or frozen
-
 func has_damage() -> bool:
 	return has_physical_damage() or has_magic_damage()
 
@@ -92,7 +87,7 @@ func has_physical_damage() -> bool:
 func has_magic_damage() -> bool:
 	return fire_dmg > 0 or ice_dmg > 0 or lightning_dmg > 0 or holy_dmg > 0 or necrotic_dmg > 0 or chaotic_dmg > 0
 
-func get_total_dmg(resistances : Effect) -> int: #gets applied to combatant when they take dmg
+func get_total_dmg(resistances : Effect) -> int: #gets applied to combatant when they take dmg, no stats applied
 	var output : int = 0
 	
 	blunt_dmg -= resistances.blunt_res
@@ -105,12 +100,9 @@ func get_total_dmg(resistances : Effect) -> int: #gets applied to combatant when
 	necrotic_dmg -= resistances.necrotic_res
 	chaotic_dmg -= resistances.chaotic_res
 	
-	output = blunt_dmg + slash_dmg + piercing_dmg + fire_dmg + ice_dmg + lightning_dmg + holy_dmg + necrotic_dmg + chaotic_dmg + prim_modifier
-	
-	return output
+	output = blunt_dmg + slash_dmg + piercing_dmg + fire_dmg + ice_dmg + lightning_dmg + holy_dmg + necrotic_dmg + chaotic_dmg
 
-func set_weapon_dmg(value : int): #adds primary scaling to basic attack
-	prim_modifier = value
+	return output
 
 func has_dmg() -> bool:
 	return blunt_dmg > 0 or slash_dmg > 0 or piercing_dmg > 0 or fire_dmg > 0 or ice_dmg > 0 or lightning_dmg > 0 or holy_dmg > 0 or necrotic_dmg > 0 or chaotic_dmg > 0

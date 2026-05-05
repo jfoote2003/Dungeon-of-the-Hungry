@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://cb7htn8hlmxdj"]
+[gd_resource type="Resource" script_class="ItemDataWeapon" load_steps=4 format=3 uid="uid://cb7htn8hlmxdj"]
 
 [ext_resource type="Script" uid="uid://d0uhc4sqdl3cr" path="res://Items/Scripts/effect.gd" id="1_0bcgj"]
+[ext_resource type="Script" uid="uid://cbquv6b5kjgem" path="res://Items/Weapons/item_data_weapon.gd" id="2_c3sxy"]
+
+[sub_resource type="Resource" id="Resource_fyact"]
+script = ExtResource("1_0bcgj")
+blunt_dmg = 5
+metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
 
 [resource]
-script = ExtResource("1_0bcgj")
-effect_name = "Fist"
-description = "A basic fist attack"
-blunt_dmg = 1
-metadata/_custom_type_script = "uid://d0uhc4sqdl3cr"
+script = ExtResource("2_c3sxy")
+effect = SubResource("Resource_fyact")
+accuracy = 95
+name = "fist"
+metadata/_custom_type_script = "uid://cbquv6b5kjgem"
