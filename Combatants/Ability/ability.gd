@@ -4,6 +4,7 @@ class_name Ability extends Resource
 @export_multiline var description : String = ""
 @export var hunger_cost : int = 0
 @export var effect : Effect = Effect.new()
+@export var status_effect : StatusEffect = StatusEffect.new()
 
 @export_range(0,100) var accuracy : int = 90
 

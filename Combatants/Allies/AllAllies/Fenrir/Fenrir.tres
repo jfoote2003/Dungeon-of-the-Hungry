@@ -63,4 +63,5 @@ ring1_inv_data = SubResource("Resource_68aby")
 ring2_inv_data = SubResource("Resource_1cla2")
 offhand_inv_data = SubResource("Resource_vjrba")
 weapon_inv_data = SubResource("Resource_kf8ln")
+is_ally = true
 metadata/_custom_type_script = "uid://c0yrnvp26clth"

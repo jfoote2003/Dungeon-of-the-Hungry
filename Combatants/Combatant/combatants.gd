@@ -155,7 +155,7 @@ func change_hunger(change : int):
 	#hunger_changed.emit(get_hunger(), get_max_health())
 	if get_hunger() <= 0:
 		#status_effects.append(HUNGRY_DEBUFF)
-		status_effects.append(StatusEffect.new_hungry())
+		status_effects.append(preload("uid://su7dn4tjp65w"))
  
 func get_combatant_name() -> String:
 	return self.combatant_name
@@ -224,6 +224,15 @@ func apply_status_effects():
 				return false
 			return true
 			)
+
+func get_total_dmg_multi() -> float:
+	var output : float = 0
+	var i : int = 0
+	for s in status_effects:
+		if s.dmg_multiplier != 0:
+			output += s.dmg_multiplier
+			i += 1
+	return output/i
 
 func make_basic_attack() -> Ability:
 	var output : Ability = Ability.new()

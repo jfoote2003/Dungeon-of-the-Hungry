@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://cmrd3jvxsygkx"]
+
+[ext_resource type="Script" uid="uid://dmcx3jg3cqudx" path="res://Combatants/Ability/status_effect.gd" id="1_f2rly"]
+
+[resource]
+script = ExtResource("1_f2rly")
+name = "Berserk"
+turn_duration = 10
+berserk = true
+dmg_multiplier = 1.5
+metadata/_custom_type_script = "uid://dmcx3jg3cqudx"
