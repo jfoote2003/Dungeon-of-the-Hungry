@@ -29,15 +29,9 @@ var battle_speed : float = 1.0
 var selected_ability : Ability
 var valid_targets : Array[Combatant] = []
 
-func _ready() -> void:
-	pass
+#set up
 
-func _process(_delta: float) -> void:
-	for combatant in all_combatants:
-		if combatant and combatant.current_state == 0:
-			combatant.increase_atb(battle_speed)
-			combatant_ready(combatant)
-	
+func _ready() -> void:
 	pass
 
 func _unhandled_input(_event: InputEvent) -> void: #temp
@@ -58,13 +52,6 @@ func start_of_combat() -> void:
 	for combatant in all_combatants:
 		combatant.get_equipment_effects()
 	pass
-
-func combatant_ready(combatant : Combatant):
-	if combatant.is_ally:
-		combatant.current_state = Combatant.CombatantState.ready
-		show_action_menu()
-	else:
-		get_ai_action(combatant)
 
 func confirm_target():
 	if valid_targets.is_empty():
@@ -89,9 +76,6 @@ func hide_action_menu():
 
 func show_action_menu():
 	%UI.show_option_menu()
-
-func get_ai_action(combatant : Combatant):
-	pass
 
 func get_random_combatant() -> Array[Combatant]:
 	return all_combatants.filter(is_alive).pick_random()
@@ -128,6 +112,7 @@ func is_alive(combatant : Combatant) -> bool:
 	return combatant.is_alive()
 
 func apply_abilities(ability : Ability, user : Combatant, targets : Array[Combatant]):
+	@warning_ignore("unused_variable")
 	var final_targets : Array[Combatant]
 	
 	if user.has_status("Berserk"):
@@ -164,18 +149,25 @@ func resolve_abilities(ability : Ability, user : Combatant, target : Combatant):
 			resolve_revive(ability,user,target)
 
 func resolve_dmg(ability : Ability, user : Combatant, target : Combatant):
-	pass
+	var raw : int = int(ability.effect.get_total_dmg(target.equipment_effect) * user.get_total_dmg_multi())
+	@warning_ignore("integer_division")
+	var dmg : int = int(max(1, raw * randf_range(.9, float(user.rpg_class.luck + 50 / 100))))
+	target.take_damage(dmg)
 
 func resolve_heal(ability : Ability, user : Combatant, target : Combatant):
-	pass
+	var amount : int = ability.effect.health_change + int(max(user.rpg_class.devotion, user.rpg_class.intelligence))
+	target.change_health(amount)
 
-func resolve_buff(ability : Ability, user : Combatant, target : Combatant):
-	pass
+func resolve_buff(ability : Ability, _user : Combatant, target : Combatant):
+	target.add_status(ability.status_effect)
 
-func resolve_steal(ability : Ability, user : Combatant, target : Combatant):
-	pass
+func resolve_steal(_ability : Ability, _user : Combatant, target : Combatant):
+	if target.stealable_item:
+		print("target has following item: %s" % [target.stealable_item.slot_datas[0].item_data.name]) #temp
+	else:
+		pass
 
-func resolve_add_status(ability : Ability, user : Combatant, target : Combatant):
+func resolve_add_status(_ability : Ability, user : Combatant, target : Combatant):
 	pass
 
 func resolve_remove_status(ability : Ability, user : Combatant, target : Combatant):

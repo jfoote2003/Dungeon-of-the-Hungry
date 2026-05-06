@@ -59,9 +59,6 @@ enum RPGClasses {
 @export var ability_type : AbilityType = AbilityType.damage
 @export var eligible_classes : Array[RPGClasses] = []
 
-func use(user : Combatant, targets : Array[Combatant]):
-	pass
-
 func can_use(user : Combatant) -> bool:
 	return user.get_hunger() >= hunger_cost
 

@@ -7,7 +7,6 @@ var member2 : Combatant
 var member3 : Combatant
 var member4 : Combatant
 
-
 var party_exp : int
 var exp_needed : int
 var party_level : int = 1

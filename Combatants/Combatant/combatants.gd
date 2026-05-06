@@ -6,11 +6,6 @@ signal status_effect_applied(status_name : String)
 @export var combatant_name : String = "default"
 @export var rpg_class : RPGClass = null
 
-#@export var override_rpg_stat : Array[int] = [] :
-	#set(_value):
-		#override_rpg_stat.resize(7)
-		#override_rpg_stats(_value)
-
 @export var override_strength : int
 @export var override_agility : int
 @export var override_endurance : int
@@ -29,14 +24,14 @@ override_luck]
 
 @export var stealable_item : InventoryData = null
 
-@export var helmet_inv_data : InventoryDataHelmet
-@export var chest_inv_data : InventoryDataChestplate
-@export var greeves_inv_data : InventoryDataGreeves
-@export var boots_inv_data : InventoryDataBoots
-@export var ring1_inv_data : InventoryDataRing
-@export var ring2_inv_data : InventoryDataRing
-@export var offhand_inv_data : InventoryDataOffhand
-@export var weapon_inv_data : InventoryDataWeapon
+@export var helmet_inv_data : InventoryDataHelmet = InventoryDataHelmet.new()
+@export var chest_inv_data : InventoryDataChestplate = InventoryDataChestplate.new()
+@export var greeves_inv_data : InventoryDataGreeves = InventoryDataGreeves.new()
+@export var boots_inv_data : InventoryDataBoots = InventoryDataBoots.new()
+@export var ring1_inv_data : InventoryDataRing = InventoryDataRing.new()
+@export var ring2_inv_data : InventoryDataRing = InventoryDataRing.new()
+@export var offhand_inv_data : InventoryDataOffhand = InventoryDataOffhand.new()
+@export var weapon_inv_data : InventoryDataWeapon = InventoryDataWeapon.new()
 
 @export var texture : Texture2D
 
@@ -61,27 +56,9 @@ var current_state : CombatantState = CombatantState.idle
 
 var prepped_abilities : Array[Ability] = []
 var all_abilities  : Array[Ability] = []
-var max_abilities : int = 1
+var max_abilities : int = rpg_class.get_current_level()
 
 const FIST = preload("uid://cb7htn8hlmxdj")
-
-func _ready():
-	
-	max_abilities = rpg_class.get_current_level()
-	if rpg_class:
-		apply_initial_stats()
-
-func _process(_delta):
-	if is_alive and atb_gauge <= 100.0:
-		pass
-
-func apply_initial_stats(): #function ran at the start of battle
-	#code to override initial rpgclass stats with the overriden ones
-	
-	rpg_class.set_health(rpg_class.get_max_health())
-	rpg_class.set_hunger(rpg_class.get_max_hunger())
-	
-	atb_gauge = randf_range(0,rpg_class.agility)
 
 func get_hunger() -> int:
 	return rpg_class.get_hunger()
@@ -111,7 +88,7 @@ func reset_speed():
 	rpg_class.reset_speed()
 
 func increase_speed(new_speed : float):
-	rpg_class.speed = new_speed + (rpg_class.agility / 10.0)
+	set_speed(new_speed + get_speed())
 
 func get_equipment_effects(): #executed at the beginning of combat for each combatant
 	var equipment_array : Array = []
@@ -170,6 +147,7 @@ func increase_atb(value : float):
 	atb_gauge += value + get_speed()
 	if is_atb_gauge_full():
 		atb_gauge = MAX_ATB
+		current_state = CombatantState.ready
 
 func is_atb_gauge_full() -> bool:
 	return atb_gauge >= MAX_ATB
@@ -177,8 +155,11 @@ func is_atb_gauge_full() -> bool:
 func get_random_atb(): #called at start of combat for each combatant
 	atb_gauge = randf_range(0, get_speed() + 10) #0 - 30
 
-func take_damage(attack_effect : Effect):
-	var total_dmg : int = attack_effect.get_total_dmg(equipment_effect)
+func reset_atb():
+	atb_gauge = 0
+	current_state = CombatantState.idle
+
+func take_damage(total_dmg : int):
 	change_health(-1 * total_dmg)
 
 func has_status(status_name : String) -> Array:

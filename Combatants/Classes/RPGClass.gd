@@ -3,7 +3,7 @@ class_name RPGClass extends Resource
 #tag skills
 @export_range(1,100,1) var strength : int = 10
 @export_range(1,100,1) var agility : int = 10
-@export_range(1,100,1) var endurance : int = 10
+@export_range(1,100,1) var endurance : int = 10 
 @export_range(1,100,1) var intelligence : int = 10
 @export_range(1,100,1) var devotion : int = 10
 @export_range(1,100,1) var cooking : int = 10
@@ -19,10 +19,10 @@ const MAX_LEVEL : int = 99
 
 var speed : float = 10.0 + float(agility / 10.0) # 10 + (.1 - 10)
 
-var max_health : int = ((100 * (endurance - 1)) / 11) + 100 #100 - 1000 
+var max_health : int = endurance * 50 #1 - 100 * 50 = 50 - 5000
 var health : int
 
-var max_hunger : int = max( ((100 * (intelligence - 1)) / 11) + 100, ((100 * (devotion - 1)) / 11) + 100 ) 
+var max_hunger : int = max(intelligence, devotion) * 20 #1 - 100 * 20 = 20 - 2000
 var hunger : int
 
 func get_rpg_class() -> String:
@@ -47,9 +47,6 @@ func get_rpg_class() -> String:
 			return "none"
 		_:
 			return "default"
-
-func _to_string() -> String:
-	return str(strength) + " " + str(agility) + " " + str(endurance) + " " + str(intelligence) + " " + str(devotion) + " " + str(luck) + " " + str(cooking)
 
 func set_stats(stat_array : Array[int]):
 	strength = stat_array[0]
@@ -76,7 +73,7 @@ func level_to_threshold(new_level : int):
 
 func increase_stats():
 	match rpg_class_name:
-		0: #Berserker
+		class_names.Berserker:
 			strength += randi_range(1,3)
 			agility += randi_range(0,2)
 			endurance += randi_range(1,2)
@@ -84,7 +81,7 @@ func increase_stats():
 			devotion += randi_range(0,1)
 			cooking += randi_range(0,1)
 			luck += randi_range(0,2)
-		1: #Cleric
+		class_names.Cleric:
 			strength += randi_range(0,2)
 			agility += randi_range(0,2)
 			endurance += randi_range(1,2)
@@ -92,7 +89,7 @@ func increase_stats():
 			devotion += randi_range(1,3)
 			cooking += randi_range(0,1)
 			luck += randi_range(0,2)
-		2: #Cook
+		class_names.Cook:
 			strength += randi_range(0,2)
 			agility += randi_range(0,1)
 			endurance += randi_range(1,2)
@@ -100,7 +97,7 @@ func increase_stats():
 			devotion += randi_range(0,2)
 			cooking += randi_range(1,3)
 			luck += randi_range(0,1)
-		3: #Landsknecht
+		class_names.Landsknecht:
 			strength += randi_range(1,2)
 			agility += randi_range(1,2)
 			endurance += randi_range(1,3)
@@ -108,7 +105,7 @@ func increase_stats():
 			devotion += randi_range(0,2)
 			cooking += randi_range(0,2)
 			luck += randi_range(0,1)
-		4: #Mage
+		class_names.Mage:
 			strength += randi_range(0,1)
 			agility += randi_range(0,2)
 			endurance += randi_range(0,1)
@@ -116,7 +113,7 @@ func increase_stats():
 			devotion += randi_range(1,2)
 			cooking += randi_range(0,2)
 			luck += randi_range(1,2)
-		5: #Pact-Bound
+		class_names.Pact_Bound:
 			strength += randi_range(0,2)
 			agility += randi_range(1,2)
 			endurance += randi_range(0,1)
@@ -124,7 +121,7 @@ func increase_stats():
 			devotion += randi_range(1,3)
 			cooking += randi_range(0,1)
 			luck += randi_range(1,2)
-		6: #Samurai
+		class_names.Samurai:
 			strength += randi_range(0,2)
 			agility += randi_range(1,3)
 			endurance += randi_range(1,2)
@@ -132,7 +129,7 @@ func increase_stats():
 			devotion += randi_range(1,2)
 			cooking += randi_range(0,1)
 			luck += randi_range(0,1)
-		7: #Thief
+		class_names.Thief:
 			strength += randi_range(0,1)
 			agility += randi_range(1,3)
 			endurance += randi_range(0,1)
@@ -148,47 +145,35 @@ func increase_stats():
 			devotion += randi_range(0,2)
 			cooking += randi_range(0,2)
 			luck += randi_range(0,2)
-	if strength >= 100:
-		strength = 100
-	if agility >= 100:
-		agility = 100
-	if endurance >= 100:
-		endurance = 100
-	if intelligence >= 100:
-		intelligence = 100
-	if devotion >= 100:
-		devotion = 100
-	if cooking >= 100:
-		cooking = 100
-	if luck >= 100:
-		luck = 100
+
+	strength = min(100, strength)
+	agility = min(100, agility)
+	endurance = min(100, endurance)
+	devotion = min(100, devotion)
+	intelligence = min(100, intelligence)
+	cooking = min(100, cooking)
+	luck = min(100, luck)
 
 func reset_class_stats():
 	match rpg_class_name:
-		0:
-			#Berserker
+		class_names.Berserker:
 			set_stats([15,13,14,9,11,10,9])
-		1:
-			#Cleric
+		class_names.Cleric:
 			set_stats([12,11,12,10,15,14,10])
-		2:
-			#Cook
+		class_names.Cook:
 			set_stats([12,13,14,11,10,9,15])
-		3:
-			#Landsknecht
+		class_names.Landsknecht:
 			set_stats([14,13,15,11,10,12,9])
-		4:
-			#Mage
+		class_names.Mage:
 			set_stats([9,12,10,15,13,14,11])
-		5:
-			#Pact-Bound
+		class_names.Pact_Bound:
 			set_stats([9,13,11,12,14,14,10])
-		6:
-			#Samurai
+		class_names.Samurai:
 			set_stats([12,15,14,11,13,10,9])
-		7:
-			#Thief
+		class_names.Thief:
 			set_stats([9,15,10,13,11,14,12])
+		_:
+			set_stats([10,10,10,10,10,10,10])
 
 func get_stats() -> Array:
 	return [strength,agility,endurance,intelligence,devotion,cooking,luck]
