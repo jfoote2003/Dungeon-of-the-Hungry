@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://cmrd3jvxsygkx"]
 
-[ext_resource type="Script" uid="uid://dmcx3jg3cqudx" path="res://Combatants/Ability/status_effect.gd" id="1_f2rly"]
+[ext_resource type="Script" uid="uid://dmcx3jg3cqudx" path="res://Combatants/Ability/scripts/status_effect.gd" id="1_f2rly"]
 
 [resource]
 script = ExtResource("1_f2rly")

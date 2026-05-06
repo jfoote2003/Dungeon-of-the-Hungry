@@ -13,3 +13,4 @@ class_name StatusEffect extends Resource
 @export var berserk : bool = false
 
 @export var dmg_multiplier : float = 1
+@export var  dmg_over_turn : int = 0

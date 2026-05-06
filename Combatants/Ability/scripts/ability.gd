@@ -35,7 +35,7 @@ enum TargetType {
 enum AbilityType{
 	damage,
 	heal,
-	buff,
+	#buff,
 	steal,
 	add_status,
 	remove_status,

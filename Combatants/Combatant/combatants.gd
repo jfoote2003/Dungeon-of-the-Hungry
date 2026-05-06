@@ -60,6 +60,8 @@ var max_abilities : int = rpg_class.get_current_level()
 
 const FIST = preload("uid://cb7htn8hlmxdj")
 
+var queued_action
+
 func get_hunger() -> int:
 	return rpg_class.get_hunger()
 
@@ -162,29 +164,29 @@ func reset_atb():
 func take_damage(total_dmg : int):
 	change_health(-1 * total_dmg)
 
-func has_status(status_name : String) -> Array:
+func has_status(status_effect : StatusEffect) -> Array:
 	var output : Array = [false,null]
 	var index : int = 0
 	for effect in status_effects:
-		if effect.name == status_name:
+		if effect.name == status_effect.name:
 			output[0] = true
 			output[1] = index
 		index += 1
 	return output
 
-func add_status(effect : StatusEffect):
-	var location_array = has_status(effect.name)
+func add_status(status_effect : StatusEffect):
+	var location_array = has_status(status_effect)
 	if location_array[0] == true:
 		if status_effects[location_array[1]].turn_duration == -1:
 			return
-		status_effects[location_array[1]].turn_duration += effect.turn_duration
+		status_effects[location_array[1]].turn_duration += status_effect.turn_duration
 	else: #status_effect not in array
-		status_effects.append(effect)
-		status_effect_applied.emit(effect.name)
+		status_effects.append(status_effect)
+		status_effect_applied.emit(status_effect)
 
-func remove_status(status_name : String) -> bool:
+func remove_status(status_effect : StatusEffect) -> bool:
 	var removed : bool = false
-	var location_array = has_status(status_name)
+	var location_array = has_status(status_effect)
 	
 	if location_array[0] == true:
 		status_effects.pop_at(location_array[1])
@@ -206,6 +208,19 @@ func apply_status_effects():
 			return true
 			)
 
+func tick_status_effects():
+	for s in status_effects:
+		if s.dmg_over_turn > 0:
+			change_health(-1 * s.dmg_over_turn)
+	
+	status_effects = status_effects.filter(func(s):
+		if s.duration == -1: return true
+		s.duration -= 1
+		if s.duration <= 0:
+			return false
+		return true
+	)
+
 func get_total_dmg_multi() -> float:
 	var output : float = 0
 	var i : int = 0
@@ -221,12 +236,7 @@ func make_basic_attack() -> Ability:
 	
 	output.ability_name = "basic attack"
 	output.effect = weapon.effect
-	
-	if has_status("Berserk"):
-		output.target_type = Ability.TargetType.random_combatant
-	else:
-		output.target_type = Ability.TargetType.single_enemy
-	
+	output.target_type = Ability.TargetType.single_enemy
 	output.ability_type = Ability.AbilityType.damage
 	output.accuracy = weapon.accuracy
 	return output
