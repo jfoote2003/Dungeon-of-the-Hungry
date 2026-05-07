@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://pdgp7itlmje1"]
+[gd_scene load_steps=9 format=3 uid="uid://pdgp7itlmje1"]
 
 [ext_resource type="Script" uid="uid://dfwk7btykafbt" path="res://Menus/BattleMenu/battle_manager.gd" id="1_pgwby"]
 [ext_resource type="Script" uid="uid://bc57ufbnxhv6y" path="res://Menus/BattleMenu/battle_ui.gd" id="2_8w1qs"]
+[ext_resource type="Script" uid="uid://df8hoe8kxf6nv" path="res://Menus/BattleMenu/battle_menu.gd" id="2_t52jk"]
 [ext_resource type="Theme" uid="uid://b6bcmgfimhktm" path="res://Menus/BattleMenu/DefaultTheme.tres" id="3_hbj0w"]
 [ext_resource type="PackedScene" uid="uid://cxxrylm7dfxws" path="res://Menus/BattleMenu/window_default.tscn" id="3_q25w5"]
 [ext_resource type="PackedScene" uid="uid://clcgjtb2f4qmq" path="res://Menus/BattleMenu/player_stat_display.tscn" id="3_w2dpq"]
@@ -16,8 +17,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_hbj0w")
+script = ExtResource("2_t52jk")
 
 [node name="BattleManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_pgwby")
 
 [node name="UI" type="Control" parent="."]
@@ -174,6 +177,27 @@ offset_right = 104.0
 offset_bottom = 114.0
 scale = Vector2(2, 2)
 combatant = ExtResource("7_muh00")
+
+[node name="BattleMenuCombatantDisplay2" parent="UI/VisualPlayers" instance=ExtResource("6_318xx")]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 237.0
+offset_right = 135.0
+offset_bottom = 237.0
+
+[node name="BattleMenuCombatantDisplay3" parent="UI/VisualPlayers" instance=ExtResource("6_318xx")]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 325.0
+offset_right = 158.0
+offset_bottom = 325.0
+
+[node name="BattleMenuCombatantDisplay4" parent="UI/VisualPlayers" instance=ExtResource("6_318xx")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 404.0
+offset_right = 179.0
+offset_bottom = 404.0
 
 [node name="VisualEnemies" type="Control" parent="UI"]
 layout_mode = 1

@@ -56,7 +56,7 @@ var current_state : CombatantState = CombatantState.idle
 
 var prepped_abilities : Array[Ability] = []
 var all_abilities  : Array[Ability] = []
-var max_abilities : int = rpg_class.get_current_level()
+var max_abilities : int = rpg_class.current_level if rpg_class else 1
 
 const FIST = preload("uid://cb7htn8hlmxdj")
 

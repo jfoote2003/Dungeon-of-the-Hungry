@@ -3,6 +3,8 @@ class_name BattleManager extends Node
 signal game_over
 signal win
 
+signal ally_turn_started(combatant : Combatant)
+
 var party : Party = preload("uid://b87ogx8bknmnh")
 var allies : Array[Combatant] = party.get_party()
 var enemies : Array[Combatant] = []
@@ -48,6 +50,24 @@ func process_combatant_turn(combatant : Combatant):
 	
 	if not combatant.is_alive():
 		return
+	
+	if combatant.has_status(preload("uid://cmrd3jvxsygkx")): #berserk
+		resolve_abilities(combatant.make_basic_attack(), combatant, get_random_combatant())
+		return
+	
+	if combatant.has_status(preload("uid://yj0upoagb63x")):
+		combatant.queued_action = null
+		return
+	
+	if not combatant.is_ally: #enemy ai turn
+		run_enemy_turn(combatant)
+	
+	if combatant.queued_action != null:
+		var action = combatant.queued_action
+		combatant.queued_action = null
+		apply_abilities(action.ability, combatant, action.targets)
+	else:
+		ally_turn_started.emit(combatant)
 
 func _unhandled_input(_event: InputEvent) -> void: #temp
 	if Input.is_action_just_pressed("settings"): #for debugging
@@ -74,13 +94,13 @@ func hide_action_menu():
 func show_action_menu():
 	%UI.show_option_menu()
 
-func get_random_combatant() -> Array[Combatant]:
+func get_random_combatant() -> Combatant:
 	return all_combatants.filter(is_alive).pick_random()
 
-func get_random_ally() -> Array[Combatant]:
+func get_random_ally() -> Combatant:
 	return allies.filter(is_alive).pick_random()
 
-func get_random_enemy() -> Array[Combatant]:
+func get_random_enemy() -> Combatant:
 	return enemies.filter(is_alive).pick_random()
 
 func get_valid_targets(ability : Ability, user : Combatant) -> Array[Combatant]:
@@ -90,19 +110,19 @@ func get_valid_targets(ability : Ability, user : Combatant) -> Array[Combatant]:
 		Ability.TargetType.all_enemies:
 			return enemies.filter(is_alive)
 		Ability.TargetType.random_enemy:
-			return get_random_enemy()
+			return [get_random_enemy()]
 		Ability.TargetType.single_ally:
 			return allies.filter(is_alive)
 		Ability.TargetType.all_allies:
 			return allies.filter(is_alive)
 		Ability.TargetType.random_ally:
-			return get_random_ally()
+			return [get_random_ally()]
 		Ability.TargetType.Self:
 			return [user]
 		Ability.TargetType.all_combatants:
 			return all_combatants.filter(is_alive)
 		Ability.TargetType.random_combatant:
-			return get_random_combatant()
+			return [get_random_combatant()]
 	return []
 
 func is_alive(combatant : Combatant) -> bool:
@@ -197,3 +217,21 @@ func queue_player_action(user : Combatant, ability : Ability, targets : Array[Co
 		return
 	
 	user.queued_action = QueuedAction.new(ability,targets)
+
+func run_enemy_turn(combatant : Combatant):
+	var usable = combatant.prepped_abilities.filter(func(c) : return can_afford(combatant,c))
+	
+	if usable.is_empty(): #no usable abilities, so use basic attack
+		return
+	
+	var chosen_ability : Ability = usable.pick_random()
+	var targets = get_valid_targets(chosen_ability, combatant)
+	
+	if targets.is_empty():
+		return
+	
+	var is_all = chosen_ability.target_type in [Ability.TargetType.all_enemies, Ability.TargetType.all_allies, Ability.TargetType.all_combatants]
+	var final_targets = targets if is_all else [targets.pick_random()]
+	
+	for target in final_targets:
+		resolve_abilities(chosen_ability, combatant, target)
