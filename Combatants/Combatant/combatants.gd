@@ -2,6 +2,7 @@ class_name Combatant extends Resource
 
 signal died(combatant : Combatant)
 signal status_effect_applied(status_name : String)
+signal stat_updated(combatant : Combatant)
 
 @export var combatant_name : String = "default"
 @export var rpg_class : RPGClass = null
@@ -67,6 +68,7 @@ func get_hunger() -> int:
 
 func set_hunger(new_hunger : int):
 	rpg_class.set_hunger(new_hunger)
+	stat_updated.emit(self)
 
 func get_max_hunger() -> int:
 	return rpg_class.get_max_hunger()
@@ -76,6 +78,7 @@ func get_health() -> int:
 
 func set_health(new_health : int):
 	rpg_class.set_health(new_health)
+	stat_updated.emit(self)
 
 func get_max_health() -> int:
 	return rpg_class.get_max_health()
@@ -96,12 +99,21 @@ func get_equipment_effects(): #executed at the beginning of combat for each comb
 	var equipment_array : Array = []
 	var output : Effect = Effect.new()
 	
-	equipment_array.append(helmet_inv_data.slot_datas[0].item_data.get_effect())
-	equipment_array.append(chest_inv_data.slot_datas[0].item_data.get_effect())
-	equipment_array.append(greeves_inv_data.slot_datas[0].item_data.get_effect())
-	equipment_array.append(boots_inv_data.slot_datas[0].item_data.get_effect())
-	equipment_array.append(ring1_inv_data.slot_datas[0].item_data.get_effect())
-	equipment_array.append(ring2_inv_data.slot_datas[0].item_data.get_effect())
+	if helmet_inv_data.slot_datas[0]:
+		equipment_array.append(helmet_inv_data.slot_datas[0].item_data.get_effect())
+	if chest_inv_data.slot_datas[0]:
+		equipment_array.append(chest_inv_data.slot_datas[0].item_data.get_effect())
+	if greeves_inv_data.slot_datas[0]:
+		equipment_array.append(greeves_inv_data.slot_datas[0].item_data.get_effect())
+	if boots_inv_data.slot_datas[0]:
+		equipment_array.append(boots_inv_data.slot_datas[0].item_data.get_effect())
+	if ring1_inv_data.slot_datas[0]:
+		equipment_array.append(ring1_inv_data.slot_datas[0].item_data.get_effect())
+	if ring2_inv_data.slot_datas[0]:
+		equipment_array.append(ring2_inv_data.slot_datas[0].item_data.get_effect())
+	
+	if equipment_array.is_empty():
+		return
 	
 	output.combine(equipment_array)
 	
@@ -147,6 +159,7 @@ func is_alive() -> bool:
 
 func increase_atb(value : float):
 	atb_gauge += value + get_speed()
+	stat_updated.emit(self)
 	if is_atb_gauge_full():
 		atb_gauge = MAX_ATB
 		current_state = CombatantState.ready

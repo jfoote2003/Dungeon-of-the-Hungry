@@ -30,18 +30,21 @@ var valid_targets : Array[Combatant] = []
 
 func _ready() -> void:
 	initialize_combat()
+	print("battle start")
 	battle_loop()
 
 func battle_loop():
 	while current_battle_state == BattleState.running:
 		for combatant in all_combatants:
-			if not combatant.is_alive():
-				continue
+			if combatant:
 			
-			process_combatant_turn(combatant)
+				if not combatant.is_alive():
+					continue
 			
-			if check_battle_conditions():
-				return
+				process_combatant_turn(combatant)
+			
+				if check_battle_conditions():
+					return
 		
 		await get_tree().process_frame
 
@@ -49,6 +52,10 @@ func process_combatant_turn(combatant : Combatant):
 	combatant.tick_status_effects()
 	
 	if not combatant.is_alive():
+		return
+	
+	if not combatant.atb_gauge == combatant.MAX_ATB:
+		combatant.increase_atb(combatant.get_speed())
 		return
 	
 	if combatant.has_status(preload("uid://cmrd3jvxsygkx")): #berserk
@@ -85,8 +92,9 @@ func _unhandled_input(_event: InputEvent) -> void: #temp
 
 func initialize_combat() -> void:
 	for combatant in all_combatants:
-		combatant.get_equipment_effects() #applies all resistances
-		combatant.get_random_atb() #randomly sets atb for each combatant
+		if combatant:
+			combatant.get_equipment_effects() #applies all resistances
+			combatant.get_random_atb() #randomly sets atb for each combatant
 
 func hide_action_menu():
 	%UI.hide_option_menu()

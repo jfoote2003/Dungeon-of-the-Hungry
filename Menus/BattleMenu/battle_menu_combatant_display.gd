@@ -50,4 +50,5 @@ func set_arrow_color_yellow() -> void:
 	%ArrowDisplay.modulate = Color.YELLOW
 
 func play_animation(ability_name : String, direction : String) -> void:
-	%AnimationPlayer.play(combatant.combatant_name + "_" + ability_name + "_" + direction)
+	if combatant:
+		%AnimationPlayer.play(combatant.combatant_name + "_" + ability_name + "_" + direction)
