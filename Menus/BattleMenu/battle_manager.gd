@@ -21,7 +21,7 @@ var increase_atb : bool = true
 var current_combatant : Combatant
 var target_cursor : int = 0 #index
 
-var battle_speed : float = 1.0
+var battle_speed : float = 2.5
 
 var selected_ability : Ability
 var valid_targets : Array[Combatant] = []
@@ -37,16 +37,13 @@ func battle_loop():
 	while current_battle_state == BattleState.running:
 		for combatant in all_combatants:
 			if combatant:
-			
-				if not combatant.is_alive():
-					continue
-			
-				process_combatant_turn(combatant)
-			
-				if check_battle_conditions():
-					return
-		
+				if combatant.is_atb_gauge_full():
+					process_combatant_turn(combatant)
+					
+				combatant.increase_atb(combatant.get_speed())
+					
 		await get_tree().process_frame
+		await get_tree().create_timer(battle_speed).timeout
 
 func process_combatant_turn(combatant : Combatant):
 	combatant.tick_status_effects()
@@ -54,15 +51,11 @@ func process_combatant_turn(combatant : Combatant):
 	if not combatant.is_alive():
 		return
 	
-	if not combatant.atb_gauge == combatant.MAX_ATB:
-		combatant.increase_atb(combatant.get_speed())
-		return
-	
 	if combatant.has_status(preload("uid://cmrd3jvxsygkx")): #berserk
 		resolve_abilities(combatant.make_basic_attack(), combatant, get_random_combatant())
 		return
 	
-	if combatant.has_status(preload("uid://yj0upoagb63x")):
+	if combatant.has_status(preload("uid://yj0upoagb63x")): #sleep
 		combatant.queued_action = null
 		return
 	

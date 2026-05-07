@@ -1,6 +1,6 @@
 class_name PlayerStatDisplay extends HBoxContainer
 
-func set_default(member : Combatant):
+func update_display(member : Combatant):
 	%CombatantName.text = member.combatant_name
 	set_current_health(member.get_health())
 	set_max_health(member.get_max_health())
@@ -17,7 +17,7 @@ func set_max_health(max_health : int):
 	%HealthBar.max_value = max_health
 
 func set_current_hunger(current_hunger : int):
-	%CurrentHunger.test = str(current_hunger)
+	%CurrentHunger.text = str(current_hunger)
 	%HungerBar.value = current_hunger
 
 func set_max_hunger(max_hunger : int):
