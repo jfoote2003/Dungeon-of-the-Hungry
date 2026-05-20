@@ -1,9 +1,12 @@
 class_name BattleMenu extends Control
 
 const PARTY = preload("uid://b87ogx8bknmnh")
+const BATTLE_MENU_COMBATANT_DISPLAY = preload("uid://bv8thunph2cmc")
+const TESTING_ENEMY = preload("uid://1jqo1lmoi5in")
+
 
 var allies : Array[Combatant] = PARTY.get_party()
-@export var enemies : Array[Combatant] = []
+@export var enemies : Array[Combatant] = [TESTING_ENEMY]
 var all_combatants = allies + enemies
 
 func _ready():
@@ -47,4 +50,16 @@ func _ready():
 		%player_stat_display4.visible = false
 		%BattleMenuCombatantDisplay4.visible = false
 	
+	var offset : Vector2 = Vector2(0,0)
 	
+	for enemy in enemies:
+		if enemy:
+			var BMCD = BATTLE_MENU_COMBATANT_DISPLAY.instantiate()
+			BMCD.combatant = enemy
+			offset.x += enemy.texture.get_width()/2
+			offset.y += enemy.texture.get_height()
+			BMCD.position = offset
+			offset += Vector2(4,4)
+			
+			%VisualEnemies.add_child(BMCD)
+		

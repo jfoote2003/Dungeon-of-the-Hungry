@@ -37,7 +37,9 @@ func battle_loop():
 	while current_battle_state == BattleState.running:
 		for combatant in all_combatants:
 			if combatant:
-				if combatant.is_atb_gauge_full():
+				combatant.tick_status_effects() #apply any status effects each combatany may have
+				
+				if combatant.can_act(): #checks if combatant has full atb and is alive
 					process_combatant_turn(combatant)
 					
 				combatant.increase_atb(combatant.get_speed())
@@ -46,16 +48,11 @@ func battle_loop():
 		await get_tree().create_timer(battle_speed).timeout
 
 func process_combatant_turn(combatant : Combatant):
-	combatant.tick_status_effects()
-	
-	if not combatant.is_alive():
-		return
-	
-	if combatant.has_status(preload("uid://cmrd3jvxsygkx")): #berserk
+	if combatant.has_status(preload("uid://cmrd3jvxsygkx")): #berserk -> automatically attacks random combatant w/ basic attack
 		resolve_abilities(combatant.make_basic_attack(), combatant, get_random_combatant())
 		return
 	
-	if combatant.has_status(preload("uid://yj0upoagb63x")): #sleep
+	if combatant.has_status(preload("uid://yj0upoagb63x")): #sleep -> can't take actions
 		combatant.queued_action = null
 		return
 	
@@ -72,16 +69,6 @@ func process_combatant_turn(combatant : Combatant):
 func _unhandled_input(_event: InputEvent) -> void: #temp
 	if Input.is_action_just_pressed("settings"): #for debugging
 		get_tree().quit()
-
-#func _input(event: InputEvent) -> void:
-	#if current_battle_state == BattleState.selecting_target:
-		#if event.is_action_pressed("ui_right"):
-			#target_cursor = (target_cursor + 1) % valid_targets.size()
-		#if event.is_action_pressed("ui_left"):
-			#target_cursor = (target_cursor - 1 + valid_targets.size()) % valid_targets.size()
-		#if event.is_action_pressed("ui_accept"):
-			#confirm_target()
-			#pass
 
 func initialize_combat() -> void:
 	for combatant in all_combatants:
@@ -177,9 +164,6 @@ func resolve_dmg(ability : Ability, user : Combatant, target : Combatant):
 func resolve_heal(ability : Ability, user : Combatant, target : Combatant):
 	var amount : int = ability.effect.health_change + int(max(user.rpg_class.devotion, user.rpg_class.intelligence))
 	target.change_health(amount)
-
-#func resolve_buff(ability : Ability, _user : Combatant, target : Combatant):
-	#target.add_status(ability.status_effect)
 
 func resolve_steal(_ability : Ability, _user : Combatant, target : Combatant):
 	if target.stealable_item:

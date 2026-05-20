@@ -70,6 +70,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
@@ -149,6 +150,15 @@ text = "Fight"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Ability"
+item_count = 4
+popup/item_0/text = "these"
+popup/item_0/id = 0
+popup/item_1/text = "are"
+popup/item_1/id = 1
+popup/item_2/text = "place"
+popup/item_2/id = 2
+popup/item_3/text = "holders"
+popup/item_3/id = 3
 
 [node name="Item" type="Button" parent="UI/Options/ActionMenu"]
 unique_name_in_owner = true
@@ -216,14 +226,6 @@ anchor_bottom = 1.0
 offset_right = 418.0
 offset_bottom = -161.0
 grow_vertical = 2
-
-[node name="BattleMenuCombatantDisplay" parent="UI/VisualEnemies" instance=ExtResource("6_318xx")]
-layout_mode = 0
-offset_left = 189.0
-offset_top = 74.0
-offset_right = 189.0
-offset_bottom = 74.0
-scale = Vector2(2, 2)
 
 [connection signal="pressed" from="UI/Options/ActionMenu/Fight" to="UI" method="_on_fight_pressed"]
 [connection signal="pressed" from="UI/Options/ActionMenu/Ability" to="UI" method="_on_ability_pressed"]

@@ -1,10 +1,71 @@
-[gd_resource type="Resource" script_class="Combatant" load_steps=3 format=3 uid="uid://1jqo1lmoi5in"]
+[gd_resource type="Resource" script_class="Combatant" load_steps=20 format=3 uid="uid://1jqo1lmoi5in"]
 
 [ext_resource type="Script" uid="uid://c0yrnvp26clth" path="res://Combatants/Combatant/combatants.gd" id="1_tacy7"]
+[ext_resource type="Script" uid="uid://bmthc4klvewgt" path="res://Player/inventory/Scripts/inventory_data_boots.gd" id="1_ttjff"]
 [ext_resource type="Resource" uid="uid://cleavl4cmnuyt" path="res://Combatants/Classes/Empty/empty.tres" id="1_wai5d"]
+[ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Player/inventory/Scripts/slot_data.gd" id="2_1evsk"]
+[ext_resource type="Script" uid="uid://dctfo83yv2n17" path="res://Player/inventory/Scripts/inventory_data_chestplate.gd" id="3_jni4t"]
+[ext_resource type="Script" uid="uid://dudvwcirx1mbp" path="res://Player/inventory/Scripts/inventory_data_greeves.gd" id="4_iwt8v"]
+[ext_resource type="Script" uid="uid://dwtydadx31jd4" path="res://Player/inventory/Scripts/inventory_data_helmet.gd" id="5_gaqn0"]
+[ext_resource type="Script" uid="uid://c46oeagxchbsi" path="res://Player/inventory/Scripts/inventory_data_offhand.gd" id="6_d4rgh"]
+[ext_resource type="Script" uid="uid://bg13pcscr3r7" path="res://Player/inventory/Scripts/inventory_data_ring.gd" id="7_epelc"]
+[ext_resource type="Texture2D" uid="uid://dett0jrh40t88" path="res://Combatants/Enemies/all_enemies/peacock_mantis_shrimp.png" id="10_1evsk"]
+[ext_resource type="Script" uid="uid://brp1e4sp4uke2" path="res://Player/inventory/Scripts/inventory_data_weapon.gd" id="10_tw7dc"]
+
+[sub_resource type="Resource" id="Resource_s7cju"]
+script = ExtResource("1_ttjff")
+slot_datas = Array[ExtResource("2_1evsk")]([null])
+metadata/_custom_type_script = "uid://bmthc4klvewgt"
+
+[sub_resource type="Resource" id="Resource_qnaq8"]
+script = ExtResource("3_jni4t")
+slot_datas = Array[ExtResource("2_1evsk")]([null])
+metadata/_custom_type_script = "uid://dctfo83yv2n17"
+
+[sub_resource type="Resource" id="Resource_2jh0v"]
+script = ExtResource("4_iwt8v")
+slot_datas = Array[ExtResource("2_1evsk")]([null])
+metadata/_custom_type_script = "uid://dudvwcirx1mbp"
+
+[sub_resource type="Resource" id="Resource_5gt1v"]
+script = ExtResource("5_gaqn0")
+slot_datas = Array[ExtResource("2_1evsk")]([null])
+metadata/_custom_type_script = "uid://dwtydadx31jd4"
+
+[sub_resource type="Resource" id="Resource_pe661"]
+script = ExtResource("6_d4rgh")
+slot_datas = Array[ExtResource("2_1evsk")]([null])
+metadata/_custom_type_script = "uid://c46oeagxchbsi"
+
+[sub_resource type="Resource" id="Resource_mdrio"]
+script = ExtResource("7_epelc")
+slot_datas = Array[ExtResource("2_1evsk")]([null])
+metadata/_custom_type_script = "uid://bg13pcscr3r7"
+
+[sub_resource type="Resource" id="Resource_kb5oy"]
+script = ExtResource("7_epelc")
+slot_datas = Array[ExtResource("2_1evsk")]([null])
+metadata/_custom_type_script = "uid://bg13pcscr3r7"
+
+[sub_resource type="Resource" id="Resource_10gce"]
+script = ExtResource("10_tw7dc")
+slot_datas = Array[ExtResource("2_1evsk")]([null])
+metadata/_custom_type_script = "uid://brp1e4sp4uke2"
 
 [resource]
 script = ExtResource("1_tacy7")
 combatant_name = "Peacock Mantis Shrimp"
 rpg_class = ExtResource("1_wai5d")
+override_strength = 50
+override_agility = 40
+override_endurance = 30
+helmet_inv_data = SubResource("Resource_5gt1v")
+chest_inv_data = SubResource("Resource_qnaq8")
+greeves_inv_data = SubResource("Resource_2jh0v")
+boots_inv_data = SubResource("Resource_s7cju")
+ring1_inv_data = SubResource("Resource_mdrio")
+ring2_inv_data = SubResource("Resource_kb5oy")
+offhand_inv_data = SubResource("Resource_pe661")
+weapon_inv_data = SubResource("Resource_10gce")
+texture = ExtResource("10_1evsk")
 metadata/_custom_type_script = "uid://c0yrnvp26clth"
