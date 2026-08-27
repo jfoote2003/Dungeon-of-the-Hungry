@@ -7,22 +7,6 @@ signal stat_updated(combatant : Combatant)
 @export var combatant_name : String = "default"
 @export var rpg_class : RPGClass = null
 
-@export var override_strength : int
-@export var override_agility : int
-@export var override_endurance : int
-@export var override_intelligence : int
-@export var override_devotion : int
-@export var override_cooking : int
-@export var override_luck : int
-
-var override_rpg_stat_array = [override_strength, 
-override_agility, 
-override_endurance, 
-override_intelligence,
-override_devotion,
-override_cooking,
-override_luck]
-
 @export var stealable_item : InventoryData = null
 
 @export var helmet_inv_data : InventoryDataHelmet = InventoryDataHelmet.new()
@@ -35,6 +19,8 @@ override_luck]
 @export var weapon_inv_data : InventoryDataWeapon = InventoryDataWeapon.new()
 
 @export var texture : Texture2D
+@export var frame_width : int = 16
+@export var frame_height : int = 32
 
 enum CombatantState {
 	idle, 		#atb gauge filling -> 0
@@ -48,16 +34,18 @@ enum CombatantState {
 var equipment_effect : Effect
 var status_effects : Array[StatusEffect]
 
-var atb_gauge : float = 0.0 #0.0 - 100.0
-const MAX_ATB : float = 100.0
+var atb_gauge : int = 0 #0.0 - 100.0
+const MAX_ATB : int = 100
 @export var is_ally : bool = false
 @export var dodge_chance : int = 0
 
 var current_state : CombatantState = CombatantState.idle
 
-var prepped_abilities : Array[Ability] = []
-var all_abilities  : Array[Ability] = []
-var max_abilities : int = rpg_class.current_level if rpg_class else 1
+@export var prepped_abilities : Array[Ability] = []
+@export var all_abilities  : Array[Ability] = []
+@export var max_abilities : int = rpg_class.current_level if rpg_class else 1
+
+var is_in_queue : bool = false
 
 const FIST = preload("uid://cb7htn8hlmxdj")
 
@@ -83,16 +71,18 @@ func set_health(new_health : int):
 func get_max_health() -> int:
 	return rpg_class.get_max_health()
 
-func get_speed() -> float:
+func get_speed() -> int:
 	return rpg_class.speed
 
-func set_speed(value : float):
+func set_speed(value : int):
+	if value < 0:
+		rpg_class.speed = 0
 	rpg_class.speed = value
 
 func reset_speed():
 	rpg_class.reset_speed()
 
-func increase_speed(new_speed : float):
+func increase_speed(new_speed : int):
 	set_speed(new_speed + get_speed())
 
 func get_equipment_effects(): #executed at the beginning of combat for each combatant
@@ -151,28 +141,29 @@ func change_hunger(change : int):
 func get_combatant_name() -> String:
 	return self.combatant_name
 
-func can_act() -> bool:
-	return is_atb_gauge_full() and is_alive()
+func can_act() -> bool: #atb gauge is full, alive and isn't sleeping
+	var sleep_status : Array = has_status(preload("uid://yj0upoagb63x"))
+	return has_full_atb() and is_alive() and sleep_status[0] == false
 
 func is_alive() -> bool:
 	return get_health() > 0
 
-func increase_atb(value : float):
-	atb_gauge += value + get_speed()
+func increase_atb():
+	atb_gauge += get_speed()
 	stat_updated.emit(self)
-	if is_atb_gauge_full():
+	if atb_gauge > MAX_ATB:
 		atb_gauge = MAX_ATB
-		current_state = CombatantState.ready
 
-func is_atb_gauge_full() -> bool:
+func has_full_atb() -> bool:
 	return atb_gauge >= MAX_ATB
 
 func get_random_atb(): #called at start of combat for each combatant
-	atb_gauge = randf_range(0, get_speed() + 10) #0 - 30
+	atb_gauge = randi_range(0, get_speed() + 10) #0 - 30
 
 func reset_atb():
 	atb_gauge = 0
-	current_state = CombatantState.idle
+	stat_updated.emit(self)
+	#current_state = CombatantState.idle
 
 func take_damage(total_dmg : int):
 	change_health(-1 * total_dmg)
@@ -256,3 +247,9 @@ func make_basic_attack() -> Ability:
 
 func override_rpg_stats(stat_array : Array[int]):
 	rpg_class.set_stats(stat_array)
+
+func get_size() -> Vector2:
+	return Vector2(frame_width,frame_height)
+
+func can_afford(ability : Ability) -> bool:
+	return get_hunger() >= ability.hunger_cost

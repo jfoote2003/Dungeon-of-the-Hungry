@@ -88,17 +88,19 @@ func has_magic_damage() -> bool:
 	return fire_dmg > 0 or ice_dmg > 0 or lightning_dmg > 0 or holy_dmg > 0 or necrotic_dmg > 0 or chaotic_dmg > 0
 
 func get_total_dmg(resistances : Effect) -> int: #gets applied to combatant when they take dmg, no stats applied
-	var output : int = 0
+	#TODO if resistance null then return output else rest of code
 	
-	blunt_dmg -= resistances.blunt_res
-	slash_dmg -= resistances.slash_res
-	piercing_dmg -= resistances.piercing_res
-	fire_dmg -= resistances.fire_res
-	ice_dmg -= resistances.ice_res
-	lightning_dmg -= resistances.lightning_res
-	holy_dmg -= resistances.holy_res
-	necrotic_dmg -= resistances.necrotic_res
-	chaotic_dmg -= resistances.chaotic_res
+	var output : int = 0
+	if resistances:
+		blunt_dmg -= resistances.blunt_res
+		slash_dmg -= resistances.slash_res
+		piercing_dmg -= resistances.piercing_res
+		fire_dmg -= resistances.fire_res
+		ice_dmg -= resistances.ice_res
+		lightning_dmg -= resistances.lightning_res
+		holy_dmg -= resistances.holy_res
+		necrotic_dmg -= resistances.necrotic_res
+		chaotic_dmg -= resistances.chaotic_res
 	
 	output = blunt_dmg + slash_dmg + piercing_dmg + fire_dmg + ice_dmg + lightning_dmg + holy_dmg + necrotic_dmg + chaotic_dmg
 

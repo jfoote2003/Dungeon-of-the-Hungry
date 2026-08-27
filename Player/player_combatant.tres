@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Combatant" load_steps=20 format=3 uid="uid://6m0cakotoioo"]
+[gd_resource type="Resource" script_class="Combatant" load_steps=21 format=3 uid="uid://6m0cakotoioo"]
 
 [ext_resource type="Script" uid="uid://bmthc4klvewgt" path="res://Player/inventory/Scripts/inventory_data_boots.gd" id="1_2uc4q"]
+[ext_resource type="Script" uid="uid://dvi8g4xkqqv8y" path="res://Combatants/Ability/scripts/ability.gd" id="1_ingsl"]
 [ext_resource type="Script" uid="uid://c0yrnvp26clth" path="res://Combatants/Combatant/combatants.gd" id="1_lu11j"]
 [ext_resource type="Script" uid="uid://bf2npp2mjwn80" path="res://Player/inventory/Scripts/slot_data.gd" id="2_2uc4q"]
 [ext_resource type="Script" uid="uid://dctfo83yv2n17" path="res://Player/inventory/Scripts/inventory_data_chestplate.gd" id="3_ingsl"]
@@ -65,4 +66,5 @@ offhand_inv_data = SubResource("Resource_ocorj")
 weapon_inv_data = SubResource("Resource_16vdx")
 texture = ExtResource("10_cnx56")
 is_ally = true
+max_abilities = null
 metadata/_custom_type_script = "uid://c0yrnvp26clth"

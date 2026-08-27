@@ -1,11 +1,44 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b6bcmgfimhktm"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b6bcmgfimhktm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtbps"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05vne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tnvk1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fr2xq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cr7u1"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hv61f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yj3ti"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lncd4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jifq6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dcx06"]
+
 [resource]
-Button/colors/font_hover_color = Color(0.74609375, 0.74609375, 0.74609375, 1)
-Button/colors/font_hover_pressed_color = Color(0.8603821, 0.91015625, 0, 1)
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.85882354, 0.9098039, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_vtbps")
+Button/styles/focus = SubResource("StyleBoxEmpty_05vne")
+Button/styles/hover = SubResource("StyleBoxEmpty_tnvk1")
 Button/styles/normal = SubResource("StyleBoxEmpty_fr2xq")
 Button/styles/pressed = SubResource("StyleBoxEmpty_cr7u1")
+MenuButton/styles/disabled = SubResource("StyleBoxEmpty_hv61f")
+MenuButton/styles/focus = SubResource("StyleBoxEmpty_yj3ti")
+MenuButton/styles/hover = SubResource("StyleBoxEmpty_lncd4")
+MenuButton/styles/normal = SubResource("StyleBoxEmpty_jifq6")
+MenuButton/styles/pressed = SubResource("StyleBoxEmpty_dcx06")

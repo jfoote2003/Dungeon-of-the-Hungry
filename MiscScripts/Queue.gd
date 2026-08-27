@@ -5,12 +5,11 @@ var queue : Array = []
 func enqueue(item):
 	self.queue.append(item)
 
-func dequeue() -> bool:
+func dequeue():
 	if is_empty():
 		return false
 	else:
-		self.queue.pop_at(0)
-		return true
+		return self.queue.pop_at(0)
 
 func is_empty() -> bool:
 	return self.queue.size() == 0

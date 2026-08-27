@@ -1,9 +1,7 @@
 class_name Party extends Resource
 
-const PLAYER_COMBATANT = preload("uid://6m0cakotoioo")
-
-var member1 : Combatant = PLAYER_COMBATANT
-var member2 : Combatant
+var member1 : Combatant = preload("uid://6m0cakotoioo")
+var member2 : Combatant 
 var member3 : Combatant
 var member4 : Combatant
 
@@ -83,5 +81,12 @@ func add_member(party_member : Combatant) -> bool:
 	
 	return member_added
 
-func get_party() -> Array[Combatant]:
-	return [member1,member2,member3,member4]
+func get_party() -> Array[Combatant]: 
+	var output : Array[Combatant] = [member1]
+	if member2:
+		output.append(member2)
+	if member3:
+		output.append(member3)
+	if member4:
+		output.append(member4)
+	return output

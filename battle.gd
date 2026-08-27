@@ -1,86 +1,112 @@
-class_name BattleManager extends Node
+class_name Battle extends Node
 
-signal game_over
-signal win
+signal ally_ready(combatant : Combatant)
 
-signal ally_turn_started(combatant : Combatant)
 
 var party : Party = preload("uid://b87ogx8bknmnh")
 var allies : Array[Combatant] = party.get_party()
-var enemies : Array[Combatant] = []
+var enemies : Array[Combatant] = [preload("uid://1jqo1lmoi5in")]
 var all_combatants : Array[Combatant] = allies + enemies
 
-var battle_queue : Queue = Queue.new()
+var action_queue : Queue = Queue.new()
 
-@onready var ui : BattleUI = %UI
-
-enum BattleState{running, battle_over}
-
-var current_battle_state : BattleState = BattleState.running
 var increase_atb : bool = true
 var current_combatant : Combatant
-var target_cursor : int = 0 #index
+var target_index : int = 0 #index
 
-var battle_speed : float = 2.5
+var battle_speed : float = .5
 
 var selected_ability : Ability
 var valid_targets : Array[Combatant] = []
-
+var can_select_targets : bool = false
 #set up
 
 func _ready() -> void:
+	ally_ready.connect(%Options.print_ally_name)
+	%Options.ability_selected.connect(ally_ability_selected)
+	
+	if allies[0]:
+		allies[0].stat_updated.connect(%player_stat_display.update_display)
+		%player_stat_display.visible = true
+	else:
+		%player_stat_display.visible = false
+	
+	if allies.size() >= 2 and allies[1]:
+		allies[1].stat_updated.connect(%player_stat_display2.update_display)
+		%player_stat_display2.visible = true
+	else:
+		%player_stat_display2.visible = false
+	
+	if  allies.size() >= 3 and allies[2]:
+		allies[2].stat_updated.connect(%player_stat_display3.update_display)
+		%player_stat_display3.visible = true
+	else:
+		%player_stat_display3.visible = false
+	
+	if  allies.size() >= 4 and allies[3]:
+		allies[3].stat_updated.connect(%player_stat_display4.update_display)
+		%player_stat_display4.visible = true
+	else:
+		%player_stat_display4.visible = false
+	
 	initialize_combat()
 	print("battle start")
 	battle_loop()
 
 func battle_loop():
-	while current_battle_state == BattleState.running:
+	while not (win_conditions() and loss_conditions()):
 		for combatant in all_combatants:
 			if combatant:
-				combatant.tick_status_effects() #apply any status effects each combatany may have
+				#combatant.apply_status_effects()
+				combatant.increase_atb()
 				
-				if combatant.can_act(): #checks if combatant has full atb and is alive
-					process_combatant_turn(combatant)
-					
-				combatant.increase_atb(combatant.get_speed())
-					
-		await get_tree().process_frame
+				if combatant.can_act() and combatant.is_ally and not combatant.is_in_queue: #can act and is ally
+					ally_ready.emit(combatant)
+					combatant.is_in_queue = true
+					#print("combatant in queue")
+				elif combatant.can_act() and not combatant.is_ally and not combatant.is_in_queue:#can act and is enemy
+					run_enemy_turn(combatant)
+		if not action_queue.is_empty():
+			var next_action : QueuedAction = action_queue.dequeue()
+			if is_valid_targets(next_action.targets):
+				apply_abilities(next_action.ability, next_action.user, next_action.targets)
+				print("action apllied")
+				next_action.user.is_in_queue = false
+				next_action.user.reset_atb()
+				print("removed from queue")
 		await get_tree().create_timer(battle_speed).timeout
-
-func process_combatant_turn(combatant : Combatant):
-	if combatant.has_status(preload("uid://cmrd3jvxsygkx")): #berserk -> automatically attacks random combatant w/ basic attack
-		resolve_abilities(combatant.make_basic_attack(), combatant, get_random_combatant())
-		return
-	
-	if combatant.has_status(preload("uid://yj0upoagb63x")): #sleep -> can't take actions
-		combatant.queued_action = null
-		return
-	
-	if not combatant.is_ally: #enemy ai turn
-		run_enemy_turn(combatant)
-	
-	if combatant.queued_action != null:
-		var action = combatant.queued_action
-		combatant.queued_action = null
-		apply_abilities(action.ability, combatant, action.targets)
-	else:
-		ally_turn_started.emit(combatant)
 
 func _unhandled_input(_event: InputEvent) -> void: #temp
 	if Input.is_action_just_pressed("settings"): #for debugging
 		get_tree().quit()
+	if Input.is_action_just_pressed("ui_battle_left") and can_select_targets:
+		target_index = ((target_index - 1) % all_combatants.size() + all_combatants.size()) % all_combatants.size()
+		print(target_index)
+	if Input.is_action_just_pressed("ui_battle_right") and can_select_targets: 
+		target_index = (target_index + 1) % all_combatants.size()
+		print(target_index)
+	if Input.is_action_just_pressed("ui_battle_accept") and can_select_targets: #TODO add cond for valid targets
+		valid_targets = get_valid_targets(selected_ability,current_combatant)
+		var action : QueuedAction
+		if selected_ability.target_type == Ability.TargetType.single_enemy or selected_ability.target_type == Ability.TargetType.single_ally:
+			action  = QueuedAction.new(current_combatant,selected_ability,[all_combatants[target_index]]) #TODO fix
+		else:
+			action = QueuedAction.new(current_combatant,selected_ability,all_combatants) #TODO fix
+		print(action.ability.ability_name + " added to queue")
+		action_queue.enqueue(action) #current combatant's action gets added to queue upon hitting enter
 
 func initialize_combat() -> void:
 	for combatant in all_combatants:
 		if combatant:
 			combatant.get_equipment_effects() #applies all resistances
 			combatant.get_random_atb() #randomly sets atb for each combatant
+			combatant.stat_updated.emit(combatant)
 
 func hide_action_menu():
-	%UI.hide_option_menu()
+	%Options.visible = false
 
 func show_action_menu():
-	%UI.show_option_menu()
+	%Options.visible = true
 
 func get_random_combatant() -> Combatant:
 	return all_combatants.filter(is_alive).pick_random()
@@ -113,39 +139,27 @@ func get_valid_targets(ability : Ability, user : Combatant) -> Array[Combatant]:
 			return [get_random_combatant()]
 	return []
 
+func is_valid_targets(targets : Array[Combatant]) -> bool:
+	for target in targets:
+		if not target.is_alive():
+			return false
+	return true
+
 func is_alive(combatant : Combatant) -> bool:
 	return combatant.is_alive()
 
 func apply_abilities(ability : Ability, user : Combatant, targets : Array[Combatant]):
-	#@warning_ignore("unused_variable")
-	#var final_targets : Array[Combatant]
-	#
-	#if user.has_status(preload("uid://cmrd3jvxsygkx")):
-		#ability.target_type = Ability.TargetType.random_combatant
-	#
-	#if ability.target_type in [Ability.TargetType.all_enemies, 
-	#Ability.TargetType.all_allies, 
-	#Ability.TargetType.all_combatants,
-	#Ability.TargetType.random_enemy,
-	#Ability.TargetType.random_ally,
-	#Ability.TargetType.random_combatant]:
-		#final_targets = get_valid_targets(ability,user)
-	#else:
-		#final_targets = targets
-	
 	user.change_hunger(-1 * ability.hunger_cost)
 	
 	for target in targets:
 		resolve_abilities(ability,user,target)
 
 func resolve_abilities(ability : Ability, user : Combatant, target : Combatant):
-	match ability.effect_type:
+	match ability.ability_type:
 		Ability.AbilityType.damage:
 			resolve_dmg(ability,user,target)
 		Ability.AbilityType.heal:
 			resolve_heal(ability,user,target)
-		#Ability.AbilityType.buff:
-			#resolve_buff(ability,user,target)
 		Ability.AbilityType.steal:
 			resolve_steal(ability,user,target)
 		Ability.AbilityType.add_status:
@@ -182,32 +196,15 @@ func resolve_revive(_ability : Ability, _user : Combatant, target : Combatant):
 		return
 	target.set_health(1)
 
-func can_afford(user : Combatant, ability : Ability) -> bool:
-	return user.get_hunger() >= ability.hunger_cost
-
-func check_battle_conditions() -> bool:
-	var all_enemies_dead = enemies.all(func(e) : return not e.is_alive())
-	var all_allies_dead = allies.all(func(a) : return not a.is_alive())
-	
-	if all_enemies_dead:
-		win.emit()
-		return true
-	if all_allies_dead:
-		game_over.emit()
-		return true
-	return false
-
-func queue_player_action(user : Combatant, ability : Ability, targets : Array[Combatant]):
-	if not can_afford(user, ability):
-		return
-	
-	user.queued_action = QueuedAction.new(ability,targets)
+#func can_afford(user : Combatant, ability : Ability) -> bool:
+	#return user.get_hunger() >= ability.hunger_cost
 
 func run_enemy_turn(combatant : Combatant):
-	var usable = combatant.prepped_abilities.filter(func(c) : return can_afford(combatant,c))
+	var usable : Array[Ability] = combatant.prepped_abilities.filter(func(c) : return combatant.can_afford(c))
+	usable.append(combatant.make_basic_attack())
 	
-	if usable.is_empty(): #no usable abilities, so use basic attack
-		return
+	for ability in usable:
+		ability.target_type = Ability.TargetType.single_ally
 	
 	var chosen_ability : Ability = usable.pick_random()
 	var targets = get_valid_targets(chosen_ability, combatant)
@@ -220,3 +217,15 @@ func run_enemy_turn(combatant : Combatant):
 	
 	for target in final_targets:
 		resolve_abilities(chosen_ability, combatant, target)
+
+func win_conditions() -> bool: #if player wins returns true
+	return false
+
+func loss_conditions() -> bool: #if player losses returns true
+	return false
+
+func ally_ability_selected(ability : Ability, user : Combatant):
+	print(user.combatant_name + " ability selected: " + ability.ability_name)
+	current_combatant = user
+	selected_ability = ability
+	can_select_targets = true

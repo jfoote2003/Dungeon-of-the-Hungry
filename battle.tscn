@@ -1,0 +1,147 @@
+[gd_scene load_steps=6 format=3 uid="uid://c07l5tw556yvs"]
+
+[ext_resource type="Script" uid="uid://gphhfvyqrnjl" path="res://battle.gd" id="1_7sfm4"]
+[ext_resource type="PackedScene" uid="uid://cxxrylm7dfxws" path="res://Menus/BattleMenu/window_default.tscn" id="2_i431l"]
+[ext_resource type="Theme" uid="uid://b6bcmgfimhktm" path="res://Menus/BattleMenu/DefaultTheme.tres" id="3_6t8i5"]
+[ext_resource type="PackedScene" uid="uid://clcgjtb2f4qmq" path="res://Menus/BattleMenu/player_stat_display.tscn" id="3_i431l"]
+[ext_resource type="Script" uid="uid://d78tv724yvcn" path="res://Menus/BattleMenu/options.gd" id="4_6t8i5"]
+
+[node name="Battle" type="Node"]
+script = ExtResource("1_7sfm4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TempBackground" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17312765, 0.5859375, 0.04119873, 1)
+
+[node name="InfoMenu" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(750, 160)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="EnemyInfo" parent="Control/InfoMenu" instance=ExtResource("2_i431l")]
+layout_mode = 2
+
+[node name="PlayerInfo" parent="Control/InfoMenu" instance=ExtResource("2_i431l")]
+layout_mode = 2
+size_flags_stretch_ratio = 1.6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/InfoMenu/PlayerInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="player_stat_display" parent="Control/InfoMenu/PlayerInfo/VBoxContainer" instance=ExtResource("3_i431l")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="player_stat_display2" parent="Control/InfoMenu/PlayerInfo/VBoxContainer" instance=ExtResource("3_i431l")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="player_stat_display3" parent="Control/InfoMenu/PlayerInfo/VBoxContainer" instance=ExtResource("3_i431l")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="player_stat_display4" parent="Control/InfoMenu/PlayerInfo/VBoxContainer" instance=ExtResource("3_i431l")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Options" parent="Control" instance=ExtResource("2_i431l")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -241.0
+offset_top = -120.0
+offset_right = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_6t8i5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Fight" type="Button" parent="Control/Options/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_6t8i5")
+text = "Fight"
+
+[node name="Ability" type="MenuButton" parent="Control/Options/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ability"
+
+[node name="Item" type="Button" parent="Control/Options/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_6t8i5")
+text = "Item"
+
+[node name="Run" type="Button" parent="Control/Options/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_6t8i5")
+text = "Run"
+
+[node name="VisualPlayers" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VisualEnemies" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[connection signal="pressed" from="Control/Options/VBoxContainer/Fight" to="Control/Options" method="_on_fight_pressed"]
+[connection signal="pressed" from="Control/Options/VBoxContainer/Ability" to="Control/Options" method="_on_ability_pressed"]
+[connection signal="pressed" from="Control/Options/VBoxContainer/Item" to="Control/Options" method="_on_item_pressed"]
+[connection signal="pressed" from="Control/Options/VBoxContainer/Run" to="Control/Options" method="_on_run_pressed"]

@@ -14,16 +14,16 @@ enum class_names {Berserker, Cleric, Cook, Landsknecht, Mage, Pact_Bound, Samura
 
 @export var rpg_class_name : class_names
 
-var current_level : int = 1
+@export var current_level : int = 1
 const MAX_LEVEL : int = 99
 
-var speed : float = 10.0 + float(agility / 10.0) # 10 + (.1 - 10)
+var speed : int = 10 + int(agility / 10) # 10 + (.1 - 10)
 
 var max_health : int = endurance * 50 #1 - 100 * 50 = 50 - 5000
-var health : int
+var health : int = endurance * 50
 
 var max_hunger : int = max(intelligence, devotion) * 20 #1 - 100 * 20 = 20 - 2000
-var hunger : int
+var hunger : int = max(intelligence, devotion) * 20
 
 func get_rpg_class() -> String:
 	match rpg_class_name:
@@ -215,7 +215,7 @@ func set_max_hunger(new_max_hunger : int):
 		max_hunger = new_max_hunger
 
 func reset_speed():
-	speed = 10.0 + float(agility / 10.0)
+	speed = 10 + int(agility / 10)
 
 func get_current_level() -> int:
 	return current_level
